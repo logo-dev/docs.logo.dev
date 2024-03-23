@@ -3,36 +3,6 @@ title: 'Introduction'
 description: 'Example section for showcasing API endpoints'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
-
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
-
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
-# Developer Documentation
-
 ## Parameters
 
 | Name | Type | Optional | Default |
@@ -53,7 +23,7 @@ Start by copy and pasting and adapt to your own use cases.
 
 Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and wide, and `jpg` formatted.
 
-![google.png](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/google.png)
+![google.png](https://img.logo.dev/google.com)
 
 ---
 
@@ -65,7 +35,7 @@ Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and w
 
 In some cases, PNGs limited color palettes will result in smaller image files with less compression.
 
-![google.png](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/google%201.png)
+![google.png]https://img.logo.dev/google.com?format=png)
 
 ---
 
@@ -77,7 +47,7 @@ In some cases, PNGs limited color palettes will result in smaller image files wi
 
 Desaturated logos are most useful for landing pages when you want to normalize colors across the set.
 
-![google.jpg](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/google.jpg)
+![google.jpg](https://img.logo.dev/google.com?greyscale=true)
 
 ---
 
@@ -89,7 +59,7 @@ Desaturated logos are most useful for landing pages when you want to normalize c
 
 Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`.
 
-![Untitled](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/Untitled.png)
+![Untitled](https://img.logo.dev/google.com?size=80)
 
 ---
 
@@ -101,4 +71,4 @@ Our image CDN will resize to any valid integer, but we recommend staying under 6
 
 As long as the height and width are set at 1/2 the size of the image source, your pixel density will be 2X.
 
-![Untitled](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/Untitled.png)
+![Untitled](https://img.logo.dev/google.com?size=160)

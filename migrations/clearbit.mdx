@@ -1,0 +1,79 @@
+---
+title: 'Migrating from Clearbit'
+description: ''
+icon: "angles-right"
+---
+
+## Overview
+This guide is intended for developers who are migrating from Clearbit's Logo API to Logo.dev's API. The aim is to ensure a seamless transition while maintaining functionality and consistency in the representation of company logos in your applications.
+
+## Clearbit's Logo API vs. Logo.dev's API Comparison
+Clearbit's Logo API provides basic access to company logos, while Logo.dev offers similar functionalities with additional features such as greyscale logos, more flexible size parameters, and retina image support.
+
+## Migration Steps
+
+### Step 1: Understanding Logo.dev's API Structure
+Familiarize yourself with the parameters and usage of Logo.dev's API as follows:
+
+- **size:** Integer, optional, with a default of 128. 
+- **format:** String, optional, can be either "png" or "jpg" with a default to "jpg".
+- **greyscale:** Boolean, optional, desaturates the image if set to true, defaults to false.
+
+### Step 2: API Endpoint Changes
+Replace the Clearbit API endpoint calls in your application:
+
+From:
+```html
+<img src="https://logo.clearbit.com/:domain">
+```
+
+To:
+```html
+<img src="https://img.logo.dev/:domain">
+```
+
+### Step 3: Handling Optional Parameters
+If you're using optional parameters like size, format, or greyscale, update your API calls to include them according to Logo.dev’s documentation【7†file-Ss4gfRveJcwtb9ewI84N8XQP】:
+
+Clearbit Example:
+```html
+<img src="https://logo.clearbit.com/segment.com?size=200&greyscale=true">
+```
+
+Logo.dev Equivalent:
+```html
+<img src="https://img.logo.dev/segment.com?size=200&greyscale=true">
+```
+
+### Step 4: Error Handling for Missing Logos
+Logo.dev's API handles missing logos with a 404 response code. Implement error handling to provide a default image if the logo is not found. Use the `onerror` attribute in the `img` tag:
+
+```html
+<img src="https://img.logo.dev/:domain" onerror="this.onerror=null;this.src='default-logo.png';">
+```
+
+### Step 5: Specifying Your Own Logo
+If you host a logo that you want Logo.dev to use, include an Open Graph tag in your index page under the root domain:
+
+Clearbit:
+```html
+<meta property="og:image" content="https://yourdomain.com/logo.png">
+```
+
+Logo.dev:
+```html
+<meta property="og:image" content="https://yourdomain.com/logo.png">
+```
+The Open Graph tag remains the same, but ensure that the logo is accessible to Logo.dev's crawlers.
+
+### Step 6: Testing
+After making these changes, thoroughly test your application to ensure that logos are displayed correctly and all functionalities work as expected.
+
+## Additional Features in Logo.dev
+Consider utilizing additional features offered by Logo.dev:
+
+- **Retina Images:** Logo.dev supports high-resolution retina images by providing images with double the pixel density.
+- **Image Resizing:** You can specify any valid integer size for images, though it is recommended to stay under 600px for raster images.
+
+## Conclusion
+By following this migration guide, you should be able to switch from using Clearbit's Logo API to Logo.dev's API without significant issues. Ensure that you review Logo.dev's documentation in detail to make full use of its capabilities.

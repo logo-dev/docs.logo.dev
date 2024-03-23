@@ -21,7 +21,7 @@
   "paths": {
     "/plants": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Returns a logo image",
         "parameters": [
           {
             "name": "limit",
