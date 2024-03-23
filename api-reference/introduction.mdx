@@ -31,3 +31,74 @@ All API endpoints are authenticated using Bearer tokens and picked up from the s
   }
 ]
 ```
+# Developer Documentation
+
+## Parameters
+
+| Name | Type | Optional | Default |
+| --- | --- | --- | --- |
+|  ↔️ size | integer | true | 128 |
+| 🖼️ format | string | true | jpg |
+|  ⚫️ greyscale | boolean | true | false |
+
+## Examples
+
+Start by copy and pasting and adapt to your own use cases.
+
+### Standard
+
+```html
+<img src="https://img.logo.dev/google.com">
+```
+
+Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and wide, and `jpg` formatted.
+
+![google.png](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/google.png)
+
+---
+
+### PNG instead of JPG
+
+```html
+<img src="https://img.logo.dev/google.com?format=png">
+```
+
+In some cases, PNGs limited color palettes will result in smaller image files with less compression.
+
+![google.png](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/google%201.png)
+
+---
+
+### Desaturated
+
+```html
+<img src="https://img.logo.dev/google.com?greyscale=true">
+```
+
+Desaturated logos are most useful for landing pages when you want to normalize colors across the set.
+
+![google.jpg](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/google.jpg)
+
+---
+
+### Resized images
+
+```html
+<img src="https://img.logo.dev/google.com?size=80">
+```
+
+Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`.
+
+![Untitled](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/Untitled.png)
+
+---
+
+### Retina images
+
+```html
+<img src="https://img.logo.dev/google.com?size=160" width="80" height="80">
+```
+
+As long as the height and width are set at 1/2 the size of the image source, your pixel density will be 2X.
+
+![Untitled](Developer%20Documentation%20abc59fb0d506426890184a9132c9d6c1/Untitled.png)
