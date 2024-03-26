@@ -46,25 +46,23 @@ Logo.dev Equivalent:
 ```
 
 ### Step 4: Error Handling for Missing Logos
-Logo.dev's API handles missing logos with a 404 response code. Implement error handling to provide a default image if the logo is not found. Use the `onerror` attribute in the `img` tag:
+Logo.dev handles missing logos differently from Clearbit. Instead of providing a 404 error, we provide a fallback image that contains the brand color and first letter of the domain.
 
-```html
-<img src="https://img.logo.dev/:domain" onerror="this.onerror=null;this.src='default-logo.png';">
-```
+If you are using an `onerror;` function to detect failed images, it's safe to continue using it but shouldn't be necessary.
 
-### Step 5: Specifying Your Own Logo
-If you host a logo that you want Logo.dev to use, include an Open Graph tag in your index page under the root domain:
+### Step 5: Changing your attribution link
+Like Clearbit, we also require attribution back to Logo.dev as part of our free offering.
 
 Clearbit:
 ```html
-<meta property="og:image" content="https://yourdomain.com/logo.png">
+<a href="https://logo.clearbit.com">Logos provided by Clearbit/a>
 ```
 
 Logo.dev:
 ```html
-<meta property="og:image" content="https://yourdomain.com/logo.png">
+<a href="https://logo.dev" alt="Logo API">Logos provided by Logo.dev</a>
 ```
-The Open Graph tag remains the same, but ensure that the logo is accessible to Logo.dev's crawlers.
+
 
 ### Step 6: Testing
 After making these changes, thoroughly test your application to ensure that logos are displayed correctly and all functionalities work as expected.

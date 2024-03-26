@@ -1,72 +1,68 @@
 ---
 title: "Getting Started"
-description: 'Welcome to the home of your new documentation'
+description: 'Start adding logos to your projects.'
 icon: "code"
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+We set up our Logo API to be able as easy as possible to test and deploy. 
 
-## Setting up
+In this guide, we will give an overview of how the API can be used to make the simplest requests and go live on your website.
 
-The first step to world-class documentation is setting up your editing environments.
+An important thing to note is that while our API can be used without an API key or any authentication, you will very quickly run into rate limits.
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+## Testing locally
 
-## Make it yours
+The most simple way to test is to add an image anywhere in your HTML. 
 
-Update your docs to your brand and add valuable content for the best user conversion.
+```html
+<img src="https://logo.dev/amazon.com">
+```
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+You can use parameters to add your API key and to return different sizes, file types, and effects.
+
+While you are testing, most calls to the Logo API will look like this.
+
+```html
+<img src="https://logo.dev/microsoft.com?api=YOUR-KEY-HERE&size=200&format=png">
+```
+
+## Test without code
+
+If you're looking to test our data quality with no code, we've found the best way is to add domains to a Google Sheet and run this formula.
+
+Here's a [link to a Sheets template you can use](https://docs.google.com/spreadsheets/d/1AiJlP71J-GHIYDiOyl33gKsA0utpSzImagS7in5YfAQ/edit?usp=sharing). You can modify the API's parameters and add your own key using the formula provided below.
+
+```
+=IMAGE(Concat(CONCAT("https://img.logo.dev/", $A3), "?format=png"))
+```
+
+## Rate-limiting
+
+When calling images without an API key, you will quickly hit rate limits. We allow unauthenticated calls for testing purposes only. 
+
+If you're asking why letters only being returned and not the logos, it's because you've hit the rate limits. 
+
+In order to avoid the limits, you'll need an API key or to upgrade your account.
+
+## Attribution requirement 
+
+Before deploying, you are required on any page you use the Logo API to link back to `logo.dev`. Attribution links should be legible and indexable.
+
+Here's an example attribution link to use.
+
+```html
+<a href="https://logo.dev" alt="Logo API">Logos provided by Logo.dev</a>
+```
+
+## Deploying 
+
+Before going to production, be absolutely sure to add an API key. Each account has an API key and can whitelist websites that are authorized to use that key. 
+
+You'll also need to make sure you have proper attribution when using a free account. 
+
+When you're satisfied with how your logos look by modifying parameters and adding your CSS, deploy however you see fit.
+
+Having any issues while testing? [Contact us](mailto:team@logo.dev) for help getting started.
+
+
+
