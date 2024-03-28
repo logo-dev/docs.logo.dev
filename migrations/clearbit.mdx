@@ -12,17 +12,18 @@ Clearbit's Logo API provides basic access to company logos, while Logo.dev offer
 
 ## Migration Steps
 
-### Step 1: Understanding Logo.dev's API Structure
-Familiarize yourself with the parameters and usage of Logo.dev's API as follows:
+<Steps>
+  <Step title="Understanding Logo.dev's API Structure">
+  Familiarize yourself with the parameters and usage of Logo.dev's API as follows:
 
-- **size:** Integer, optional, with a default of 128. 
-- **format:** String, optional, can be either "png" or "jpg" with a default to "jpg".
-- **greyscale:** Boolean, optional, desaturates the image if set to true, defaults to false.
+    - **size:** Integer, optional, with a default of 128. 
+    - **format:** String, optional, can be either "png" or "jpg" with a default to "jpg".
+    - **greyscale:** Boolean, optional, desaturates the image if set to true, defaults to false.
+  </Step>
+  <Step title="API Endpoint Changes">
+  Replace the Clearbit API endpoint calls in your application:
 
-### Step 2: API Endpoint Changes
-Replace the Clearbit API endpoint calls in your application:
-
-From:
+    From:
 ```html
 <img src="https://logo.clearbit.com/:domain">
 ```
@@ -32,8 +33,10 @@ To:
 <img src="https://img.logo.dev/:domain">
 ```
 
-### Step 3: Handling Optional Parameters
-If you're using optional parameters like size, format, or greyscale, update your API calls to include them according to Logo.dev’s documentation【7†file-Ss4gfRveJcwtb9ewI84N8XQP】:
+  </Step>
+
+  <Step title="Handling Optional Parameters">
+    If you're using optional parameters like size, format, or greyscale, update your API calls to include them according to Logo.dev’s documentation:
 
 Clearbit Example:
 ```html
@@ -44,28 +47,31 @@ Logo.dev Equivalent:
 ```html
 <img src="https://img.logo.dev/segment.com?size=200&greyscale=true">
 ```
-
-### Step 4: Error Handling for Missing Logos
-Logo.dev handles missing logos differently from Clearbit. Instead of providing a 404 error, we provide a fallback image that contains the brand color and first letter of the domain.
+  </Step>
+  <Step title="Error Handling for Missing Logos">
+  Logo.dev handles missing logos differently from Clearbit. Instead of providing a 404 error, we provide a fallback image that contains the brand color and first letter of the domain.
 
 If you are using an `onerror;` function to detect failed images, it's safe to continue using it but shouldn't be necessary.
 
-### Step 5: Changing your attribution link
-Like Clearbit, we also require attribution back to Logo.dev as part of our free offering.
+  </Step>
+  <Step title="Changing your attribution link">
+  Like Clearbit, we also require attribution back to Logo.dev as part of our free offering.
 
-Clearbit:
-```html
-<a href="https://logo.clearbit.com">Logos provided by Clearbit/a>
-```
+    Clearbit:
+    ```html
+    <a href="https://logo.clearbit.com">Logos provided by Clearbit/a>
+    ```
 
-Logo.dev:
-```html
-<a href="https://logo.dev" alt="Logo API">Logos provided by Logo.dev</a>
-```
+    Logo.dev:
+    ```html
+    <a href="https://logo.dev" alt="Logo API">Logos provided by Logo.dev</a>
+    ```
 
-
-### Step 6: Testing
-After making these changes, thoroughly test your application to ensure that logos are displayed correctly and all functionalities work as expected.
+  </Step>
+  <Step title="Testing">
+    After making these changes, thoroughly test your application to ensure that logos are displayed correctly and all functionalities work as expected.
+  </Step>
+</Steps>
 
 ## Additional Features in Logo.dev
 Consider utilizing additional features offered by Logo.dev:
