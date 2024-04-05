@@ -1,10 +1,10 @@
 ---
 title: "Getting Started"
-description: 'Start adding logos to your projects.'
+description: "Start adding logos to your projects."
 icon: "code"
 ---
 
-We set up our Logo API to be able as easy as possible to test and deploy. 
+We set up our Logo API to be able as easy as possible to test and deploy.
 
 In this guide, we will give an overview of how the API can be used to make the simplest requests and go live on your website.
 
@@ -12,13 +12,19 @@ An important thing to note is that while our API can be used without an API key 
 
 ## Testing locally
 
-The most simple way to test is to add an image anywhere in your HTML. 
+The most simple way to test is to add an image anywhere in your HTML.
 
 ```html
-<img src="https://logo.dev/sweetgreen.com">
+<img src="https://logo.dev/sweetgreen.com" />
 ```
+
 <Frame caption="https://logo.dev/sweetgreen.com">
-<img alt="" width="128" height="128" src="https://img.logo.dev/sweetgreen.com?size=256&format=png" />
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/sweetgreen.com?size=256&format=png"
+  />
 </Frame>
 
 You can use parameters to add your API key and to return different sizes, file types, and effects.
@@ -26,15 +32,23 @@ You can use parameters to add your API key and to return different sizes, file t
 While you are testing, most calls to the Logo API will look like this.
 
 ```html
-<img src="https://logo.dev/microsoft.com?api=YOUR-KEY-HERE&size=200&format=png">
+<img
+  src="https://logo.dev/microsoft.com?token=YOUR-KEY-HERE&size=200&format=png"
+/>
 ```
+
 <Frame caption="https://logo.dev/microsoft.com">
-<img alt="" width="200" height="200" src="https://img.logo.dev/microsoft.com?size=200&format=png" />
+  <img
+    alt=""
+    width="200"
+    height="200"
+    src="https://img.logo.dev/microsoft.com?size=200&format=png"
+  />
 </Frame>
 
 ## Getting an API key
 
-You'll be required to add an `?api=` parameter with an API key to do any serious querying of logos. You can get one for free by signing up at [app.logo.dev](https://logo.dev).
+You'll be required to add an `?token=` parameter with an API key to do any serious querying of logos. You can get one for free by signing up at [www.logo.dev](https://www.logo.dev).
 
 ## Test without code
 
@@ -48,15 +62,16 @@ Here's a [link to a Sheets template you can use](https://docs.google.com/spreads
 
 ## Rate-limiting
 
-When calling images without an API key, you will quickly hit rate limits. We allow unauthenticated calls for testing purposes only. 
+When calling images without an API key, you will quickly hit rate limits. We allow unauthenticated calls for testing purposes only.
 
-If you're asking why letters only being returned and not the logos, it's because you've hit the rate limits. 
+If you're asking why letters only being returned and not the logos, it's because you've hit the rate limits.
 
 <Warning>
-In order to avoid the limits, you'll need an API key or to upgrade your account.
+  In order to avoid the limits, you'll need an API key or to upgrade your
+  account.
 </Warning>
 
-## Attribution requirement 
+## Attribution requirement
 
 Before deploying, you are required on any page you use the Logo API to link back to `logo.dev`. Attribution links should be legible and indexable.
 
@@ -66,15 +81,12 @@ Here's an example attribution link to use.
 <a href="https://logo.dev" alt="Logo API">Logos provided by Logo.dev</a>
 ```
 
-## Deploying 
+## Deploying
 
-Before going to production, be absolutely sure to add an API key. Each account has an API key and can whitelist websites that are authorized to use that key. 
+Before going to production, be absolutely sure to add an API key. Each account has an API key and can whitelist websites that are authorized to use that key.
 
-You'll also need to make sure you have proper attribution when using a free account. 
+You'll also need to make sure you have proper attribution when using a free account.
 
 When you're satisfied with how your logos look by modifying parameters and adding your CSS, deploy however you see fit.
 
 Having any issues while testing? [Contact us](mailto:team@logo.dev) for help getting started.
-
-
-

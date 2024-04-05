@@ -1,13 +1,15 @@
 ---
-title: 'Migrating from Clearbit'
-description: ''
+title: "Migrating from Clearbit"
+description: ""
 icon: "angles-right"
 ---
 
 ## Overview
+
 This guide is intended for developers who are migrating from Clearbit's Logo API to Logo.dev's API. The aim is to ensure a seamless transition while maintaining functionality and consistency in the representation of company logos in your applications.
 
 ## Clearbit's Logo API vs. Logo.dev's API Comparison
+
 Clearbit's Logo API provides basic access to company logos, while Logo.dev offers similar functionalities with additional features such as greyscale logos, more flexible size parameters, and retina image support.
 
 ## Migration Steps
@@ -16,21 +18,25 @@ Clearbit's Logo API provides basic access to company logos, while Logo.dev offer
   <Step title="Understanding Logo.dev's API Structure">
   Familiarize yourself with the parameters and usage of Logo.dev's API as follows:
 
-    - **size:** Integer, optional, with a default of 128. 
+    - **token:** String, required, use the API token associated with your account.
+    - **size:** Integer, optional, with a default of 128.
     - **format:** String, optional, can be either "png" or "jpg" with a default to "jpg".
     - **greyscale:** Boolean, optional, desaturates the image if set to true, defaults to false.
+
   </Step>
   <Step title="API Endpoint Changes">
   Replace the Clearbit API endpoint calls in your application:
 
     From:
+
 ```html
-<img src="https://logo.clearbit.com/:domain">
+<img src="https://logo.clearbit.com/:domain" />
 ```
 
 To:
+
 ```html
-<img src="https://img.logo.dev/:domain">
+<img src="https://img.logo.dev/:domain?token=YOUR-KEY-HERE" />
 ```
 
   </Step>
@@ -39,14 +45,19 @@ To:
     If you're using optional parameters like size, format, or greyscale, update your API calls to include them according to Logo.dev’s documentation:
 
 Clearbit Example:
+
 ```html
-<img src="https://logo.clearbit.com/segment.com?size=200&greyscale=true">
+<img src="https://logo.clearbit.com/segment.com?size=200&greyscale=true" />
 ```
 
 Logo.dev Equivalent:
+
 ```html
-<img src="https://img.logo.dev/segment.com?size=200&greyscale=true">
+<img
+  src="https://img.logo.dev/segment.com?size=200&greyscale=true&token=YOUR-KEY-HERE"
+/>
 ```
+
   </Step>
   <Step title="Error Handling for Missing Logos">
   Logo.dev handles missing logos differently from Clearbit. Instead of providing a 404 error, we provide a fallback image that contains the brand color and first letter of the domain.
@@ -74,10 +85,12 @@ If you are using an `onerror;` function to detect failed images, it's safe to co
 </Steps>
 
 ## Additional Features in Logo.dev
+
 Consider utilizing additional features offered by Logo.dev:
 
 - **Retina Images:** Logo.dev supports high-resolution retina images by providing images with double the pixel density.
 - **Image Resizing:** You can specify any valid integer size for images, though it is recommended to stay under 600px for raster images.
 
 ## Conclusion
+
 By following this migration guide, you should be able to switch from using Clearbit's Logo API to Logo.dev's API without significant issues. Ensure that you review Logo.dev's documentation in detail to make full use of its capabilities.
