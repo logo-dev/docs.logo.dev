@@ -1,70 +1,115 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "Introduction"
+description: "Example section for showcasing API endpoints"
 ---
 
 ## Parameters
 
-| Name | Type | Optional | Default |
-| --- | --- | --- | --- |
-|  ↔️ size | integer | true | 128 |
-| 🖼️ format | string | true | jpg |
-|  ⚫️ greyscale | boolean | true | false |
+| Name          | Type    | Optional | Default |
+| ------------- | ------- | -------- | ------- |
+| 🔑  token     | string  | false    | n/a     |
+| ↔️ size       | integer | true     | 128     |
+| 🖼️ format     | string  | true     | jpg     |
+| ⚫️ greyscale | boolean | true     | false   |
 
 ### Standard
 
 ```html
-<img src="https://img.logo.dev/google.com">
+<img src="https://img.logo.dev/google.com" />
 ```
 
 Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and wide, and `jpg` formatted.
 
-![google.png](https://img.logo.dev/google.com)
+<Frame caption="https://logo.dev/google.com">
+  <img alt="" width="128" height="128" src="https://img.logo.dev/google.com" />
+</Frame>
+
+---
+
+### Rate-limiting
+
+<Warning>
+  In order to avoid the limits, you'll need an API key or to upgrade your
+  account.
+</Warning>
+
+<Card
+  title="Need an API key? Sign up for a free account"
+  href="https://www.logo.dev"
+>
+  By signing up for a free account and registering your site, you'll have enough
+  requests to manage most projects.
+</Card>
+
+Your API token is required when using the endpoint publicly.
+
+```html
+<img src="https://img.logo.dev/google.com?token=YOUR-KEY-HERE" />
+```
 
 ---
 
 ### PNG instead of JPG
 
 ```html
-<img src="https://img.logo.dev/google.com?format=png">
+<img src="https://img.logo.dev/google.com?format=png" />
 ```
 
-In some cases, PNGs limited color palettes will result in smaller image files with less compression.
+In some cases, PNGs with limited color palettes will result in smaller image files with less compression. Using PNGs allows for transparency, although not all logo images will be compatible.
 
-![google.png]https://img.logo.dev/google.com?format=png)
+<Frame caption="https://logo.dev/google.com?format=png">
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/google.com?size=256&format=png"
+  />
+</Frame>
 
 ---
 
 ### Desaturated
 
 ```html
-<img src="https://img.logo.dev/google.com?greyscale=true">
+<img src="https://img.logo.dev/google.com?greyscale=true&format=png" />
 ```
 
 Desaturated logos are most useful for landing pages when you want to normalize colors across the set.
 
-![google.jpg](https://img.logo.dev/google.com?greyscale=true)
+<Frame caption="https://logo.dev/google.com?greyscale=true">
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/google.com?greyscale=true"
+  />
+</Frame>
 
 ---
 
 ### Resized images
 
 ```html
-<img src="https://img.logo.dev/google.com?size=80">
+<img src="https://img.logo.dev/google.com?size=80" />
 ```
 
 Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`.
 
-![Untitled](https://img.logo.dev/google.com?size=80)
+<Frame caption="https://logo.dev/google.com?size=80">
+  <img
+    alt=""
+    width="40"
+    height="40"
+    src="https://img.logo.dev/google.com?size=80&format=png"
+  />
+</Frame>
 
 ---
 
 ### Retina images
 
 ```html
-<img src="https://img.logo.dev/google.com?size=160" width="80" height="80">
+<img src="https://img.logo.dev/google.com?size=160" width="80" height="80" />
 ```
 
 As long as the height and width are set at 1/2 the size of the image source, your pixel density will be 2X.
-
-![Untitled](https://img.logo.dev/google.com?size=160)
