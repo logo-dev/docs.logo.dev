@@ -3,6 +3,16 @@ title: "Introduction"
 description: ""
 ---
 
+<Frame caption="Logo.dev Demo">
+  <iframe
+    width="1080"
+    height="1080"
+    title="Logo.dev Demo"
+    frameborder="0"
+    src="https://www.logo.dev/demo"
+  ></iframe>
+</Frame>
+
 ## Parameters
 
 | Name          | Type    | Optional | Default |
@@ -15,13 +25,18 @@ description: ""
 ### Standard
 
 ```html
-<img src="https://img.logo.dev/google.com" />
+<img src="https://img.logo.dev/shopify.com" />
 ```
 
 Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and wide, and `jpg` formatted.
 
-<Frame caption="https://logo.dev/google.com">
-  <img alt="" width="128" height="128" src="https://img.logo.dev/google.com" />
+<Frame caption="https://logo.dev/shopify.com">
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2"
+  />
 </Frame>
 
 ---
@@ -44,7 +59,7 @@ Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and w
 Your API token is required when using the endpoint publicly.
 
 ```html
-<img src="https://img.logo.dev/google.com?token=YOUR-KEY-HERE" />
+<img src="https://img.logo.dev/shopify.com?token=YOUR-KEY-HERE" />
 ```
 
 ---
@@ -52,17 +67,17 @@ Your API token is required when using the endpoint publicly.
 ### PNG instead of JPG
 
 ```html
-<img src="https://img.logo.dev/google.com?format=png" />
+<img src="https://img.logo.dev/shopify.com?format=png" />
 ```
 
 In some cases, PNGs with limited color palettes will result in smaller image files with less compression. Using PNGs allows for transparency, although not all logo images will be compatible.
 
-<Frame caption="https://logo.dev/google.com?format=png">
+<Frame caption="https://logo.dev/shopify.com?format=png">
   <img
     alt=""
     width="128"
     height="128"
-    src="https://img.logo.dev/google.com?size=256&format=png"
+    src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=256&format=png"
   />
 </Frame>
 
@@ -71,17 +86,17 @@ In some cases, PNGs with limited color palettes will result in smaller image fil
 ### Desaturated
 
 ```html
-<img src="https://img.logo.dev/google.com?greyscale=true&format=png" />
+<img src="https://img.logo.dev/shopify.com?greyscale=true&format=png" />
 ```
 
 Desaturated logos are most useful for landing pages when you want to normalize colors across the set.
 
-<Frame caption="https://logo.dev/google.com?greyscale=true">
+<Frame caption="https://logo.dev/shopify.com?greyscale=true">
   <img
     alt=""
     width="128"
     height="128"
-    src="https://img.logo.dev/google.com?greyscale=true"
+    src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&greyscale=true"
   />
 </Frame>
 
@@ -90,17 +105,17 @@ Desaturated logos are most useful for landing pages when you want to normalize c
 ### Resized images
 
 ```html
-<img src="https://img.logo.dev/google.com?size=80" />
+<img src="https://img.logo.dev/shopify.com?size=80" />
 ```
 
 Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`.
 
-<Frame caption="https://logo.dev/google.com?size=80">
+<Frame caption="https://logo.dev/shopify.com?size=80">
   <img
     alt=""
     width="40"
     height="40"
-    src="https://img.logo.dev/google.com?size=80&format=png"
+    src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=80&format=png"
   />
 </Frame>
 
@@ -109,7 +124,7 @@ Our image CDN will resize to any valid integer, but we recommend staying under 6
 ### Retina images
 
 ```html
-<img src="https://img.logo.dev/google.com?size=160" width="80" height="80" />
+<img src="https://img.logo.dev/shopify.com?size=160" width="80" height="80" />
 ```
 
 As long as the height and width are set at 1/2 the size of the image source, your pixel density will be 2X.
