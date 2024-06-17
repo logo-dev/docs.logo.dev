@@ -15,7 +15,7 @@ An important thing to note is that while our API can be used without an API key 
 The most simple way to test is to add an image anywhere in your HTML.
 
 ```html
-<img src="https://img.logo.dev/sweetgreen.com" />
+<img src="https://img.logo.dev/sweetgreen.com?token=YOUR-KEY-HERE" />
 ```
 
 <Frame caption="https://img.logo.dev/sweetgreen.com">
@@ -24,25 +24,6 @@ The most simple way to test is to add an image anywhere in your HTML.
     width="128"
     height="128"
     src="https://img.logo.dev/sweetgreen.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=256&format=png"
-  />
-</Frame>
-
-You can use parameters to add your API key and to return different sizes, file types, and effects.
-
-While you are testing, most calls to the Logo API will look like this.
-
-```html
-<img
-  src="https://img.ogo.dev/microsoft.com?token=YOUR-KEY-HERE&size=200&format=png"
-/>
-```
-
-<Frame caption="https://img.logo.dev/microsoft.com?token=YOUR-KEY-HERE&size=200&format=png">
-  <img
-    alt=""
-    width="100"
-    height="100"
-    src="https://img.logo.dev/microsoft.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=200&format=png"
   />
 </Frame>
 
@@ -57,6 +38,25 @@ You'll be required to add an `?token=` parameter with an API key to do any serio
   By signing up for a free account and registering your site, you'll have enough
   requests to manage most projects.
 </Card>
+
+You can use parameters to add your API key and to return different sizes, file types, and effects.
+
+While you are testing, most calls to the Logo API will look like this.
+
+```html
+<img
+  src="https://img.logo.dev/microsoft.com?token=YOUR-KEY-HERE&size=200&format=png"
+/>
+```
+
+<Frame caption="https://img.logo.dev/microsoft.com?token=YOUR-KEY-HERE&size=200&format=png">
+  <img
+    alt=""
+    width="100"
+    height="100"
+    src="https://img.logo.dev/microsoft.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=200&format=png"
+  />
+</Frame>
 
 ## Test without code
 
