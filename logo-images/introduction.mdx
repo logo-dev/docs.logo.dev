@@ -15,12 +15,13 @@ description: ""
 
 ## Parameters
 
-| Name          | Type    | Optional | Default |
-| ------------- | ------- | -------- | ------- |
-| 🔑  token     | string  | false    | n/a     |
-| ↔️ size       | integer | true     | 128     |
-| 🖼️ format     | string  | true     | jpg     |
-| ⚫️ greyscale | boolean | true     | false   |
+| Name          | Type    | Optional | Default  |
+| ------------- | ------- | -------- | -------- |
+| 🔑  token     | string  | false    | n/a      |
+| ↔️ size       | integer | true     | 128      |
+| 🖼️ format     | string  | true     | jpg      |
+| ⚫️ greyscale | boolean | true     | false    |
+| ⚠️ fallback   | string  | true     | monogram |
 
 ### Standard
 
@@ -128,3 +129,40 @@ Our image CDN will resize to any valid integer, but we recommend staying under 6
 ```
 
 As long as the height and width are set at 1/2 the size of the image source, your pixel density will be 2X.
+
+### Custom fallback images
+
+```html
+<img
+  src="https://img.logo.dev/stripe.com?token=YOUR-KEY-HERE&fallback=404"
+  data-default-src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Example_image.png"
+/>
+<img
+  src="https://img.logo.dev/asdfasdf.com?token=YOUR-KEY-HERE&fallback=404"
+  data-default-src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Example_image.png"
+/>
+```
+
+```javascript
+// Vanilla javascript example
+document.querySelectorAll("img[data-default-src]").forEach(function (img) {
+  var defaultSrc = img.getAttribute("data-default-src");
+  img.addEventListener("error", function () {
+    img.setAttribute("src", defaultSrc);
+  });
+});
+```
+
+By adding the `&fallback=404` parameter to your images, when a logo can't be found it will error instead of falling back to the default monogram. In the example above, you can specify a `data-default-src` attribute and then add the javascript to the bottom of your page to set whatever custom fallback you would like.
+
+<Frame caption="Set your own fallback image using Javascript">
+  <img
+    src="https://img.logo.dev/stripe.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&fallback=404"
+    data-default-src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Example_image.png"
+    width="100"
+  />
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Example_image.png"
+    width="100"
+  />
+</Frame>
