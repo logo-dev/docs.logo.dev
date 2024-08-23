@@ -30,7 +30,7 @@ description: ""
 
 Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and wide, and `jpg` formatted.
 
-<Frame caption="https://logo.dev/shopify.com">
+<Frame caption="https://img.logo.dev/shopify.com">
   <img
     alt=""
     width="128"
@@ -38,6 +38,30 @@ Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and w
     src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2"
   />
 </Frame>
+
+---
+
+### By Ticker Symbol
+
+```html
+<img src="https://img.logo.dev/ticker/ESTC" />
+```
+
+<Frame caption="https://img.logo.dev/ticker/ESTC">
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/ticker/ESTC?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2"
+  />
+</Frame>
+
+<Warning>
+  Ticker symbols of NYSE and NASDAQ are currently supported.{" "}
+  <a href="mailto:team@logo.dev">
+    Get in touch at team@logo.dev if you want additional exchanges.
+  </a>
+</Warning>
 
 ---
 
@@ -72,7 +96,7 @@ Your API token is required when using the endpoint publicly.
 
 In some cases, PNGs with limited color palettes will result in smaller image files with less compression. Using PNGs allows for transparency, although not all logo images will be compatible.
 
-<Frame caption="https://logo.dev/shopify.com?format=png">
+<Frame caption="https://img.logo.dev/shopify.com?format=png">
   <img
     alt=""
     width="128"
@@ -91,7 +115,7 @@ In some cases, PNGs with limited color palettes will result in smaller image fil
 
 Desaturated logos are most useful for landing pages when you want to normalize colors across the set.
 
-<Frame caption="https://logo.dev/shopify.com?greyscale=true">
+<Frame caption="https://img.logo.dev/shopify.com?greyscale=true">
   <img
     alt=""
     width="128"
@@ -110,7 +134,7 @@ Desaturated logos are most useful for landing pages when you want to normalize c
 
 Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`.
 
-<Frame caption="https://logo.dev/shopify.com?size=80">
+<Frame caption="https://img.logo.dev/shopify.com?size=80">
   <img
     alt=""
     width="40"
