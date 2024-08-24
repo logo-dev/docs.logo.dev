@@ -21,11 +21,7 @@
   },
   "topbarLinks": [
     {
-      "name": "Home",
-      "url": "https://logo.dev"
-    },
-    {
-      "name": "Contact Us",
+      "name": "Support",
       "url": "mailto:team@logo.dev"
     }
   ],
@@ -39,6 +35,10 @@
     {
       "group": "Logo Images",
       "pages": ["logo-images/introduction", "logo-images/get"]
+    },
+    {
+      "group": "Brand Search",
+      "pages": ["brand-search/introduction"]
     }
   ],
   "footerSocials": {},
