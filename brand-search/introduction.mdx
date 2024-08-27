@@ -6,19 +6,18 @@ description: ""
 Need to go from a brand name to a domain? Our Brand Search API is the easiest way to get autocomplete results or grab the most popular domain for a brand.
 
 <Warning>
-  We're opening up Brand Search in a private beta to begin with. Please request
-  a private key to access the API via email at
-  [team@logo.dev](mailto:team@logo.dev?subject=Brand%20Search%20API%20Key%20Request).
 
-During testing all access to the API is free with no restrictions.
+Brand search is available as a public beta. We are still actively changing the search and ranking capabilities. During testing all access to the API is free with no restrictions.
+
+Please provide feedback to [team@logo.dev](mailto:team@logo.dev?subject=Brand%20Search) with any questions or concerns.
 
 </Warning>
 
 ```bash
-curl --header "Bearer: YOUR_TOKEN_HERE" "https://api.logo.dev/search?q=QUERY"
+curl --header "Bearer: YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=QUERY"
 ```
 
-All you need to provide is a query and your secret token, which is formatted like `sk_...`. In the future, it will also be available from the dashboard.
+All you need to provide is a query and your secret key, which can be found on the [dashboard](https://www.logo.dev/dashboard) and is formatted like `sk_...`.
 
 ---
 
@@ -27,7 +26,7 @@ All you need to provide is a query and your secret token, which is formatted lik
 Using `curl` to test this from the command line, but obviously call the API anywhere that supports headers.
 
 ```bash
-curl --header "Bearer: YOUR_TOKEN_HERE" "https://api.logo.dev/search?q=sweetgreen"
+curl --header "Bearer: YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=sweetgreen"
 ```
 
 ### Results
@@ -61,4 +60,4 @@ Expect an array of objects in the following format. There’s currently a max of
 
 Unlike the public key, it’s your responsibility to keep your secret key safe and away from public eyes. Even during testing, please never publish to Github or allow it to be seen from front-end code.
 
-If you’re secret is ever leaked, please get in touch immediately so we can regenerate a new one for you.
+If you’re secret key is ever leaked, please get in touch immediately so we can regenerate a new one for you.
