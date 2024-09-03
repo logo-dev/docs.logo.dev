@@ -34,7 +34,11 @@
     },
     {
       "group": "Logo Images",
-      "pages": ["logo-images/introduction", "logo-images/get"]
+      "pages": [
+        "logo-images/introduction",
+        "logo-images/get",
+        "logo-images/ticker"
+      ]
     },
     {
       "group": "Brand Search",

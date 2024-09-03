@@ -1,0 +1,84 @@
+---
+title: "Stock Tickers"
+description: ""
+---
+
+Our stock ticker logo API provides a quick and efficient way to add company logos to your financial website or application.
+
+It's another way to use our logo API, using stock ticker symbols from supported exchanges.
+
+---
+
+### How to use stock ticker logos
+
+Using the stock ticker logo API is very simple, all you need is your public token from the [Logo.dev dashboard](https://logo.dev/dashboard).
+
+<Frame caption="https://img.logo.dev/ticker/etsy?token=:public_token">
+  <img
+    alt="Etsy Logo"
+    width="100"
+    height="100"
+    src="https://img.logo.dev/ticker/etsy?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=200"
+  />
+</Frame>
+
+Here's an example of how to implement a stock ticker logo look up for Etsy on your website:
+
+<CodeGroup>
+```html Example
+<img src="https://img.logo.dev/ticker/etsy?token=:public_token" />
+```
+
+```html Format
+<img src="https://img.logo.dev/ticker/:symbol?token=:public_token" />
+```
+
+</CodeGroup>
+
+Anywhere you can use an image URL, such as Excel, Slack, or email, you can use this endpoint:
+
+<CodeGroup>
+```html Example
+https://img.logo.dev/ticker/etsy?token=:public_token
+```
+
+```html Format
+https://img.logo.dev/ticker/:symbol?token=:public_token
+```
+
+</CodeGroup>
+
+### How stock ticker look up works
+
+For supported exchanges, ticker symbols are mapped to domain names. So whether you do a look up by ticker symbol or domain name, you'll get the same result.
+
+### Supported exchanges
+
+Logo images by ticker symbol are currently supported for:
+
+- NYSE
+- NASDAQ
+
+<Check>
+  We're happy to add exchanges. [Let us know
+  ](mailto:team@logo.dev?subject=Stock%20Tickers) what you'd like added.
+</Check>
+
+### FAQ
+
+<AccordionGroup>
+  <Accordion title="Can I change the size or image format?">
+    Yes, all the parameters of the [logo endpoint](/logo-images/get) are also
+    available for the ticker endpoint.
+  </Accordion>
+  <Accordion title="Does this support ETFs and other security types?">
+    Yes, we've added support for every ticker symbol to return the proper logo.
+  </Accordion>
+  <Accordion title="Does this support crypto?">
+    Not at the moment, we only have public securities for American exchanges.
+  </Accordion>
+  <Accordion title="What if I find a missing or wrong ticker logo?">
+    We're obsessed with quality. Send us an email at
+    [team@logo.dev](mailto:team@logo.dev) and we'll fix it right away.
+  </Accordion>
+</AccordionGroup>
