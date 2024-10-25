@@ -43,6 +43,10 @@
     {
       "group": "Brand Search",
       "pages": ["brand-search/introduction"]
+    },
+    {
+      "group": "Describe",
+      "pages": ["describe/introduction"]
     }
   ],
   "footerSocials": {},
