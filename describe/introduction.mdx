@@ -1,0 +1,70 @@
+---
+title: "Introduction"
+description: ""
+---
+
+Need to go from a brand name to a domain? Our Brand Search API is the easiest way to get autocomplete results or grab the most popular domain for a brand.
+
+<Warning>
+
+The Describe API is available as a closed alpha. It is still in active development and we are seeking feedback on its performance.
+
+Reach out to us at [team@logo.dev](mailto:team@logo.dev?subject=Brand%20Search) if you want access to this endpoint.
+
+</Warning>
+
+```bash
+curl --header "Authorization: Bearer: YOUR_SECRET_KEY_HERE" "http://api.logo.dev/describe/domain"
+```
+
+All you need to provide is a query and your secret key, which can be found on the [dashboard](https://www.logo.dev/dashboard) and is formatted like `sk_...`.
+
+---
+
+## In example, looking up “sweetgreen”
+
+Using `curl` to test this from the command line, but obviously call the API anywhere that supports headers.
+
+```bash
+curl --header "Authorization: Bearer: YOUR_SECRET_KEY_HERE" "http://api.logo.dev/describe/sweetgreen.com"
+```
+
+### Results
+
+Expect a single object in the following format. The socials object will return a key-value pair if a social link is detected.
+
+```json
+{
+  "title": "sweetgreen",
+  "description": "Simple, seasonal, healthy salads and grain bowls made in-house from scratch, using whole produce delivered that morning.",
+  "indexed_at": "2024-10-25T15:30:27.36329-07:00",
+  "socials": {
+    "facebook": "http://facebook.com/sweetgreen",
+    "instagram": "https://www.instagram.com/sweetgreen/",
+    "twitter": "https://twitter.com/sweetgreen"
+  }
+}
+```
+
+The currently supported social sites are:
+
+- facebook
+- instagram
+- linkedin
+- pinterest
+- reddit
+- snapchat
+- telegram
+- tumblr
+- twitter (aka X)
+- wechat
+- whatsapp
+- youtube
+
+---
+
+### Keep your secret a secret, keep it safe
+
+Unlike the public key, it’s your responsibility to keep your secret key safe and away from public eyes. Even during testing, please never publish to Github or allow it to be seen from front-end code.
+
+If you’re secret key is ever leaked, please get in touch immediately so we can regenerate a new one for you.

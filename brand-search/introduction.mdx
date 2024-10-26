@@ -14,7 +14,7 @@ Please provide feedback to [team@logo.dev](mailto:team@logo.dev?subject=Brand%20
 </Warning>
 
 ```bash
-curl --header "Bearer: YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=QUERY"
+curl --header "Authorization: Bearer: YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=QUERY"
 ```
 
 All you need to provide is a query and your secret key, which can be found on the [dashboard](https://www.logo.dev/dashboard) and is formatted like `sk_...`.
@@ -26,7 +26,7 @@ All you need to provide is a query and your secret key, which can be found on th
 Using `curl` to test this from the command line, but obviously call the API anywhere that supports headers.
 
 ```bash
-curl --header "Bearer: YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=sweetgreen"
+curl --header "Authorization: Bearer: YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=sweetgreen"
 ```
 
 ### Results
@@ -50,8 +50,8 @@ Expect an array of objects in the following format. There’s currently a max of
 	{
 		"name":"Sweet Green Apothecary",
 		"domain":"sweetgreenapothecary.com"
-		}
-	]
+	}
+]
 ```
 
 ---
