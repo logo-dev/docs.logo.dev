@@ -6,10 +6,9 @@ description: ""
 Need to go from domain to brand name? Our Describe API allows you to access all the brand data we have for a given domain.
 
 <Warning>
-The Describe API is available as a closed alpha. It is still in active development and we are seeking feedback on its performance.
+  The Describe API is available as a closed alpha. It is still in active development and we are seeking feedback on its performance.
 
-Reach out to us at [team@logo.dev](mailto:team@logo.dev?subject=Brand%20Search) if you want access to this endpoint.
-
+  Reach out to us at [team@logo.dev](mailto:team@logo.dev?subject=Brand%20Search) if you want access to this endpoint.
 </Warning>
 
 ```bash
@@ -18,7 +17,7 @@ curl --header "Authorization: Bearer: YOUR_SECRET_KEY_HERE" "http://api.logo.dev
 
 All you need to provide is a query and your secret key, which can be found on the [dashboard](https://www.logo.dev/dashboard) and is formatted like `sk_...`.
 
----
+***
 
 ## In example, looking up “sweetgreen”
 
@@ -34,7 +33,8 @@ Expect a single object in the following format. The socials object will return a
 
 ```json
 {
-  "title": "sweetgreen",
+  "name": "sweetgreen",
+  "domain": "sweetgreen.com",
   "description": "Simple, seasonal, healthy salads and grain bowls made in-house from scratch, using whole produce delivered that morning.",
   "indexed_at": "2024-10-25T15:30:27.36329-07:00",
   "logo": "https://img.logo.dev/sweetgreen.com?token=YOUR_PUBLIC_KEY_HERE",
@@ -48,20 +48,31 @@ Expect a single object in the following format. The socials object will return a
 
 The currently supported social sites are:
 
-- facebook
-- instagram
-- linkedin
-- pinterest
-- reddit
-- snapchat
-- telegram
-- tumblr
-- twitter (aka X)
-- wechat
-- whatsapp
-- youtube
+* facebook
 
----
+* instagram
+
+* linkedin
+
+* pinterest
+
+* reddit
+
+* snapchat
+
+* telegram
+
+* tumblr
+
+* twitter (aka X)
+
+* wechat
+
+* whatsapp
+
+* youtube
+
+***
 
 ### Keep your secret a secret, keep it safe
 
