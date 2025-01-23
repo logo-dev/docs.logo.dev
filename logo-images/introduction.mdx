@@ -124,7 +124,11 @@ Our image CDN will resize to any valid integer, but we recommend staying under 6
 ### Retina images
 
 ```html
-<img src="https://img.logo.dev/shopify.com?size=160" width="80" height="80" />
+<img
+  src="https://img.logo.dev/shopify.com?size=80&retina=true"
+  width="80"
+  height="80"
+/>
 ```
 
-As long as the height and width are set at 1/2 the size of the image source, your pixel density will be 2X.
+The `retina=true` parameter doubles the source image resolution (160px) while displaying at the specified size (80px), creating sharp images on high-density displays. Without this parameter, logos may appear blurry.

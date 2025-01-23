@@ -1,19 +1,50 @@
 ---
 title: "Parameters"
+description: "Available parameters for the logo image API endpoint"
 ---
 
-<ParamField path="token" type="string">
-  🔑 Your API token is required to be used with a whitelisted site.
+<ParamField path="token" type="string" required>
+  Your API authentication token. This must be associated with a whitelisted
+  domain to access the API.
 </ParamField>
 
-<ParamField path="size" type="int">
-  ↔️ Change the default size of "128".
+<ParamField path="size" type="integer" default="128">
+  The desired width and height of the logo in pixels. The image will maintain
+  its aspect ratio.
 </ParamField>
 
-<ParamField path="format" type="string">
-  🖼️ Can either return "jpg", "png", or "webp".
+<ParamField path="format" type="string" default="jpg">
+  The image format to return.
+  <Expandable title="formats">
+    <ResponseField name="jpg">
+      Smaller file size without transparency
+    </ResponseField>
+    <ResponseField name="png">
+      Highest quality with transparency support
+    </ResponseField>
+    <ResponseField name="webp">
+      Modern format with optimal compression
+    </ResponseField>
+  </Expandable>
 </ParamField>
 
-<ParamField path="greyscale" type="boolean">
-  ⚫️ Optional parameter to return a desaturated image.
+<ParamField path="greyscale" type="boolean" default="false">
+  Returns a black and white version of the logo.
+</ParamField>
+
+<ParamField path="retina" type="boolean" default="false">
+  Returns a high-density image at 2x the requested size for sharp display on
+  retina screens.
+</ParamField>
+
+<ParamField path="fallback" type="string" default="monogram">
+  Returns a fallback image if the logo is not found.
+  <Expandable title="options">
+    <ResponseField name="monogram">
+      Generates a monogram from the first letter of the domain
+    </ResponseField>
+    <ResponseField name="404">
+      Returns a 404 error instead of an image
+    </ResponseField>
+  </Expandable>
 </ParamField>
