@@ -1,15 +1,14 @@
 ---
 title: "Introduction"
-description: ""
 ---
 
 Need to go from domain to brand name? Our Describe API allows you to access all the brand data we have for a given domain.
 
-<Warning>
-  The Describe API is available as a closed alpha. It is still in active development and we are seeking feedback on its performance.
+<Note>
+  The Describe API is available on any paid plan. Head to https://www.logo.dev/pricing to get started.
 
-  Reach out to us at [team@logo.dev](mailto:team@logo.dev?subject=Brand%20Search) if you want access to this endpoint.
-</Warning>
+  Reach out to us at [team@logo.dev](mailto:team@logo.dev?subject=Describe%20API) if you see any gaps in coverage.
+</Note>
 
 ```bash
 curl --header "Authorization: Bearer: YOUR_SECRET_KEY_HERE" "http://api.logo.dev/describe/domain"
@@ -17,7 +16,7 @@ curl --header "Authorization: Bearer: YOUR_SECRET_KEY_HERE" "http://api.logo.dev
 
 All you need to provide is a query and your secret key, which can be found on the [dashboard](https://www.logo.dev/dashboard) and is formatted like `sk_...`.
 
-***
+---
 
 ## In example, looking up “sweetgreen”
 
@@ -36,45 +35,43 @@ Expect a single object in the following format. The socials object will return a
   "name": "sweetgreen",
   "domain": "sweetgreen.com",
   "description": "Simple, seasonal, healthy salads and grain bowls made in-house from scratch, using whole produce delivered that morning.",
-  "indexed_at": "2024-10-25T15:30:27.36329-07:00",
-  "logo": "https://img.logo.dev/sweetgreen.com?token=YOUR_PUBLIC_KEY_HERE",
+  "indexed_at": "2025-03-10T11:36:23.885238001Z",
   "socials": {
     "facebook": "http://facebook.com/sweetgreen",
     "instagram": "https://www.instagram.com/sweetgreen/",
-    "twitter": "https://twitter.com/sweetgreen"
-  }
+    "twitter": "https://x.com/sweetgreen"
+  },
+  "logo": "https://img.logo.dev/sweetgreen.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2",
+  "blurhash": "UJPanPxr?Vj[oxazj@od_FWDDoodxrodagWD",
+  "colors": [
+    { "r": 228, "g": 255, "b": 85, "hex": "#e4ff55" },
+    { "r": 10, "g": 75, "b": 43, "hex": "#0a4b2b" },
+    { "r": 125, "g": 173, "b": 80, "hex": "#7dad50" }
+  ]
 }
 ```
 
+`blurhash` is the [blurhash](https://blurha.sh/) for the logo of the requested domain. A blurhash lets you have a placeholder image that gracefully loads in the logo.
+
+`colors` is an array of prominate colors for the logo. They are roughly ordered by prominace in the image.
+
 The currently supported social sites are:
 
-* facebook
+- facebook
+- github
+- instagram
+- linkedin
+- pinterest
+- reddit
+- snapchat
+- telegram
+- tumblr
+- twitter (aka X)
+- wechat
+- whatsapp
+- youtube
 
-* github
-
-* instagram
-
-* linkedin
-
-* pinterest
-
-* reddit
-
-* snapchat
-
-* telegram
-
-* tumblr
-
-* twitter (aka X)
-
-* wechat
-
-* whatsapp
-
-* youtube
-
-***
+---
 
 ### Keep your secret a secret, keep it safe
 
