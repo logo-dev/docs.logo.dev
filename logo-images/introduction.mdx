@@ -3,18 +3,14 @@ title: "Introduction"
 description: ""
 ---
 
-<Frame caption="Logo.dev Demo">
-  <iframe width="1080" height="1080" title="Logo.dev Demo" frameborder="0" src="https://www.logo.dev/demo" />
-</Frame>
-
 ## Parameters
 
 | Name           | Type    | Optional | Default  |
 | -------------- | ------- | -------- | -------- |
 | 🔑  token      | string  | false    | n/a      |
 | ↔️ size        | integer | true     | 128      |
-| 🖼️ format     | string  | true     | jpg      |
-| ⚫️ greyscale   | boolean | true     | false    |
+| 🖼️ format      | string  | true     | jpg      |
+| ⚫️ greyscale  | boolean | true     | false    |
 | ⛓️‍💥 fallback | string  | true     | monogram |
 
 ### Standard
@@ -26,10 +22,15 @@ description: ""
 Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and wide, and `jpg` formatted.
 
 <Frame caption="https://img.logo.dev/shopify.com">
-  <img alt="" width="128" height="128" src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2" />
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2"
+  />
 </Frame>
 
-***
+---
 
 ### Rate-limiting
 
@@ -38,9 +39,12 @@ Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and w
   account.
 </Warning>
 
-<Card title="Need an API key? Sign up for a free account" href="https://www.logo.dev">
-  By signing up for a free account you'll have enough
-  requests to manage most projects.
+<Card
+  title="Need an API key? Sign up for a free account"
+  href="https://www.logo.dev"
+>
+  By signing up for a free account you'll have enough requests to manage most
+  projects.
 </Card>
 
 Your API token is required when using the endpoint publicly.
@@ -49,7 +53,7 @@ Your API token is required when using the endpoint publicly.
 <img src="https://img.logo.dev/shopify.com?token=YOUR-KEY-HERE" />
 ```
 
-***
+---
 
 ### PNG instead of JPG
 
@@ -60,10 +64,15 @@ Your API token is required when using the endpoint publicly.
 In some cases, PNGs with limited color palettes will result in smaller image files with less compression. Using PNGs allows for transparency, although not all logo images will be compatible.
 
 <Frame caption="https://img.logo.dev/shopify.com?format=png">
-  <img alt="" width="128" height="128" src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=256&format=png" />
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=256&format=png"
+  />
 </Frame>
 
-***
+---
 
 ### Desaturated
 
@@ -74,10 +83,15 @@ In some cases, PNGs with limited color palettes will result in smaller image fil
 Desaturated logos are most useful for landing pages when you want to normalize colors across the set.
 
 <Frame caption="https://img.logo.dev/shopify.com?greyscale=true">
-  <img alt="" width="128" height="128" src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&greyscale=true" />
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&greyscale=true"
+  />
 </Frame>
 
-***
+---
 
 ### Resizing images
 
@@ -88,10 +102,15 @@ Desaturated logos are most useful for landing pages when you want to normalize c
 Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`.
 
 <Frame caption="https://img.logo.dev/shopify.com?size=80">
-  <img alt="" width="40" height="40" src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=80&format=png" />
+  <img
+    alt=""
+    width="40"
+    height="40"
+    src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=80&format=png"
+  />
 </Frame>
 
-***
+---
 
 ### Retina images
 
@@ -110,7 +129,12 @@ The `retina=true` parameter doubles the source image resolution (160px) while di
 In the case where no image is found for a given domain, the API will return a black and white monogram of the first letter of the domain with HTTP Status Code `200 OK`.
 
 <Frame caption="https://img.logo.dev/example.com">
-  <img alt="" width="128" height="128" src="https://img.logo.dev/example.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2" />
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/example.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2"
+  />
 </Frame>
 
 If you want to suppress these monograms use the parameter `fallback=404` to recieve an empty response and HTTP Status Code `404 Not Found`.
