@@ -1,0 +1,61 @@
+---
+title: "Caching & self-hosting"
+description: "Logo caching strategies and self-hosting options by plan"
+sidebarTitle: "Caching"
+keywords:
+  [
+    "self hosting",
+    "cache",
+    "caching",
+    "cdn",
+    "performance",
+    "hotlink",
+    "direct linking",
+  ]
+---
+
+<Note>
+  Direct linking to Logo.dev always provides the latest logo assets.
+  Self-hosting is available for Pro and Enterprise plans.
+</Note>
+
+Logo.dev's CDN delivers the freshest logos worldwide. Here's how to optimize performance while respecting plan limits.
+
+## Why direct linking wins
+
+Direct API calls ensure you always get:
+
+- Latest logo versions automatically
+- Optimized formats and sizes
+- Global CDN performance
+- Zero maintenance overhead
+
+```javascript
+// Always current, always fast
+const logoUrl = `https://img.logo.dev/${domain}?token=${API_KEY}`;
+```
+
+## Caching by plan
+
+| Plan           | Browser/CDN cache | Application cache | Self-hosting  |
+| -------------- | ----------------- | ----------------- | ------------- |
+| **Community**  | ✅ 24 hours       | ❌                | ❌            |
+| **Startup**    | ✅ 24 hours       | ❌                | ❌            |
+| **Pro**        | ✅ 24 hours       | ✅ Unlimited      | ✅            |
+| **Enterprise** | ✅ 24 hours       | ✅ Unlimited      | ✅ Custom SLA |
+
+<Tip>
+  Need custom caching rules or SLAs? [Contact our enterprise
+  team](mailto:team@logo.dev).
+</Tip>
+
+## Browser caching (all plans)
+
+Logo.dev handles caching headers automatically:
+
+```http
+Cache-Control: public, max-age=86400
+ETag: "logo-version-hash"
+```
+
+Browsers cache logos for 24 hours. Users get instant loads on repeat visits.

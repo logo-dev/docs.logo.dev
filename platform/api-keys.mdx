@@ -1,0 +1,38 @@
+---
+title: "API keys"
+description: "Understand how to find and use your Logo.dev API keys."
+keywords:
+  ["api key", "authentication", "publishable key", "secret key", "token"]
+---
+
+<Note>
+  To view your API keys, go to the [Logo.dev
+  dashboard](https://www.logo.dev/dashboard/api-keys).
+</Note>
+
+## Key types
+
+### Publishable key (`live_`)
+
+Client-side safe. Only works with `img.logo.dev` for accessing our image CDN.
+
+```html
+<img src="https://img.logo.dev/nike.com?token=YOUR_PUBLISHABLE_KEY" />
+```
+
+### Secret key (`sk_`)
+
+Server-side only. Required for all REST API endpoints. **Never expose this key.**
+
+```javascript
+// Server-side only
+fetch("https://api.logo.dev/v1/search", {
+  headers: {
+    Authorization: `Bearer YOUR_SECRET_KEY`,
+  },
+});
+```
+
+## Key rotation
+
+Need to rotate keys for any reason? Email team@logo.dev for help.

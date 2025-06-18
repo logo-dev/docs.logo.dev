@@ -47,6 +47,24 @@
     {
       "group": "Describe",
       "pages": ["describe/introduction"]
+    },
+    {
+      "group": "Platform",
+      "pages": [
+        "platform/api-keys",
+        "platform/rate-limits",
+        "platform/attribution",
+        "platform/self-hosting",
+        "platform/fair-use"
+      ]
+    },
+    {
+      "group": "Support",
+      "pages": [
+        "support/request-updates",
+        "support/email-support",
+        "support/security"
+      ]
     }
   ],
   "analytics": {

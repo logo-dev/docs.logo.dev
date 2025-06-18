@@ -1,0 +1,70 @@
+---
+title: "Rate limits"
+description: "API request limits that won't interrupt your service"
+keywords:
+  ["rate limit", "quota", "limits", "429", "requests per day", "api limits"]
+---
+
+<Note>
+  Service is never stopped without notification. We email you before any
+  enforcement.
+</Note>
+
+Logo.dev uses rate limits to ensure fair use and keep services affordable. All limits are based on daily request counts.
+
+## Limits by plan
+
+| Plan       | Requests/day | Enforcement |
+| ---------- | ------------ | ----------- |
+| Community  | 5,000        | Proactive   |
+| Startup    | 5,000        | Proactive   |
+| Pro        | 25,000       | Soft limit  |
+| Enterprise | Custom       | Soft limit  |
+
+## Enforcing rate limits
+
+**Proactive**: You'll receive an email when approaching your limit. Service may be shut off for clear [fair use](/platform/fair-use) violations.
+
+**Soft limit**: If you exceed your daily limits consistently, you'll receive a request to upgrade your account.
+
+## What counts as a request
+
+Each API call = one request:
+
+- Images (`img.logo.dev`)
+- Brand Search API
+- Stock Ticker API
+- Describe API
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="What if I need more requests?">
+For custom limits or higher volumes, [contact us](mailto:team@logo.dev).
+  </Accordion>
+
+<Accordion title="What happens when I hit my rate limit?">
+  We'll email you before taking any action. Service continues while we discuss
+  options. The only exception is if you violate our [fair use
+  guidelines](/platform/fair-use) after we've contacted you.
+</Accordion>
+
+<Accordion title="My logos aren't loading—am I being rate limited?">
+  No. If logos aren't loading, it's **not** because of rate limits unless we've
+  specifically emailed you. Check your API key and implementation first.
+</Accordion>
+
+<Accordion title="Can I check my current usage?">
+  Yes! View your real-time usage in your
+  [dashboard](https://www.logo.dev/dashboard). For Basic plans, note that limits
+  may adjust based on system demands.
+</Accordion>
+
+<Accordion title="What if I just go a little over for one day?">
+  It's okay to go a little bit over. You can think about these limits more like
+  monthly calls. As long as your project doesn't violate our [fair use
+  guidelines](/platform/fair-use), we're not going to stop you immediately.
+  However, it might be a good time to consider upgrading your account.
+</Accordion>
+
+</AccordionGroup>

@@ -1,0 +1,59 @@
+---
+description: 
+globs: *.mdx
+alwaysApply: false
+---
+# Logo.dev Brand Guidelines
+
+## Core Definition
+
+- Always reference as "Logo.dev" (capital L, lowercase d)
+- Primary description: "Company logo API that delivers any company's logo instantly"
+- Key phrases: "Company logo API", "Instant logo delivery", "Logo infrastructure for developers"
+
+## Positioning Statements
+
+- **For developers**: "The logo API that just works. 18M companies, instant delivery, global CDN."
+- **For technical teams**: "Stop building logo scrapers. We solved company logos completely."
+- **For product teams**: "Perfect logos in milliseconds. No maintenance, no placeholder gaps."
+
+## What NOT to Say
+
+- No marketing buzzwords ("revolutionary", "game-changing")
+- Avoid emotional language - focus on functionality
+- Don't oversell - let metrics and performance speak
+
+## Key Features to Highlight
+
+### Instant delivery via API
+- "18M companies, millisecond response times"
+- "One API call, perfect logo every time"
+
+### Global CDN infrastructure
+- "Always up-to-date via our global CDN"
+- "Optimized delivery worldwide"
+
+### No maintenance required
+- "Zero logo management overhead"
+- "We handle updates, you focus on building"
+
+## Technical Features
+
+- Multiple formats: "WebP, PNG, SVG—any format you need"
+- Smart fallbacks: "Monogram generation for missing brands"
+- Enterprise reliability: "12M daily requests served", "99.9% uptime guarantee"
+
+## Jobs-to-be-Done Framework
+
+- **Eliminating logo maintenance**: "Stop managing logo assets manually"
+- **Improving user experience**: "Every missing logo is a dropped user"
+- **Saving development time**: "Skip building logo scrapers"
+- **Handling edge cases**: "Works with messy merchant data"
+- **Scaling globally**: "Coverage for companies worldwide"
+
+## Content Patterns
+
+- Problem/Solution format
+- Metric-driven claims with specific numbers
+- Developer-first language with correct technical terms
+- Real code examples and developer workflows

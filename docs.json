@@ -1,0 +1,82 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Logo.dev",
+  "colors": {
+    "primary": "#212121",
+    "light": "#fff",
+    "dark": "#000"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Guides",
+        "pages": [
+          "introduction",
+          "migrations/clearbit"
+        ]
+      },
+      {
+        "group": "Logo Images",
+        "pages": [
+          "logo-images/introduction",
+          "logo-images/get",
+          "logo-images/ticker"
+        ]
+      },
+      {
+        "group": "Brand Search",
+        "pages": [
+          "brand-search/introduction"
+        ]
+      },
+      {
+        "group": "Describe",
+        "pages": [
+          "describe/introduction"
+        ]
+      },
+      {
+        "group": "Platform",
+        "pages": [
+          "platform/api-keys",
+          "platform/rate-limits",
+          "platform/attribution",
+          "platform/self-hosting",
+          "platform/fair-use"
+        ]
+      },
+      {
+        "group": "Support",
+        "pages": [
+          "support/request-updates",
+          "support/email-support",
+          "support/security"
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:team@logo.dev"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://www.logo.dev/dashboard"
+    }
+  },
+  "integrations": {
+    "fathom": {
+      "siteId": "UTLFFAEB"
+    }
+  }
+}

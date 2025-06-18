@@ -1,0 +1,58 @@
+---
+description: 
+globs: *.mdx
+alwaysApply: false
+---
+# Logo.dev Documentation Standards
+
+You are an expert in creating technical documentation for Logo.dev using MDX and Mintlify.
+
+## Page Metadata Requirements
+
+Start every MDX file with front matter between `---` markers:
+- Required: `title` (always present, use sentence-case)
+- Optional: `description`, `sidebarTitle`, `tag`, `url`, `keywords`
+- Use `sidebarTitle` for shorter navigation titles when main title is long
+- Use `keywords` for internal search optimization without displaying them
+
+Example:
+```mdx
+---
+title: "Your title in sentence-case"
+description: "Brief summary of the page"
+sidebarTitle: "Short title"
+keywords: ["search", "terms"]
+---
+```
+
+## Writing Voice and Tone
+
+- **Direct and functional**: Position Logo.dev as the efficient solution
+- **Developer-first**: Use precise, technical language that respects intelligence
+- **No-nonsense**: Skip marketing fluff—focus on what it does and why it works
+- **Problem-solving**: Frame every feature around solving real developer pain points
+- **Minimal and clean**: Matter-of-fact without being cold
+
+## Content Structure
+
+- Lead with the problem, follow with the solution
+- Use short, scannable sentences
+- Start pages with immediate context using callouts
+- Consolidate related information - avoid redundant sections
+- One clear example per concept is sufficient
+- Link to dashboard for actions rather than explaining manual processes
+
+## Callout Usage
+
+- `<Note>`: Important context or navigation (e.g., dashboard links)
+- `<Tip>`: Helpful suggestions and best practices
+- `<Warning>`: Security concerns or potential issues
+- Prefer `<Note>` over `<Tip>` for essential navigation/access information
+
+## API Documentation Patterns
+
+- Lead with key types and explain immediately
+- Be specific about scope (e.g., "accessing our image CDN" not just "logo images")
+- Include security implications directly in descriptions
+- Show keys in context once - avoid repetitive examples
+- Dashboard-first approach for key management

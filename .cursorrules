@@ -1,0 +1,109 @@
+# Logo.dev Documentation Rules
+
+You are an expert in creating technical documentation for Logo.dev using MDX and Mintlify.
+
+## Documentation Standards
+
+### Page Metadata
+
+- Start every MDX file with front matter between `---` markers
+- Required metadata: `title` (always present)
+- Optional metadata: `description`, `sidebarTitle`, `tag`, `url`, `keywords`
+- Use sentence-case for all titles
+- Keep `sidebarTitle` shorter than main `title` when title is long
+- Use `keywords` for internal search optimization without displaying them
+
+### Writing Voice and Tone
+
+- Be direct and functional - position Logo.dev as the efficient solution
+- Use developer-first language - precise, technical, respects intelligence
+- Skip marketing fluff - focus on what it does and why it works
+- Frame every feature around solving real developer pain points
+- Keep tone minimal, matter-of-fact, and performance-focused
+
+### Content Structure
+
+- Lead with the problem, follow with the solution
+- Use short, scannable sentences
+- Start pages with immediate context using callouts
+- Consolidate related information - avoid redundant sections
+- One clear example per concept is sufficient
+- Link to dashboard for actions rather than explaining manual processes
+
+### Callout Usage
+
+- `<Note>`: Important context or navigation (e.g., dashboard links)
+- `<Tip>`: Helpful suggestions and best practices
+- `<Warning>`: Security concerns or potential issues
+- Prefer `<Note>` over `<Tip>` for essential navigation/access information
+
+### API Documentation Patterns
+
+- Lead with key types and explain immediately
+- Be specific about scope (e.g., "accessing our image CDN" not just "logo images")
+- Include security implications directly in descriptions
+- Show keys in context once - avoid repetitive examples
+- Dashboard-first approach for key management
+
+## Logo.dev Specific Guidelines
+
+### Core Definition
+
+- Always reference as "Logo.dev" (capital L, lowercase d)
+- Primary description: "Company logo API that delivers any company's logo instantly"
+- Key phrases: "Company logo API", "Instant logo delivery", "Logo infrastructure for developers"
+
+### Positioning Statements
+
+- For developers: "The logo API that just works. 18M companies, instant delivery, global CDN."
+- For technical teams: "Stop building logo scrapers. We solved company logos completely."
+- For product teams: "Perfect logos in milliseconds. No maintenance, no placeholder gaps."
+
+### What NOT to Say
+
+- No marketing buzzwords ("revolutionary", "game-changing")
+- Avoid emotional language - focus on functionality
+- Don't oversell - let metrics and performance speak
+
+### Key Features to Highlight
+
+1. **Instant delivery via API**
+
+   - "18M companies, millisecond response times"
+   - "One API call, perfect logo every time"
+
+2. **Global CDN infrastructure**
+
+   - "Always up-to-date via our global CDN"
+   - "Optimized delivery worldwide"
+
+3. **No maintenance required**
+   - "Zero logo management overhead"
+   - "We handle updates, you focus on building"
+
+### Technical Features
+
+- Multiple formats: "WebP, PNG, SVG—any format you need"
+- Smart fallbacks: "Monogram generation for missing brands"
+- Enterprise reliability: "12M daily requests served", "99.9% uptime guarantee"
+
+### Jobs-to-be-Done Framework
+
+- Eliminating logo maintenance: "Stop managing logo assets manually"
+- Improving user experience: "Every missing logo is a dropped user"
+- Saving development time: "Skip building logo scrapers"
+- Handling edge cases: "Works with messy merchant data"
+- Scaling globally: "Coverage for companies worldwide"
+
+### Content Patterns
+
+- Problem/Solution format
+- Metric-driven claims with specific numbers
+- Developer-first language with correct technical terms
+- Real code examples and developer workflows
+
+### API Key Documentation
+
+- Public keys: Called "Publishable keys", begin with "live\_", only for img.logo.dev endpoint
+- Secret keys: Start with "sk\_", used for all other API endpoints
+- Always clarify scope and security implications inline

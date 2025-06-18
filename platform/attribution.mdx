@@ -1,0 +1,81 @@
+---
+title: "Attribution requirements"
+description: "Link back requirements for free plans"
+sidebarTitle: "Attribution"
+keywords:
+  [
+    "attribution",
+    "credit",
+    "link back",
+    "free plan",
+    "referrer",
+    "production site",
+  ]
+---
+
+<Note>
+  Free plans require attribution. Upgrade to any [paid
+  plan](https://www.logo.dev/pricing) to remove this requirement.
+</Note>
+
+## How attribution works
+
+Attribution ensures proper domain verification and helps us maintain free access to Logo.dev. Your attribution link:
+
+- Must be on your **production site** (not staging or localhost)
+- Must be **publicly accessible** and viewable in browsers
+- Must **pass referrer data** (remove any `noreferrer` attributes)
+
+## Implementation
+
+Add this link on any page displaying Logo.dev logos:
+
+```html
+<a href="https://logo.dev">Logos provided by Logo.dev</a>
+```
+
+### Example implementation
+
+```html
+<div class="customer-logos">
+  <img src="https://img.logo.dev/apple.com?token=live_abc123" alt="Apple" />
+  <img src="https://img.logo.dev/google.com?token=live_abc123" alt="Google" />
+  <img
+    src="https://img.logo.dev/microsoft.com?token=live_abc123"
+    alt="Microsoft"
+  />
+</div>
+<p class="attribution">
+  <a href="https://logo.dev">Logos provided by Logo.dev</a>
+</p>
+```
+
+## Placement options
+
+Place attribution where users can see it:
+
+- **Near logo displays** - Directly below or beside logo grids
+- **In page footer** - With other credits and links
+- **On about pages** - For apps behind authentication
+
+## FAQs
+
+<AccordionGroup>
+  <Accordion title="What if my app is behind a login?">
+    Add attribution to your public marketing site as well, either in the footer or about page. The attribution must be on a publicly accessible page.
+  </Accordion>
+
+<Accordion title="What about native mobile apps?">
+  Include the attribution link on your app's website or in your app store
+  listing description.
+</Accordion>
+
+<Accordion title="Can I use staging domains during development?">
+  Yes, but attribution must be on your production domain when you launch.
+  Staging/localhost usage doesn't count toward attribution requirements.
+</Accordion>
+
+  <Accordion title="What if my attribution link isn't being accepted?">
+    Please reach out to us and we'll be happy to do a manual override if our system isn't working, or investigate further.
+  </Accordion>
+</AccordionGroup>

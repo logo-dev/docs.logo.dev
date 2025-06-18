@@ -1,0 +1,41 @@
+---
+description: 
+globs: *.mdx
+alwaysApply: false
+---
+# API Key Documentation Standards
+
+## Key Types and Naming
+
+- **Publishable keys**: Public keys that begin with "live_", only for img.logo.dev endpoint
+- **Secret keys**: Start with "sk_", used for all other API endpoints
+- Always clarify scope and security implications inline
+
+## Documentation Pattern
+
+1. Lead with key types and explain immediately
+2. Be specific about scope (e.g., "accessing our image CDN" not just "logo images")
+3. Include security implications directly in descriptions
+4. Show keys in context once - avoid repetitive examples
+5. Dashboard-first approach for key management
+
+## Example Structure
+
+```mdx
+<Note>
+  To view and manage your API keys, visit the [Logo.dev dashboard](mdc:https:/dashboard.logo.dev).
+</Note>
+
+Logo.dev uses two types of API keys:
+
+**Publishable keys** (live_*) - Public keys for accessing our image CDN at img.logo.dev. Safe to expose in client-side code.
+
+**Secret keys** (sk_*) - Private keys for all other API endpoints. Keep these secure and never expose in client-side code.
+```
+
+## Security Best Practices
+
+- Embed security warnings directly in key type descriptions
+- Don't create separate "Security" sections unless absolutely necessary
+- Link to dashboard for key rotation and management
+- Keep examples minimal and contextual
