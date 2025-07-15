@@ -31,6 +31,20 @@ description: "Available parameters for the logo image API endpoint"
   Returns a black and white version of the logo.
 </ParamField>
 
+<ParamField path="theme" type="string" default="auto">
+  Adjusts logo colors for light or dark backgrounds. Only works on images with
+  transparency.
+  <Expandable title="options">
+    <ResponseField name="auto">No color adjustment applied</ResponseField>
+    <ResponseField name="light">
+      Inverts logos with dominant dark colors for light backgrounds
+    </ResponseField>
+    <ResponseField name="dark">
+      Inverts logos with dominant light colors for dark backgrounds
+    </ResponseField>
+  </Expandable>
+</ParamField>
+
 <ParamField path="retina" type="boolean" default="false">
   Returns a high-density image at 2x the requested size for sharp display on
   retina screens.

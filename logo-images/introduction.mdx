@@ -10,6 +10,7 @@ description: ""
 | 🔑  token      | string  | false    | n/a      |
 | ↔️ size        | integer | true     | 128      |
 | 🖼️ format      | string  | true     | jpg      |
+| 💡 theme       | string  | true     | auto     |
 | ⚫️ greyscale  | boolean | true     | false    |
 | ⛓️‍💥 fallback | string  | true     | monogram |
 
@@ -88,6 +89,34 @@ Desaturated logos are most useful for landing pages when you want to normalize c
     width="128"
     height="128"
     src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&greyscale=true"
+  />
+</Frame>
+
+---
+
+### Light and dark modes
+
+```html
+<img src="https://img.logo.dev/github.com?theme=dark&format=png" />
+```
+
+The `theme` parameter automatically adjusts logos for optimal visibility on different backgrounds. When set to `dark`, it inverts logos with dominant light colors (like white) to ensure they're visible on dark backgrounds. Conversely, `theme=light` inverts dark logos for light backgrounds. This feature only works on images with transparency.
+
+<Frame caption="https://img.logo.dev/github.com?theme=dark&format=png">
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/apple.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&theme=dark&format=png"
+  />
+</Frame>
+
+<Frame caption="https://img.logo.dev/github.com?theme=light&format=png">
+  <img
+    alt=""
+    width="128"
+    height="128"
+    src="https://img.logo.dev/apple.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&theme=light&format=png"
   />
 </Frame>
 
