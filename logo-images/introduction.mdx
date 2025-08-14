@@ -97,12 +97,17 @@ Desaturated logos are most useful for landing pages when you want to normalize c
 ### Light and dark modes
 
 ```html
-<img src="https://img.logo.dev/github.com?theme=dark&format=png" />
+<img src="https://img.logo.dev/apple.com?theme=dark&format=png" />
 ```
 
-The `theme` parameter automatically adjusts logos for optimal visibility on different backgrounds. When set to `dark`, it inverts logos with dominant light colors (like white) to ensure they're visible on dark backgrounds. Conversely, `theme=light` inverts dark logos for light backgrounds. This feature only works on images with transparency.
+The `theme` parameter adjusts logo colors for visibility on your background.
 
-<Frame caption="https://img.logo.dev/github.com?theme=dark&format=png">
+- `theme=dark`: Use when displaying logos on dark backgrounds. Inverts light-colored logos (e.g., white logos become black).
+- `theme=light`: Use when displaying logos on light backgrounds. Inverts dark-colored logos (e.g., black logos become white).
+
+This feature requires images with transparency.
+
+<Frame caption="https://img.logo.dev/apple.com?theme=dark&format=png">
   <img
     alt=""
     width="128"
@@ -111,7 +116,7 @@ The `theme` parameter automatically adjusts logos for optimal visibility on diff
   />
 </Frame>
 
-<Frame caption="https://img.logo.dev/github.com?theme=light&format=png">
+<Frame caption="https://img.logo.dev/apple.com?theme=light&format=png">
   <img
     alt=""
     width="128"
