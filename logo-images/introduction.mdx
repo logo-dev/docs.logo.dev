@@ -17,14 +17,14 @@ description: ""
 ### Standard
 
 ```html
-<img src="https://img.logo.dev/shopify.com" />
+<img src="https://img.logo.dev/shopify.com" alt="Shopify logo" />
 ```
 
 Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and wide, and `jpg` formatted.
 
 <Frame caption="https://img.logo.dev/shopify.com">
   <img
-    alt=""
+    alt="Shopify logo"
     width="128"
     height="128"
     src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2"
@@ -51,7 +51,7 @@ Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and w
 Your API token is required when using the endpoint publicly.
 
 ```html
-<img src="https://img.logo.dev/shopify.com?token=YOUR-KEY-HERE" />
+<img src="https://img.logo.dev/shopify.com?token=YOUR-KEY-HERE" alt="Shopify logo" />
 ```
 
 ---
@@ -59,14 +59,14 @@ Your API token is required when using the endpoint publicly.
 ### PNG instead of JPG
 
 ```html
-<img src="https://img.logo.dev/shopify.com?format=png" />
+<img src="https://img.logo.dev/shopify.com?format=png" alt="Shopify logo in PNG format" />
 ```
 
 In some cases, PNGs with limited color palettes will result in smaller image files with less compression. Using PNGs allows for transparency, although not all logo images will be compatible.
 
 <Frame caption="https://img.logo.dev/shopify.com?format=png">
   <img
-    alt=""
+    alt="Shopify logo in PNG format"
     width="128"
     height="128"
     src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=256&format=png"
@@ -78,14 +78,14 @@ In some cases, PNGs with limited color palettes will result in smaller image fil
 ### Desaturated
 
 ```html
-<img src="https://img.logo.dev/shopify.com?greyscale=true&format=png" />
+<img src="https://img.logo.dev/shopify.com?greyscale=true&format=png" alt="Shopify logo in greyscale" />
 ```
 
 Desaturated logos are most useful for landing pages when you want to normalize colors across the set.
 
 <Frame caption="https://img.logo.dev/shopify.com?greyscale=true">
   <img
-    alt=""
+    alt="Shopify logo in greyscale"
     width="128"
     height="128"
     src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&greyscale=true"
@@ -97,7 +97,7 @@ Desaturated logos are most useful for landing pages when you want to normalize c
 ### Light and dark modes
 
 ```html
-<img src="https://img.logo.dev/apple.com?theme=dark&format=png" />
+<img src="https://img.logo.dev/apple.com?theme=dark&format=png" alt="Apple logo for dark backgrounds" />
 ```
 
 The `theme` parameter adjusts logo colors for visibility on your background.
@@ -109,7 +109,7 @@ This feature requires images with transparency.
 
 <Frame caption="https://img.logo.dev/apple.com?theme=dark&format=png">
   <img
-    alt=""
+    alt="Apple logo for dark backgrounds"
     width="128"
     height="128"
     src="https://img.logo.dev/apple.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&theme=dark&format=png"
@@ -118,7 +118,7 @@ This feature requires images with transparency.
 
 <Frame caption="https://img.logo.dev/apple.com?theme=light&format=png">
   <img
-    alt=""
+    alt="Apple logo for light backgrounds"
     width="128"
     height="128"
     src="https://img.logo.dev/apple.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&theme=light&format=png"
@@ -130,14 +130,14 @@ This feature requires images with transparency.
 ### Resizing images
 
 ```html
-<img src="https://img.logo.dev/shopify.com?size=80" />
+<img src="https://img.logo.dev/shopify.com?size=80" alt="Shopify logo resized to 80px" />
 ```
 
 Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`.
 
 <Frame caption="https://img.logo.dev/shopify.com?size=80">
   <img
-    alt=""
+    alt="Shopify logo resized to 80px"
     width="40"
     height="40"
     src="https://img.logo.dev/shopify.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=80&format=png"
@@ -151,6 +151,7 @@ Our image CDN will resize to any valid integer, but we recommend staying under 6
 ```html
 <img
   src="https://img.logo.dev/shopify.com?size=80&retina=true"
+  alt="Shopify logo optimized for retina displays"
   width="80"
   height="80"
 />
@@ -164,7 +165,7 @@ In the case where no image is found for a given domain, the API will return a bl
 
 <Frame caption="https://img.logo.dev/example.com">
   <img
-    alt=""
+    alt="Example fallback monogram"
     width="128"
     height="128"
     src="https://img.logo.dev/example.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2"
