@@ -71,7 +71,9 @@
   "analytics": {
     "fathom": {
       "siteId": "UTLFFAEB"
-    },
+    }
+  },
+  "integrations": {
     "intercom": {
       "appId": "tipir4va"
     }
