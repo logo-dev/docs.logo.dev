@@ -1,82 +1,83 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
   "name": "Logo.dev",
+  "theme": "mint",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
   "colors": {
     "primary": "#212121",
     "light": "#fff",
     "dark": "#000"
   },
-  "favicon": "/favicon.svg",
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://www.logo.dev/dashboard"
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:support@logo.dev"
+    }
+  ],
+  "tabs": [],
+  "anchors": [],
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Guides",
-        "pages": [
-          "introduction",
-          "migrations/clearbit"
-        ]
-      },
-      {
-        "group": "Logo Images",
-        "pages": [
-          "logo-images/introduction",
-          "logo-images/get",
-          "logo-images/ticker"
-        ]
-      },
-      {
-        "group": "Brand Search",
-        "pages": [
-          "brand-search/introduction"
-        ]
-      },
-      {
-        "group": "Describe",
-        "pages": [
-          "describe/introduction"
-        ]
-      },
-      {
-        "group": "Platform",
-        "pages": [
-          "platform/api-keys",
-          "platform/rate-limits",
-          "platform/attribution",
-          "platform/self-hosting",
-          "platform/fair-use"
-        ]
-      },
-      {
-        "group": "Support",
-        "pages": [
-          "support/request-updates",
-          "support/email-support",
-          "support/security"
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Guides",
+            "pages": ["introduction", "migrations/clearbit"]
+          },
+          {
+            "group": "Logo Images",
+            "pages": [
+              "logo-images/introduction",
+              "logo-images/get",
+              "logo-images/ticker",
+              "logo-images/crypto"
+            ]
+          },
+          {
+            "group": "Brand Search",
+            "pages": ["brand-search/introduction"]
+          },
+          {
+            "group": "Describe",
+            "pages": ["describe/introduction"]
+          },
+          {
+            "group": "Platform",
+            "pages": [
+              "platform/api-keys",
+              "platform/rate-limits",
+              "platform/attribution",
+              "platform/self-hosting",
+              "platform/fair-use"
+            ]
+          },
+          {
+            "group": "Support",
+            "pages": [
+              "support/request-updates",
+              "support/email-support",
+              "support/security"
+            ]
+          }
         ]
       }
     ]
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:team@logo.dev"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://www.logo.dev/dashboard"
-    }
-  },
   "integrations": {
     "fathom": {
       "siteId": "UTLFFAEB"
+    },
+    "intercom": {
+      "appId": "tipir4va"
     }
   }
 }

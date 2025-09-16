@@ -7,7 +7,7 @@ Official documentation for [Logo.dev](https://logo.dev) - the comprehensive logo
 Logo.dev offers multiple APIs to fetch brand assets programmatically:
 
 - **Logo Images API** - Fetch company logos by domain name
-- **Stock Ticker API** - Get logos using stock ticker symbols  
+- **Stock Ticker API** - Get logos using stock ticker symbols
 - **Cryptocurrency API** - Access crypto logos by symbol
 - **Brand Search API** - Convert brand names to domains
 - **Describe API** - Get brand metadata including colors and social links
@@ -30,7 +30,7 @@ npm install -g mint
 ### Local Development
 
 1. Clone this repository
-2. Navigate to the project root (where `mint.json` is located)
+2. Navigate to the project root (where `docs.json` is located)
 3. Start the development server:
 
 ```bash
@@ -95,7 +95,7 @@ mint openapi-check <filename>
 
 ## Configuration
 
-The documentation is configured via `mint.json`:
+The documentation is configured via `docs.json`:
 
 - **Branding** - Logo, favicon, and color scheme
 - **Navigation** - Sidebar structure and page ordering
@@ -120,12 +120,12 @@ For manual deployments or custom workflows, contact the Mintlify team.
 
 ### Common Issues
 
-| Issue | Solution |
-|-------|----------|
-| `mint dev` not running | Run `mint install` to reinstall dependencies |
-| Page loads as 404 | Ensure you're in the directory with `mint.json` |
-| CLI installation fails | Check Node.js version (requires 18+) |
-| Preview port in use | Use `mint dev --port <port>` |
+| Issue                  | Solution                                        |
+| ---------------------- | ----------------------------------------------- |
+| `mint dev` not running | Run `mint install` to reinstall dependencies    |
+| Page loads as 404      | Ensure you're in the directory with `docs.json` |
+| CLI installation fails | Check Node.js version (requires 18+)            |
+| Preview port in use    | Use `mint dev --port <port>`                    |
 
 ### Getting Help
 
@@ -160,4 +160,3 @@ We welcome contributions to improve our documentation:
 ## License
 
 This documentation is proprietary to Logo.dev. See [Terms of Service](https://logo.dev/terms) for usage guidelines.
-
