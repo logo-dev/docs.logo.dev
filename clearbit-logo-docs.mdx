@@ -1,0 +1,147 @@
+---
+title: Clearbit Logo API Documentation
+description: Official documentation for the deprecated Clearbit Logo API, including parameters, examples, and migration guidance.
+keywords:
+  - Clearbit logo API
+  - Clearbit logo
+  - Clearbit logo API docs
+  - Clearbit logo documentation
+  - Clearbit logo alternative
+  - logo.clearbit.com
+  - Clearbit logo API deprecation
+  - Clearbit logo API shutdown
+url: /clearbit-logo-docs
+---
+
+<Warning>
+  **Clearbit Logo API is shutting down December 1, 2025.** If your app uses
+  `https://logo.clearbit.com/:domain`, it will stop working. Logo.dev is the
+  official migration path recommended by Clearbit/HubSpot.
+</Warning>
+
+### Overview
+
+The Clearbit Logo API served millions of logo requests daily for nearly a decade as the industry standard for company logo retrieval. Launched in 2015, it introduced the simple domain-to-logo approach that became essential for developers adding visual branding to applications.
+
+This documentation explains how Clearbit Logo API worked and guides migration to Logo.dev. Our team created the original Clearbit Logo API, and following Clearbit's HubSpot acquisition, we developed Logo.dev as its official successor. Logo.dev maintains the same simplicity while adding stock ticker lookup, cryptocurrency symbols, and enhanced image formats.
+
+### Base endpoint
+
+The Clearbit Logo API used a simple URL structure:
+
+```text Base URL Structure
+https://logo.clearbit.com/{domain}
+```
+
+```text Example Request
+https://logo.clearbit.com/google.com
+```
+
+### Parameters
+
+<ParamField path="domain" type="string" required>
+  Company domain placed in the path, immediately after the host.
+</ParamField>
+
+<ParamField path="size" type="number" default="128">
+  Desired width in pixels. Height auto-scales to preserve aspect ratio.
+</ParamField>
+
+<ParamField path="format" type="string" default="png">
+  Output format. Common values: `png`, `jpg`.
+</ParamField>
+
+<ParamField path="greyscale" type="boolean" default="false">
+  Returns a greyscale version of the logo when set to `true`.
+</ParamField>
+
+### Example implementations
+
+<CodeGroup>
+
+```html HTML
+<img
+  src="https://logo.clearbit.com/stripe.com?size=128"
+  alt="Stripe logo"
+  width="128"
+  height="128"
+/>
+```
+
+```bash cURL
+curl -L "https://logo.clearbit.com/stripe.com?size=256" --output stripe.png
+```
+
+```javascript JavaScript (fetch)
+const domain = "stripe.com";
+const size = 200;
+fetch(`https://logo.clearbit.com/${domain}?size=${size}`)
+  .then((res) => {
+    if (!res.ok) throw new Error("Logo not found");
+    return res.blob();
+  })
+  .then((blob) => {
+    const url = URL.createObjectURL(blob);
+    document.querySelector("#logo").src = url;
+  });
+```
+
+</CodeGroup>
+
+### FAQs
+
+<AccordionGroup>
+  <Accordion title="Was the Clearbit Logo API free?">
+    Yes. The API was free with attribution requirements for commercial use. No authentication or account needed.
+  </Accordion>
+
+{" "}
+
+<Accordion title="What were the attribution requirements?">
+  Commercial usage required visible attribution to clearbit.com — 12pt+ font,
+  follow link, legible placement.
+</Accordion>
+
+{" "}
+
+<Accordion title="When did Clearbit shut down the Logo API?">
+  December 1, 2025. Support for the API ended March 18, 2025. Logo.dev is the
+  recommended replacement.
+</Accordion>
+
+{" "}
+
+<Accordion title="Did paid Clearbit customers need attribution?">
+  Only if their contract included a specific Logo API plan that waived
+  attribution. Most customers still needed it.
+</Accordion>
+
+{" "}
+
+<Accordion title="How were logos sourced?">
+  From publicly accessible web sources, following standard copyright and fair
+  use practices.
+</Accordion>
+
+  <Accordion title="Can I still update my company's logo?">
+    Clearbit's update process is no longer active. To get your logo or company info updated on Logo.dev, [request an update here](https://www.logo.dev/update).
+  </Accordion>
+</AccordionGroup>
+
+### Migrate now to Logo.dev
+
+We're the same team that built the original Clearbit Logo API. Logo.dev is the official migration partner recommended by Clearbit/HubSpot, offering a seamless 1:1 replacement with even more capabilities:
+
+- **One-to-one migration** — Simply replace `logo.clearbit.com` with `img.logo.dev`
+- **Enhanced features** — Look up logos by stock ticker, cryptocurrency symbols, and more
+- **Better performance** — Global CDN, smart fallbacks, and predictable formats
+- **Maintained and supported** — Hundreds of millions of logos - updated daily.
+
+<Card
+  title="Migrate from Clearbit"
+  href="/migrations/clearbit"
+  arrow="true"
+  cta="View migration guide"
+>
+  Replace Clearbit Logo URLs with Logo.dev in minutes.
+</Card>
