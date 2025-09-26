@@ -1,110 +1,352 @@
 ---
-title: "Clearbit to Logo.dev Migration - Company Logos API"
-sidebarTitle: "Clearbit Migration"
-description: "Migrate from Clearbit to Logo.dev company logos API. Better logo API with improved features, brand API support, and reliability. Step-by-step guide."
+title: "Migrating from Clearbit to Logo.dev"
+sidebarTitle: "Migrating from Clearbit"
+description: "Learn how to migrate your logo images from Clearbit Logo API to Logo.dev in just a few minutes."
 icon: "angles-right"
+keywords:
+  [
+    "clearbit migration",
+    "clearbit logo api",
+    "clearbit alternative",
+    "logo api migration",
+  ]
 ---
 
-## Overview
+<Warning>
+  **Clearbit Logo API is shutting down December 1, 2025.** If your app uses
+  `logo.clearbit.com`, it will stop working. Logo.dev is the official migration
+  path recommended by Clearbit / HubSpot.
+</Warning>
 
-This guide is intended for developers who are migrating from Clearbit's Logo API to Logo.dev's API. The aim is to ensure a seamless transition while maintaining functionality and consistency in the representation of company logos in your applications.
+This guide will help you replace Clearbit's Logo API with Logo.dev for displaying company logos on your website or app. Most migrations only take a few minutes to change your **Base URL** and add a Logo.dev **Public Key** for authentication. Once you migrate, you can access the additional features Logo.dev provides such as new image parameters and alternate lookup methods.
 
-## Clearbit's Logo API vs. Logo.dev's API Comparison
+## Why Logo.dev?
 
-Clearbit's Logo API provides basic access to company logos, while Logo.dev offers similar functionalities with additional features such as greyscale logos, more flexible size parameters, and retina image support.
+**We're the same team that originally built the Clearbit Logo API** and are the recommended migration partner by Clearbit / Hubspot.
 
-## Migration Steps
+Logo.dev serves tens of millions of logo images daily with a focus and dedication to quality. Our goal is to be the reliable platform that can be used by millions for free and has upgraded paid features to sustain the service for the long term so you never have to migrate to another service again.
+
+Don't wait until your logos break when Clearbit is shut down. Migrate now and join the tens of thousands of developers using Logo.dev today.
+
+## Migrate your website or app
 
 <Steps>
-  <Step title="Sign up for an account to avoid rate-limits">
+  <Step title="Update your Base URL">
+  Logo.dev is a one-to-one replacement for the Clearbit Logo API so all your parameters will continue to work as you expect. After replacing the **Base URL**, your images will not be returned until you authenticate them.
 
-Create an account and get a free API key. 
-
-  <Card
-    title="Need an API key? Sign up for a free account"
-    href="https://www.logo.dev"
-  >
-    By signing up for a free account you'll have enough
-    requests to manage most projects.
-  </Card>
-</Step>
-  <Step title="Understanding Logo.dev's API Structure">
-  Familiarize yourself with the parameters and usage of Logo.dev's API as follows:
-
-    - **token:** String, required, use the API token associated with your account.
-    - **size:** Integer, optional, with a default of 128.
-    - **format:** String, optional, can be either "png" or "jpg" with a default to "jpg".
-    - **greyscale:** Boolean, optional, desaturates the image if set to true, defaults to false.
-
-  </Step>
-  <Step title="API Endpoint Changes">
-  Replace the Clearbit API endpoint calls in your application:
-
-    From:
-
-```html
-<img src="https://logo.clearbit.com/:domain" alt="Company logo" />
-```
-
-To:
-
-```html
-<img src="https://img.logo.dev/:domain?token=YOUR-KEY-HERE" alt="Company logo" />
-```
-
-  </Step>
-
-  <Step title="Handling Optional Parameters">
-    If you're using optional parameters like size, format, or greyscale, update your API calls to include them according to Logo.dev’s documentation:
-
-Clearbit Example:
-
-```html
-<img src="https://logo.clearbit.com/segment.com?size=200&greyscale=true" alt="Segment logo in greyscale" />
-```
-
-Logo.dev Equivalent:
-
-```html
-<img
-  src="https://img.logo.dev/segment.com?size=200&greyscale=true&token=YOUR-KEY-HERE"
-  alt="Segment logo in greyscale"
-/>
-```
-
-  </Step>
-  <Step title="Error Handling for Missing Logos">
-  Logo.dev handles missing logos differently from Clearbit. Instead of providing a 404 error, we provide a fallback image that contains the brand color and first letter of the domain.
-
-If you are using an `onerror;` function to detect failed images, it's safe to continue using it but shouldn't be necessary.
-
-  </Step>
-  <Step title="Changing your attribution link">
-  Like Clearbit, we also require attribution back to Logo.dev as part of our free offering.
-
-    Clearbit:
-    ```html
-    <a href="https://logo.clearbit.com">Logos provided by Clearbit</a>
+    ```bash Clearbit Base URL
+    https://logo.clearbit.com/
     ```
 
-    Logo.dev:
-    ```html
-    <a href="https://logo.dev" title="Logo API">Logos provided by Logo.dev</a>
+    ```bash Logo.dev Base URL
+    https://img.logo.dev/
     ```
 
   </Step>
-  <Step title="Testing">
-    After making these changes, thoroughly test your application to ensure that logos are displayed correctly and all functionalities work as expected.
+
+  <Step title="Create an account and add your Public Key">
+    To use Logo.dev, you'll need to [create an account](https://www.logo.dev/signup) and get your **Public Key** from the dashboard.
+
+    ```bash Logo.dev Public Key
+    LOGO_DEV_PUBLIC_KEY=live_xxxxxxxxxxxx
+    ```
+
+    For all integrations, it's as simple as adding the `token` parameter and passing your **Public Key**.
+
+    ```bash Logo.dev Authenticated URL
+    https://img.logo.dev/:domain?token=LOGO_DEV_PUBLIC_KEY
+    ```
+
+Here's examples of how to add your authentication in different programming languages:
+
+    <CodeGroup>
+      ```html HTML
+      <img src="https://img.logo.dev/stripe.com?token=LOGO_DEV_PUBLIC_KEY" alt="Stripe logo" />
+      ```
+
+      ```jsx React
+      function CompanyLogo({ domain }) {
+        return (
+          <img
+            src={`https://img.logo.dev/${domain}?token=LOGO_DEV_PUBLIC_KEY`}
+            alt={`${domain} logo`}
+          />
+        );
+      }
+      ```
+
+      ```tsx Next.js
+      // Add img.logo.dev to your next.config.js:
+      // module.exports = {
+      //   images: {
+      //     remotePatterns: [
+      //       {
+      //         protocol: 'https',
+      //         hostname: 'img.logo.dev',
+      //       },
+      //     ],
+      //   },
+      // };
+
+      import Image from 'next/image';
+
+      function CompanyLogo({ domain }: { domain: string }) {
+        return (
+          <Image
+            src={`https://img.logo.dev/${domain}?token=${process.env.NEXT_PUBLIC_LOGO_DEV_KEY}`}
+            alt={`${domain} logo`}
+            width={128}
+            height={128}
+          />
+        );
+      }
+      ```
+
+      ```vue Vue
+      <template>
+        <img
+          :src="`https://img.logo.dev/${domain}?token=LOGO_DEV_PUBLIC_KEY`"
+          :alt="`${domain} logo`"
+        />
+      </template>
+
+      <script>
+      export default {
+        props: ['domain']
+      }
+      </script>
+      ```
+
+      ```python Python
+      import requests
+
+      def get_company_logo(domain):
+          url = f"https://img.logo.dev/{domain}?token=LOGO_DEV_PUBLIC_KEY"
+          response = requests.get(url)
+          return response.content
+      ```
+
+      ```ruby Ruby
+      require 'net/http'
+
+      def get_company_logo(domain)
+        uri = URI("https://img.logo.dev/#{domain}?token=LOGO_DEV_PUBLIC_KEY")
+        Net::HTTP.get(uri)
+      end
+      ```
+
+      ```php PHP
+      function getCompanyLogo($domain) {
+          $url = "https://img.logo.dev/{$domain}?token=LOGO_DEV_PUBLIC_KEY";
+          return file_get_contents($url);
+      }
+      ```
+
+      ```kotlin Android (Kotlin)
+      import com.squareup.picasso.Picasso
+
+      fun loadCompanyLogo(domain: String, imageView: ImageView) {
+          val url = "https://img.logo.dev/$domain?token=LOGO_DEV_PUBLIC_KEY"
+          Picasso.get()
+              .load(url)
+              .placeholder(R.drawable.logo_placeholder)
+              .into(imageView)
+      }
+
+      // Using Coil (modern Android image loading)
+      imageView.load("https://img.logo.dev/$domain?token=LOGO_DEV_PUBLIC_KEY") {
+          placeholder(R.drawable.logo_placeholder)
+          error(R.drawable.logo_error)
+      }
+      ```
+
+      ```swift Swift (iOS)
+      import SwiftUI
+
+      struct CompanyLogo: View {
+          let domain: String
+
+          var body: some View {
+              AsyncImage(url: URL(string: "https://img.logo.dev/\(domain)?token=LOGO_DEV_PUBLIC_KEY")) { image in
+                  image
+                      .resizable()
+                      .aspectRatio(contentMode: .fit)
+              } placeholder: {
+                  ProgressView()
+              }
+              .frame(width: 128, height: 128)
+          }
+      }
+
+      // Using URLSession for direct download
+      func downloadCompanyLogo(domain: String) async throws -> Data {
+          let url = URL(string: "https://img.logo.dev/\(domain)?token=LOGO_DEV_PUBLIC_KEY")!
+          let (data, _) = try await URLSession.shared.data(from: url)
+          return data
+      }
+      ```
+    </CodeGroup>
+
+    Learn more about how to get your [API key](/platform/api-keys).
+
   </Step>
+
+  <Step title="Update your Attribution Link">
+  Free tier requires attribution back to Logo.dev wherever you display logos. Skip attribution by [upgrading to any paid plan](https://www.logo.dev/pricing) starting at $300/year.
+
+```html Logo.dev Attribution Link
+<a href="https://logo.dev" title="Logo API">Logos provided by Logo.dev</a>
+```
+
+Attribution links must be:
+
+- On a production site.
+- Publicly accessible
+- Be followable by search engines.
+
+Learn more about how to [add your attribution link](/platform/attribution).
+
+  </Step>
+
+  <Step title="Test and deploy">
+  Before deploying to production, test that logos are displaying correctly:
+
+- Verify logos match expected companies
+- Check image quality and resolution
+- There's no remaining references to `logo.clearbit.com`
+
+Any low-quality or incorrect logos can be fixed within 24 hours by [reporting them here](https://www.logo.dev/update). Our team actively maintains the logo database with daily updates.
+
+  </Step>
+
 </Steps>
 
-## Additional Features in Logo.dev
+<Note>
+  Need help migrating or require custom features? Contact
+  [sales@logo.dev](mailto:sales@logo.dev) for personalized migration assistance,
+  enterprise features, or volume pricing. We're here to ensure a smooth
+  transition from Clearbit.
+</Note>
 
-Consider utilizing additional features offered by Logo.dev:
+## Go further
 
-- **Retina Images:** Logo.dev supports high-resolution retina images by providing images with double the pixel density.
-- **Image Resizing:** You can specify any valid integer size for images, though it is recommended to stay under 600px for raster images.
+This guide covers the essentials to get you migrated from Clearbit. Once you've made the switch, you can start leveraging Logo.dev's new features that go beyond what Clearbit offered:
 
-## Conclusion
+- **[Theme variants](/logo-images/get#theme)** for dark and light mode optimized logos
+- **[Stock ticker lookup](/logo-images/ticker)** for companies by stock symbol like `AAPL`, `NVDA`, or `META`
+- **[Crypto lookup](/logo-images/crypto)** for cryptocurrencies by symbol like `BTC`, `ETH`, or `USDT`
+- **[Brand Search](/brand-search/introduction)** for finding companies by name when you don't know their domain
+- **[Brand REST API](/describe/introduction)** for extracting colors, shapes, and brand elements from any logo
 
-By following this migration guide, you should be able to switch from using Clearbit's Logo API to Logo.dev's API without significant issues. Ensure that you review Logo.dev's documentation in detail to make full use of its capabilities.
+## FAQs
+
+<AccordionGroup>
+<Accordion title="Will my existing parameters still work?">
+  Yes. Parameters like `size`, `format`, and `greyscale` work the same in
+  Logo.dev, with the addition of an API token for authentication.
+</Accordion>
+
+{" "}
+
+<Accordion title="What's the signup and authentication process for Logo.dev?">
+  Sign up takes only a few minutes. Once you create an account you will receive
+  an API token that works immediately, with no credit card required for the free
+  tier.
+</Accordion>
+
+{" "}
+
+<Accordion title="Do I need an API key to use Logo.dev?">
+  Yes. Unlike Clearbit's free endpoint, Logo.dev requires a token to monitor
+  usage and provide consistent production-level performance.
+</Accordion>
+
+{" "}
+
+<Accordion title="What fallback options are available if a logo is not found?">
+  Logo.dev provides monograms by default. You can also request `404` responses
+  if you prefer to handle your own fallbacks.
+</Accordion>
+
+{" "}
+
+<Accordion title="Does Logo.dev support high-DPI screens and multiple formats?">
+  Yes. Logos are optimized for high-resolution displays and are available in
+  `PNG` and `WebP` formats.
+</Accordion>
+
+{" "}
+
+<Accordion title="Does Logo.dev offer a REST API beyond logo retrieval?">
+  Yes. The [Describe API](/describe/introduction), available on paid plans,
+  returns additional assets and structured fields about a domain such as names,
+  descriptions, and social profiles.
+</Accordion>
+
+{" "}
+
+<Accordion title="How much work is required to migrate from Clearbit?">
+  Most migrations take less than an hour. Developers only need to replace
+  endpoints with Logo.dev URLs, add tokens, and test before deployment.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I test Logo.dev before migrating?">
+  Yes. You can sign up for a free account, test with your own domains, and run
+  Logo.dev alongside Clearbit during migration.
+</Accordion>
+
+{" "}
+
+<Accordion title="Do you support all the domains Clearbit had?">
+  Yes. Logo.dev covers all domains Clearbit supported, with frequent updates and
+  the ability to request missing logos.
+</Accordion>
+
+{" "}
+
+<Accordion title="Is Logo.dev more expensive than Clearbit?">
+  No. Logo.dev offers a free tier for testing and affordable paid plans that are
+  simpler and more predictable than Clearbit's enterprise pricing.
+</Accordion>
+
+{" "}
+
+<Accordion title="How reliable is Logo.dev compared to Clearbit's free API?">
+  Logo.dev is built for production use with a global CDN, caching, and monitored
+  uptime, while Clearbit's free service was limited and is being discontinued.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I use Logo.dev directly in image tags?">
+  Yes. You can embed a Logo.dev URL with your token in an `<img>` tag and it
+  will render instantly without extra processing.
+</Accordion>
+
+{" "}
+
+<Accordion title="Are there rate limits with Logo.dev?">
+  Yes. Each plan has [defined usage limits](https://logo.dev/pricing), and
+  higher tiers provide additional capacity for production workloads.
+</Accordion>
+
+{" "}
+
+<Accordion title="How quickly are new logos added?">
+  New logos are indexed and refreshed frequently to ensure they remain accurate
+  and up to date.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I use Logo.dev in commercial applications?">
+  Yes. Logo.dev can be used in both internal tools and customer-facing apps.
+  Paid plans remove attribution requirements.
+</Accordion>
+
+  <Accordion title="How do I contact support?">
+    Email [support@logo.dev](mailto:support@logo.dev) for help with migration, integration, or troubleshooting.
+  </Accordion>
+</AccordionGroup>
