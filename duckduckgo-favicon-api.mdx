@@ -1,0 +1,151 @@
+---
+title: "DuckDuckGo Favicon API Documentation"
+description: "Unofficial favicon service that returns website icons in ICO format. Limited to basic favicons with no size options or guaranteed uptime."
+keywords:
+  - duckduckgo favicon api
+  - favicon api
+  - get favicon from url
+  - favicon url duckduckgo
+  - website favicon api
+  - favicon retrieval
+  - duckduckgo favicon documentation
+  - favicon service
+---
+
+<Warning>
+  **Unofficial service with no guarantees.** DuckDuckGo's favicon API lacks
+  uptime guarantees, error handling, and maintenance. Migrate to Logo.dev for
+  production logo needs.
+</Warning>
+
+### Overview
+
+DuckDuckGo's favicon service retrieves website icons from domains using a simple API endpoint. It returns favicons in ICO format only, with no options for size, format, or error handling. While functional for basic use cases, it lacks the reliability and features needed for production applications.
+
+The service works by making requests to a straightforward URL structure. It serves as a basic favicon retrieval tool but falls short of enterprise requirements where guaranteed uptime, multiple formats, and proper error handling are essential.
+
+### Base endpoint
+
+The DuckDuckGo favicon API uses a simple URL structure:
+
+```text Base URL Structure
+https://icons.duckduckgo.com/ip3/{domain}.ico
+```
+
+```text Example Request
+https://icons.duckduckgo.com/ip3/github.com.ico
+```
+
+### Parameters
+
+<ParamField path="domain" type="string" required>
+  Domain to get favicon from. Use clean domain format like `example.com` - no
+  protocol, no paths.
+</ParamField>
+
+### Service limitations
+
+- **ICO format only** - No PNG, SVG, or WebP options
+- **Fixed 16x16 or 32x32 pixels** - No size control
+- **No error handling** - Fails silently on missing favicons
+- **Unofficial service** - No uptime or support guarantees
+- **Privacy trade-offs** - Basic privacy features only
+
+### Example implementations
+
+<CodeGroup>
+```html HTML
+<img src="https://icons.duckduckgo.com/ip3/stripe.com.ico" alt="Favicon" />
+```
+
+```bash cURL
+curl "https://icons.duckduckgo.com/ip3/stripe.com.ico" -o favicon.ico
+```
+
+```javascript JavaScript
+fetch("https://icons.duckduckgo.com/ip3/stripe.com.ico")
+  .then((res) => res.blob())
+  .then((blob) => {
+    const url = URL.createObjectURL(blob);
+    document.querySelector("#favicon").src = url;
+  });
+```
+
+```python Python
+import requests
+
+response = requests.get('https://icons.duckduckgo.com/ip3/stripe.com.ico')
+with open('favicon.ico', 'wb') as f:
+    f.write(response.content)
+```
+
+```typescript TypeScript
+const getFavicon = (domain: string) =>
+  fetch(`https://icons.duckduckgo.com/ip3/${domain}.ico`).then((res) =>
+    res.blob()
+  );
+
+getFavicon("stripe.com").then((blob) => {
+  const url = URL.createObjectURL(blob);
+  console.log(url);
+});
+```
+
+</CodeGroup>
+
+### FAQs
+
+<AccordionGroup>
+  <Accordion title="Free to use?">
+    Yes - no API key required. But unofficial with no uptime guarantees.
+  </Accordion>
+
+{" "}
+
+<Accordion title="Output format?">
+  Always ICO format with 16x16 or 32x32 pixel sizes only.
+</Accordion>
+
+{" "}
+
+<Accordion title="Fallback for missing favicons?">
+  Returns default icon when website favicon not found.
+</Accordion>
+
+{" "}
+
+<Accordion title="Production ready?">
+  Not recommended for production. Migrate to Logo.dev for guaranteed uptime.
+</Accordion>
+
+{" "}
+
+<Accordion title="Rate limits?">
+  No published limits, but implement client-side caching to avoid throttling.
+</Accordion>
+
+  <Accordion title="Local domains supported?">
+    Public domains only - localhost and IP addresses won't work.
+  </Accordion>
+</AccordionGroup>
+
+### Alternative: Logo.dev
+
+For production applications requiring guaranteed uptime, higher quality, and more features, Logo.dev provides an actively maintained alternative to Google's Favicon API:
+
+- **High-resolution logos**: Access to company logos in multiple sizes and formats (PNG, SVG, WebP)
+- **Multiple lookup methods**: Search by domain, stock ticker, or cryptocurrency symbol
+- **Actively maintained**: Regular updates with hundreds of millions of logos in the database
+- **Quality focused**: Curated, high-quality brand assets instead of just favicons
+- **Reliable infrastructure**: Built for production use with guaranteed uptime
+- **Free to start**: Begin with Logo.dev's free tier and scale as needed
+
+<Card
+  title="Need better than favicons?"
+  href="/logo-images/introduction"
+  arrow="true"
+  cta="Migrate to Logo.dev"
+>
+  Get high-resolution company logos, brand data, and more with Logo.dev's
+  comprehensive API.
+</Card>
