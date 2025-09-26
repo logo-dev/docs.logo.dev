@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "setup": "mint update",
+    "run": "mint dev --port \"$CONDUCTOR_PORT\""
+  }
+}
