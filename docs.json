@@ -34,6 +34,15 @@
             "pages": ["introduction", "migrations/clearbit"]
           },
           {
+            "group": "Legacy Documentation",
+            "hidden": true,
+            "pages": [
+              "clearbit-logo-docs",
+              "google-favicon-api",
+              "duckduckgo-favicon-api"
+            ]
+          },
+          {
             "group": "Logo Images",
             "pages": [
               "logo-images/introduction",

@@ -1,0 +1,210 @@
+---
+title: Google Favicon API Documentation
+description: Complete guide to using Google's favicon API for retrieving website favicons and icons with size customization options.
+keywords:
+  - Google favicon API
+  - Google favicon
+  - favicon API
+  - get favicon from URL
+  - favicon URL Google
+  - Google s2 favicons
+  - website favicon API
+  - favicon retrieval
+---
+
+<Warning>
+  **Google Favicon API is unsupported and unmaintained.** This unofficial API
+  has no guaranteed uptime, no error handling, and no way to be updated or
+  maintained. Consider migrating to Logo.dev for production applications.
+</Warning>
+
+### Overview
+
+Google's Favicon API provides a simple way to retrieve favicons (website icons) from any domain. Originally designed as an internal service, this API has become widely used by developers for displaying website icons in applications, browser extensions, and dashboards.
+
+The API is straightforward, requiring only a domain name and optional size parameter to return a favicon in PNG format. It automatically handles favicon detection, format conversion, and provides fallback icons when a favicon isn't available.
+
+### Base endpoint
+
+```text Base URL Structure
+https://www.google.com/s2/favicons?domain={domain}
+```
+
+```text Example Request
+https://www.google.com/s2/favicons?domain=github.com
+```
+
+### Parameters
+
+<ParamField query="domain" type="string" required>
+  The website domain to retrieve the favicon from. Can be a full domain like
+  `example.com` or include subdomain like `www.example.com`.
+</ParamField>
+
+<ParamField query="sz" type="number" default="16">
+  Desired icon size in pixels. Common values: `16`, `32`, `64`, `128`, `256`.
+  Note that not all sizes may be available for every domain. If the requested
+  size isn't available, Google returns the closest available size.
+</ParamField>
+
+<ParamField query="domain_url" type="string">
+  Alternative parameter name for `domain`. Both work interchangeably.
+</ParamField>
+
+### Size availability
+
+The API supports various sizes, but availability depends on the source website:
+
+- **16x16**: Always available (default fallback)
+- **32x32**: Commonly available
+- **64x64**: Available for most major sites
+- **128x128**: Available for many sites
+- **256x256**: Available for sites with high-resolution favicons
+- **512x512**: Limited availability; may fall back to smaller sizes
+
+<Note>
+  Requesting sizes larger than 256px may return smaller images if higher
+  resolution favicons aren't available from the source website.
+</Note>
+
+### Example implementations
+
+<CodeGroup>
+
+```html HTML
+<img
+  src="https://www.google.com/s2/favicons?domain=stripe.com&sz=128"
+  alt="Stripe favicon"
+  width="128"
+  height="128"
+/>
+```
+
+```bash cURL
+curl "https://www.google.com/s2/favicons?domain=stripe.com&sz=256" --output stripe-favicon.png
+```
+
+```javascript JavaScript (fetch)
+const domain = "stripe.com";
+const size = 128;
+fetch(`https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`)
+  .then((res) => {
+    if (!res.ok) throw new Error("Favicon not found");
+    return res.blob();
+  })
+  .then((blob) => {
+    const url = URL.createObjectURL(blob);
+    document.querySelector("#favicon").src = url;
+  });
+```
+
+```python Python
+import requests
+
+domain = "stripe.com"
+size = 128
+url = f"https://www.google.com/s2/favicons?domain={domain}&sz={size}"
+
+response = requests.get(url)
+if response.status_code == 200:
+    with open("favicon.png", "wb") as f:
+        f.write(response.content)
+```
+
+```typescript TypeScript
+const getFavicon = async (
+  domain: string,
+  size: number = 128
+): Promise<Blob> => {
+  const url = `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch favicon: ${response.statusText}`);
+  }
+
+  return response.blob();
+};
+
+// Usage
+getFavicon("github.com", 256).then((blob) => {
+  const imgUrl = URL.createObjectURL(blob);
+  console.log("Favicon URL:", imgUrl);
+});
+```
+
+</CodeGroup>
+
+### FAQs
+
+<AccordionGroup>
+  <Accordion title="Is the Google Favicon API free to use?">
+    Yes, the API is free and doesn't require authentication or an API key. However, it's an unofficial/undocumented API, so there are no formal rate limits or guarantees.
+  </Accordion>
+
+{" "}
+
+<Accordion title="What format are the favicons returned in?">
+  The API always returns favicons in PNG format, regardless of the source
+  website's original favicon format.
+</Accordion>
+
+{" "}
+
+<Accordion title="What happens if a website doesn't have a favicon?">
+  Google provides a default fallback icon (typically a generic globe or page
+  icon) when a website doesn't have a favicon.
+</Accordion>
+
+{" "}
+
+{" "}
+
+<Accordion title="Can I use this API in production applications?">
+  While many developers use this API in production, keep in mind it's an
+  unofficial API without guaranteed uptime or support. For mission-critical
+  applications, consider migrating to Logo.dev for reliable logo retrieval with
+  guaranteed uptime.
+</Accordion>
+
+{" "}
+
+<Accordion title="Are there rate limits?">
+  There are no officially published rate limits, but aggressive usage may be
+  throttled. It's recommended to implement caching on your side to minimize
+  requests.
+</Accordion>
+
+{" "}
+
+<Accordion title="Why does the same domain sometimes return different sized icons?">
+  Icon size availability depends on what the source website provides. If you
+  request a 256px icon but the site only has a 128px favicon, you'll receive the
+  smaller version.
+</Accordion>
+
+  <Accordion title="Can I get favicons from local domains or IP addresses?">
+    The API is designed for public domains only. Local domains (like localhost) and IP addresses typically won't work.
+  </Accordion>
+</AccordionGroup>
+
+### Alternative: Logo.dev
+
+For production applications requiring guaranteed uptime, higher quality, and more features, Logo.dev provides an actively maintained alternative to Google's Favicon API:
+
+- **High-resolution logos**: Access to company logos in multiple sizes and formats (PNG, SVG, WebP)
+- **Multiple lookup methods**: Search by domain, stock ticker, or cryptocurrency symbol
+- **Actively maintained**: Regular updates with hundreds of millions of logos in the database
+- **Quality focused**: Curated, high-quality brand assets instead of just favicons
+- **Reliable infrastructure**: Built for production use with guaranteed uptime
+- **Free to start**: Begin with Logo.dev's free tier and scale as needed
+
+<Card
+  title="Need better than favicons?"
+  href="/logo-images/introduction"
+  arrow="true"
+  cta="Migrate to Logo.dev"
+>
+  Get high-resolution company logos, brand data, and more with Logo.dev's
+  comprehensive API.
+</Card>
