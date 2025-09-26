@@ -3,12 +3,13 @@ description:
 globs: *.mdx
 alwaysApply: false
 ---
+
 # API Key Documentation Standards
 
 ## Key Types and Naming
 
-- **Publishable keys**: Public keys that begin with "live_", only for img.logo.dev endpoint
-- **Secret keys**: Start with "sk_", used for all other API endpoints
+- **Publishable keys**: Public keys that begin with "live\_", only for img.logo.dev endpoint
+- **Secret keys**: Start with "sk\_", used for all other API endpoints
 - Always clarify scope and security implications inline
 
 ## Documentation Pattern
@@ -23,14 +24,15 @@ alwaysApply: false
 
 ```mdx
 <Note>
-  To view and manage your API keys, visit the [Logo.dev dashboard](mdc:https:/dashboard.logo.dev).
+  To view and manage your API keys, visit the [Logo.dev
+  dashboard](mdc:https:/dashboard.logo.dev).
 </Note>
 
 Logo.dev uses two types of API keys:
 
-**Publishable keys** (live_*) - Public keys for accessing our image CDN at img.logo.dev. Safe to expose in client-side code.
+**Publishable keys** (pk_xxxxxxxxxxx) - Public keys for accessing our image CDN at img.logo.dev. Safe to expose in client-side code.
 
-**Secret keys** (sk_*) - Private keys for all other API endpoints. Keep these secure and never expose in client-side code.
+**Secret keys** (sk_xxxxxxxxxxx) - Private keys for all other API endpoints. Keep these secure and never expose in client-side code.
 ```
 
 ## Security Best Practices
