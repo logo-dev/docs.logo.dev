@@ -1,0 +1,265 @@
+---
+title: "Add company logos in Microsoft Excel"
+sidebarTitle: "Microsoft Excel"
+description: "Add company logos to Excel spreadsheets using Logo.dev's API with the IMAGE function."
+keywords:
+  [
+    "excel logo",
+    "add logo to excel",
+    "company logo in excel",
+    "excel image function",
+    "add logo to excel header",
+    "how to add logo in excel",
+    "add logo to excel spreadsheet",
+    "insert company logo excel",
+  ]
+---
+
+Add company logos to Excel spreadsheets using Logo.dev's API. Automatically populate customer lists, vendor databases, and reports with up-to-date company logos. Works with Excel for Microsoft 365, Excel 2019, and Excel Online.
+
+<Note>
+  Get your API key from the [Logo.dev dashboard](https://dashboard.logo.dev) to
+  get started. Free tier includes 1,000 logo requests per month.
+</Note>
+
+## Basic formula
+
+Use Excel's `IMAGE` function to display logos from company domains:
+
+<CodeGroup>
+
+```excel Basic formula
+=IMAGE("https://img.logo.dev/microsoft.com?token=YOUR_API_KEY")
+```
+
+```excel With cell reference
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png"))
+```
+
+```excel Advanced with parameters
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=128&greyscale=true"))
+```
+
+</CodeGroup>
+
+Replace `YOUR_API_KEY` with your publishable key from the dashboard.
+
+The basic formula uses a hardcoded domain, while the cell reference formula pulls the domain from cell A2 dynamically.
+
+## Insert logos from web URL
+
+For Excel versions without the IMAGE function, insert logos directly from the web:
+
+<Steps>
+  <Step title="Open Insert Pictures dialog">
+    Click **Insert** > **Pictures** > **Online Pictures** (or **From Web** in
+    newer versions)
+  </Step>
+  <Step title="Paste Logo.dev URL">
+    Paste the Logo.dev URL with your API key: ```
+    https://img.logo.dev/stripe.com?token=YOUR_API_KEY&format=png&size=256 ```
+  </Step>
+  <Step title="Insert the logo">
+    Press Enter to insert the logo into your spreadsheet
+  </Step>
+</Steps>
+
+This method works in all Excel versions including Excel 2013 and 2016.
+
+## Add logos to Excel headers and footers
+
+Add your company logo to headers or footers for branded reports:
+
+<Steps>
+  <Step title="Open Header & Footer view">
+    Go to **Insert** > **Header & Footer**
+  </Step>
+  <Step title="Select header section">
+    Click the header section where you want the logo (left, center, or right)
+  </Step>
+  <Step title="Insert picture from web">
+    In the **Header & Footer Tools Design** tab, click **Picture** > **Online
+    Pictures**
+  </Step>
+  <Step title="Add Logo.dev URL">
+    Paste your Logo.dev URL:
+    {""}
+    ```
+    https://img.logo.dev/yourcompany.com?token=YOUR_API_KEY&format=png&size=128
+    ```
+  </Step>
+</Steps>
+
+## Customize logo appearance
+
+Customize logo size, format, and effects using URL parameters:
+
+<CodeGroup>
+
+```excel PNG logo with size
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=256"))
+```
+
+```excel Greyscale logo
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&greyscale=true"))
+```
+
+```excel Dark mode optimized
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&theme=dark"))
+```
+
+```excel Combined parameters
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=128&greyscale=true"))
+```
+
+</CodeGroup>
+
+## Excel version compatibility
+
+| Excel Version | IMAGE Function Support         |
+| ------------- | ------------------------------ |
+| Microsoft 365 | ✓ Full support                 |
+| Excel 2019    | ✓ Full support                 |
+| Excel Online  | ✓ Full support                 |
+| Excel 2016    | ✗ Use VBA or insert as picture |
+| Excel 2013    | ✗ Use VBA or insert as picture |
+
+For older Excel versions, insert logos as pictures using the web URL method.
+
+## Position and lock logos with cells
+
+Keep logos aligned with your data as you sort, filter, and resize:
+
+<Steps>
+  <Step title="Select the logo">
+    Right-click the logo image in your spreadsheet
+  </Step>
+  <Step title="Open properties">
+    Select **Size & Properties** (or **Format Picture**)
+  </Step>
+  <Step title="Choose positioning behavior">
+    Under the **Properties** tab, choose your preferred option: - **Move and
+    size with cells** - Logo resizes when cell dimensions change - **Move but
+    don't size with cells** - Logo maintains size but moves with the cell -
+    **Don't move or size with cells** - Logo stays fixed in position
+  </Step>
+</Steps>
+
+This ensures logos stay with their corresponding rows when sorting or filtering data.
+
+## VBA macro for bulk logos
+
+For advanced users, use this VBA macro to add logos to multiple cells:
+
+```vba
+Sub AddLogos()
+    Dim cell As Range
+    Dim apiKey As String
+
+    apiKey = "YOUR_API_KEY"
+
+    For Each cell In Selection
+        If cell.Value <> "" Then
+            cell.Offset(0, 1).Formula = "=IMAGE(""https://img.logo.dev/" & _
+                cell.Value & "?token=" & apiKey & "&format=png"")"
+        End If
+    Next cell
+End Sub
+```
+
+Select cells with domains and run the macro to populate adjacent cells with logos.
+
+## FAQs
+
+<AccordionGroup>
+<Accordion title="Does the IMAGE function work in all Excel versions?">
+  The IMAGE function is available in Excel for Microsoft 365, Excel 2019, and Excel Online. For older versions (2016, 2013), use the manual picture insertion method via Insert > Pictures > Online Pictures.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I insert logos in Excel headers and footers?">
+  Yes. Use Insert > Header & Footer, then click Picture to add logos from a
+  Logo.dev URL. Headers and footers will appear on every printed page and PDF
+  export.
+</Accordion>
+
+{" "}
+
+<Accordion title="How do I keep logos aligned when sorting data?">
+  Right-click the logo, select Format Picture > Size & Properties, and choose
+  "Move and size with cells" under Properties. This locks the logo to the cell.
+</Accordion>
+
+{" "}
+
+<Accordion title="What image format should I use for Excel?">
+  PNG format is recommended for best compatibility across all Excel versions.
+  SVG is only supported in Excel for Microsoft 365. Use `format=png` in your
+  Logo.dev URL.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I add multiple company logos at once?">
+  Yes. Use the IMAGE function with cell references and drag the formula down to
+  populate multiple rows. Or use the VBA macro provided above to insert logos
+  for an entire column of domains.
+</Accordion>
+
+{" "}
+
+<Accordion title="How do I look up logos if I only have company names?">
+  Use Logo.dev's [Brand Search API](/brand-search/introduction) to find
+  companies by name instead of domain. This returns logos based on company name
+  matching.
+</Accordion>
+
+{" "}
+
+<Accordion title="Will logos appear when I share the Excel file?">
+  Yes. Logos inserted via the IMAGE function or as pictures are embedded in the
+  Excel file and will appear for anyone who opens it, even without Logo.dev
+  access.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I make logos transparent or greyscale?">
+  Yes. Add `greyscale=true` to your Logo.dev URL for greyscale logos. For
+  transparency, use PNG format which supports transparent backgrounds for logos
+  that have them.
+</Accordion>
+
+{" "}
+
+<Accordion title="How do I add logos to Excel Online?">
+  Excel Online fully supports the IMAGE function. Use the same formulas as
+  desktop Excel. Logos will load automatically when you have an internet
+  connection.
+</Accordion>
+
+{" "}
+
+<Accordion title="What size should I use for logos in Excel?">
+  For in-cell logos, use `size=128` or `size=256`. For headers, use `size=128`.
+  For small icons, use `size=64`. Adjust based on your cell size and layout
+  needs.
+</Accordion>
+
+{" "}
+
+<Accordion title="Are there rate limits for Excel integrations?">
+  Yes. Each plan has defined usage limits. Free accounts include 1,000 requests
+  per month. See [pricing](https://www.logo.dev/pricing) for higher limits.
+</Accordion>
+
+{" "}
+
+<Accordion title="How do I handle missing logos?">
+  Logo.dev returns generated monograms for companies without logos. To show
+  nothing instead, use our Brand Search API to verify logo availability before
+  inserting.
+</Accordion>
+
+</AccordionGroup>

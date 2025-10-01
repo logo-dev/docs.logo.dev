@@ -31,8 +31,16 @@
         "groups": [
           {
             "group": "Guides",
-            "pages": ["introduction", "migrations/clearbit"]
+            "pages": [
+              "introduction",
+              "migrations/clearbit",
+              {
+                "group": "Integrations",
+                "pages": ["integrations/google-sheets", "integrations/excel"]
+              }
+            ]
           },
+
           {
             "group": "Legacy Documentation",
             "hidden": true,

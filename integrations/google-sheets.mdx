@@ -1,0 +1,207 @@
+---
+title: "Add company logos in Google Sheets"
+sidebarTitle: "Google Sheets"
+description: "Display company logos in Google Sheets using Logo.dev's API with the IMAGE formula."
+keywords:
+  [
+    "google sheets logo",
+    "add logo to google sheets",
+    "company logos spreadsheet",
+    "sheets image formula",
+    "google sheets image function",
+    "retrieve company logos google sheets",
+  ]
+---
+
+Display company logos in Google Sheets using Logo.dev's API. Automatically enrich spreadsheets with logos for CRM data, company lists, competitor analysis, and investor tracking. Works instantly with the IMAGE formula—no apps or extensions required.
+
+<Note>
+  Get your API key from the [Logo.dev dashboard](https://dashboard.logo.dev) to
+  get started. Free tier includes 1,000 logo requests per month.
+</Note>
+
+## Basic formula
+
+Use Google Sheets' `IMAGE` function to display logos from company domains:
+
+<CodeGroup>
+
+```javascript Basic formula
+=IMAGE("https://img.logo.dev/apple.com?token=YOUR_API_KEY")
+```
+
+```javascript With cell reference
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png"))
+```
+
+```javascript With custom sizing
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&size=256"), 4, 64, 64)
+```
+
+```javascript ARRAYFORMULA for bulk
+=ARRAYFORMULA(IF(A2:A="",,IMAGE("https://img.logo.dev/"&A2:A&"?token=YOUR_API_KEY&format=png&size=128")))
+```
+
+</CodeGroup>
+
+Replace `YOUR_API_KEY` with your publishable key from the dashboard.
+
+The basic formula uses a hardcoded domain, while the cell reference formula pulls domains from cells dynamically. Use ARRAYFORMULA to apply logos to entire columns at once.
+
+## Customize logo appearance
+
+Customize logo appearance with URL parameters:
+
+<CodeGroup>
+
+```javascript PNG with size
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=256"))
+```
+
+```javascript Greyscale
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&greyscale=true"))
+```
+
+```javascript Dark mode optimized
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&theme=dark"))
+```
+
+```javascript Combined parameters
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=256&greyscale=true"))
+```
+
+</CodeGroup>
+
+## Control image sizing in cells
+
+Google Sheets' IMAGE function supports sizing modes:
+
+<CodeGroup>
+
+```javascript Mode 1: Resize to fit cell
+=IMAGE("https://img.logo.dev/google.com?token=YOUR_API_KEY", 1)
+```
+
+```javascript Mode 2: Stretch to fit cell
+=IMAGE("https://img.logo.dev/google.com?token=YOUR_API_KEY", 2)
+```
+
+```javascript Mode 3: Original size
+=IMAGE("https://img.logo.dev/google.com?token=YOUR_API_KEY", 3)
+```
+
+```javascript Mode 4: Custom size (100x100)
+=IMAGE("https://img.logo.dev/google.com?token=YOUR_API_KEY", 4, 100, 100)
+```
+
+```javascript High quality custom size
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&size=256"), 4, 64, 64)
+```
+
+</CodeGroup>
+
+## Bulk logo retrieval with ARRAYFORMULA
+
+Apply the logo formula to entire columns using ARRAYFORMULA:
+
+```
+=ARRAYFORMULA(IF(A2:A="",,IMAGE("https://img.logo.dev/"&A2:A&"?token=YOUR_API_KEY&format=png&size=128")))
+```
+
+This formula:
+
+- Checks if cells in column A are empty
+- If not empty, generates a logo from the domain
+- Applies to all rows automatically as you add data
+
+## FAQs
+
+<AccordionGroup>
+<Accordion title="Does this work in Google Sheets mobile app?">
+  Yes. The IMAGE function and Logo.dev API work in Google Sheets on mobile (iOS and Android). Logos will load automatically when you have an internet connection.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I use this in Google Apps Script?">
+  Yes. You can fetch logos programmatically using Google Apps Script with
+  UrlFetchApp to call the Logo.dev API, then insert images into your sheet.
+</Accordion>
+
+{" "}
+
+<Accordion title="How do I add logos to multiple rows at once?">
+  Use ARRAYFORMULA with the IMAGE function to apply logos to entire columns. See
+  the "Bulk logo retrieval" section above for the formula.
+</Accordion>
+
+{" "}
+
+<Accordion title="Will logos appear when I share the Google Sheet?">
+  Yes. Anyone who opens the shared Google Sheet will see the logos, even if they
+  don't have a Logo.dev account. The API key in the formula handles
+  authentication.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I use this in Google Docs or Google Slides?">
+  No. The IMAGE function is specific to Google Sheets. For Google Docs or
+  Slides, you'll need to download logos first using the Logo.dev URL, then
+  insert them manually.
+</Accordion>
+
+{" "}
+
+<Accordion title="How do I handle companies without logos?">
+  Logo.dev returns generated monograms for companies without logos. To check if
+  a real logo exists, use the Brand Search API to verify coverage before
+  inserting.
+</Accordion>
+
+{" "}
+
+<Accordion title="What image format should I use for Google Sheets?">
+  PNG format is recommended for best quality and compatibility. Google Sheets
+  handles PNG well. Use `format=png` in your Logo.dev URL.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I filter or sort rows with logo images?">
+  Yes. Google Sheets treats images in cells normally, so you can filter and sort
+  rows that contain logos. Use "Move and size with cells" if inserting images as
+  overlays.
+</Accordion>
+
+{" "}
+
+<Accordion title="How do I look up logos if I only have company names?">
+  Use Logo.dev's [Brand Search API](/brand-search/introduction) with the company
+  name as a query parameter. This returns logos based on company name matching
+  instead of domains.
+</Accordion>
+
+{" "}
+
+<Accordion title="Are there rate limits for Google Sheets integrations?">
+  Yes. Each plan has defined usage limits. Free accounts include 1,000 requests
+  per month. Google Sheets may cache images, reducing repeated API calls. See
+  [pricing](https://www.logo.dev/pricing) for higher limits.
+</Accordion>
+
+{" "}
+
+<Accordion title="Can I use dark mode optimized logos?">
+  Yes. Add `theme=dark` to your Logo.dev URL to get logos optimized for dark
+  backgrounds. This is useful if your sheet has a dark theme.
+</Accordion>
+
+{" "}
+
+<Accordion title="How do I make logos clickable?">
+  Google Sheets doesn't support clickable images directly. However, you can add
+  a separate column with HYPERLINK formulas pointing to company websites.
+</Accordion>
+
+</AccordionGroup>
