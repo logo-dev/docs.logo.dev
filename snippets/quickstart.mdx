@@ -1,0 +1,105 @@
+<CodeGroup>
+
+```html HTML
+<img src="https://img.logo.dev/nike.com?token=pk_xxxxxx" alt="Nike logo" />
+```
+
+```jsx React
+function CompanyLogo({ domain }) {
+  return (
+    <img
+      src={`https://img.logo.dev/${domain}?token=pk_xxxxxx`}
+      alt={`${domain} logo`}
+    />
+  );
+}
+```
+
+```tsx Next.js
+// Add img.logo.dev to your next.config.js:
+// module.exports = {
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: 'https',
+//         hostname: 'img.logo.dev',
+//       },
+//     ],
+//   },
+// };
+
+import Image from "next/image";
+
+function CompanyLogo({ domain }: { domain: string }) {
+  return (
+    <Image
+      src={`https://img.logo.dev/${domain}?token=${process.env.NEXT_PUBLIC_LOGO_DEV_KEY}`}
+      alt={`${domain} logo`}
+      width={128}
+      height={128}
+    />
+  );
+}
+```
+
+```vue Vue
+<template>
+  <img
+    :src="`https://img.logo.dev/${domain}?token=pk_xxxxxx`"
+    :alt="`${domain} logo`"
+  />
+</template>
+
+<script>
+export default {
+  props: ["domain"],
+};
+</script>
+```
+
+```python Python
+logo_url = f"https://img.logo.dev/nike.com?token=pk_xxxxxx&size=256&format=png"
+```
+
+```ruby Ruby
+logo_url = "https://img.logo.dev/nike.com?token=pk_xxxxxx&size=256&format=png"
+```
+
+```php PHP
+$logoUrl = "https://img.logo.dev/nike.com?token=pk_xxxxxx&size=256&format=png";
+```
+
+```java Android
+import android.widget.ImageView;
+import com.squareup.picasso.Picasso;
+
+public void loadCompanyLogo(String domain, ImageView imageView) {
+    String url = "https://img.logo.dev/" + domain + "?token=pk_xxxxxx";
+    Picasso.get()
+        .load(url)
+        .placeholder(R.drawable.logo_placeholder)
+        .error(R.drawable.logo_error)
+        .into(imageView);
+}
+```
+
+```swift iOS
+import SwiftUI
+
+struct CompanyLogo: View {
+    let domain: String
+
+    var body: some View {
+        AsyncImage(url: URL(string: "https://img.logo.dev/\(domain)?token=pk_xxxxxx")) { image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        } placeholder: {
+            ProgressView()
+        }
+        .frame(width: 128, height: 128)
+    }
+}
+```
+
+</CodeGroup>

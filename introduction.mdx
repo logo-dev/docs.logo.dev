@@ -1,104 +1,71 @@
 ---
-title: "Company Logos API - Logo.dev Documentation"
+title: "Introduction"
 sidebarTitle: "Introduction"
-description: "Company logos API for developers. Get brand logos instantly via simple API. SVG, PNG & WebP formats, high uptime, global servers. Start free today."
 ---
 
-We set up our Logo API to be able as easy as possible to test and deploy.
+import { LogoDemo } from "/snippets/logo-demo.jsx";
+import Quickstart from "/snippets/quickstart.mdx";
+import { PromptBanner } from "/snippets/prompt-banner.jsx";
 
-In this guide, we will give an overview of how the API can be used to make the simplest requests and go live on your website.
+[Logo.dev](https://www.logo.dev) is the comprehensive logo API that lets you enrich any domain with its logo, eliminate manual logo management, and boost user trust with professional branding.
 
-An important thing to note is that while our API can be used without an API key or any authentication, you will very quickly run into [rate limits](/platform/rate-limits).
+## Try it yourself
 
-## Testing locally
+Enter any domain below to instantly fetch its logo from our database of tens of millions of companies.
 
-The most simple way to test is to add an image anywhere in your HTML.
+<LogoDemo />
 
-```html
-<img
-  src="https://img.logo.dev/sweetgreen.com?token=YOUR-KEY-HERE"
-  alt="Sweetgreen logo"
+## Use cases
+
+- **CRM and sales tools** - Automatically enrich contact and company records with visual branding
+- **Email and communication platforms** - Display sender logos next to email addresses for trust and verification
+- **Financial and banking applications** - Show merchant logos next to transactions for easier recognition
+- **Social media and content aggregation** - Display publisher logos alongside content sources
+- **B2B SaaS platforms** - Create customer walls and integration marketplaces without manual logo maintenance
+- **Analytics and business intelligence** - Visualize company data with logos instead of just text
+- **Browser extensions and bookmarking tools** - Organize saved sites with visual identifiers
+- **Recruitment and HR platforms** - Display company branding on job listings automatically
+
+## Quickstart
+
+Getting set up is as easy as calling our [image CDN](/logo-images/introduction) with a token. Append your [publishable key](/platform/api-keys) using the `token` parameter:
+
+<Quickstart />
+
+Most integrations take just a few minutes to set up, we've created a prompt to start using Logo.dev in your app even faster.
+
+<PromptBanner 
+  prompt="Add company logo images to my application using Logo.dev. I need to:
+1. Display logos for any company using their domain name
+2. Handle different image sizes and formats (WebP, PNG, JPG)
+3. Add fallbacks for companies without logos
+4. Optimize for performance with lazy loading
+5. Support both light and dark mode logos
+
+Use the img.logo.dev endpoint with my publishable API key for client-side implementation. Show me how to implement this in my existing codebase."
+message="Use our pre-made prompt"
 />
-```
 
-<Frame caption="https://img.logo.dev/sweetgreen.com">
-  <img
-    alt="Sweetgreen logo"
-    width="128"
-    height="128"
-    src="https://img.logo.dev/sweetgreen.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=256&format=png"
-  />
-</Frame>
+## Next steps
 
-## Getting an API key
+Explore Logo.dev's core features to enrich your application with company data:
 
-You'll be required to add an `?token=` parameter with an API key to do any serious querying of logos.
+<CardGroup cols={1}>
+  <Card title="Image CDN" icon="image" href="/logo-images/introduction">
+  Look up logos by domain, stock ticker, or crypto symbol with many parameters available.
+  </Card>
+
+{" "}
 
 <Card
-  title="Need an API key? Sign up for a free account"
-  href="https://www.logo.dev"
+  title="Search API"
+  icon="magnifying-glass"
+  href="/brand-search/introduction"
 >
-  By signing up for a free account you'll have enough requests to manage most
-  projects.
+  Don't know the domain name? Search for domains by brand name
 </Card>
 
-You can use parameters to add your API key and to return different sizes, file types, and effects.
-
-While you are testing, most calls to the Logo API will look like this.
-
-```html
-<img
-  src="https://img.logo.dev/microsoft.com?token=YOUR-KEY-HERE&size=200&format=png"
-  alt="Microsoft logo"
-/>
-```
-
-<Frame caption="https://img.logo.dev/microsoft.com?token=YOUR-KEY-HERE&size=200&format=png">
-  <img
-    alt="Microsoft logo"
-    width="100"
-    height="100"
-    src="https://img.logo.dev/microsoft.com?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=200&format=png"
-  />
-</Frame>
-
-## Test without code
-
-If you're looking to test our data quality with no code, we've found the best way is to add domains to a Google Sheet and run this formula.
-
-Here's a [link to a Sheets template you can use](https://docs.google.com/spreadsheets/d/1AiJlP71J-GHIYDiOyl33gKsA0utpSzImagS7in5YfAQ/edit?usp=sharing). You can modify the API's parameters and add your own key using the formula provided below.
-
-```
-=IMAGE(Concat(CONCAT("https://img.logo.dev/", $A3), "?format=png"))
-```
-
-## Rate-limiting
-
-When calling images without an API key, you will quickly hit rate limits. We allow unauthenticated calls for testing purposes only.
-
-If you're asking why letters only being returned and not the logos, it's because you've hit the rate limits.
-
-<Warning>
-  In order to avoid the limits, you'll need an API key or to upgrade your
-  account. Learn more about our [rate limiting policies](/platform/rate-limits).
-</Warning>
-
-## Attribution requirement
-
-Before deploying, you are required on any page you use the Logo API to link back to `logo.dev`. Attribution links should be legible and indexable.
-
-Here's an example attribution link to use.
-
-```html
-<a href="https://logo.dev" title="Logo API">Logos provided by Logo.dev</a>
-```
-
-## Deploying
-
-Before going to production be sure to add an API key.
-
-You'll also need to make sure you have proper attribution when using a free account.
-
-When you're satisfied with how your logos look by modifying parameters and adding your CSS, deploy however you see fit.
-
-Having any issues while testing? [Contact us](mailto:support@logo.dev) for help getting started.
+  <Card title="REST API" icon="sparkles" href="/describe/introduction">
+    Enrich domains with comprehensive brand data
+  </Card>
+</CardGroup>

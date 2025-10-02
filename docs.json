@@ -36,7 +36,11 @@
               "migrations/clearbit",
               {
                 "group": "Integrations",
-                "pages": ["integrations/google-sheets", "integrations/excel"]
+                "pages": [
+                  "integrations/introduction",
+                  "integrations/google-sheets",
+                  "integrations/excel"
+                ]
               }
             ]
           },
@@ -95,6 +99,14 @@
     },
     "intercom": {
       "appId": "tipir4va"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/logodotdev",
+      "linkedin": "https://www.linkedin.com/company/logodotdev/",
+      "github": "https://www.github.com/logo-dev/",
+      "website": "https://www.logo.dev"
     }
   }
 }
