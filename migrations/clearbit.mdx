@@ -11,6 +11,8 @@ keywords:
   ]
 ---
 
+import { PromptBanner } from "/snippets/prompt-banner.jsx";
+
 <Warning>
   **Clearbit Logo API is shutting down December 1, 2025.** If your app uses
   `logo.clearbit.com`, it will stop working. Logo.dev is the official migration
@@ -18,6 +20,16 @@ keywords:
 </Warning>
 
 This guide will help you replace Clearbit's Logo API with Logo.dev for displaying company logos on your website or app. Most migrations only take a few minutes to change your **Base URL** and add a Logo.dev **Public Key** for authentication. Once you migrate, you can access the additional features Logo.dev provides such as new image parameters and alternate lookup methods.
+
+<PromptBanner message="Use this pre-built prompt to migrate from Clearbit" prompt="Help me migrate from Clearbit Logo API to Logo.dev. Here's what I need to do:
+
+1. Find and replace all instances of 'https://logo.clearbit.com/' with 'https://img.logo.dev/' in my codebase
+2. Sign up for a Logo.dev account at https://www.logo.dev/signup and get my public key (starts with pk\_)
+3. Add the token parameter to all logo URLs: https://img.logo.dev/stripe.com?token=YOUR_PUBLIC_KEY
+4. Update my attribution link to: <a href='https://logo.dev' title='Logo API'>Logos provided by Logo.dev</a>
+5. Test that logos display correctly before deploying
+
+Please help me search my codebase for Clearbit references and update them to use Logo.dev." />
 
 ## Why Logo.dev?
 
