@@ -1,61 +1,121 @@
 ---
-title: "Caching & self-hosting"
-description: "Logo caching strategies and self-hosting options by plan"
-sidebarTitle: "Caching"
-keywords:
-  [
-    "self hosting",
-    "cache",
-    "caching",
-    "cdn",
-    "performance",
-    "hotlink",
-    "direct linking",
-  ]
+title: "Self-hosting logos"
+description: "Store Logo.dev logos on your own infrastructure"
+sidebarTitle: "Self-hosting"
+keywords: ["self hosting", "data caching", "s3", "storage", "license"]
 ---
 
 <Note>
-  Direct linking to Logo.dev always provides the latest logo assets.
-  Self-hosting is available for Pro and Enterprise plans.
+  Pro and Enterprise plans include a license to store logos on your own
+  infrastructure for as long as your subscription is active.
 </Note>
 
-Logo.dev's CDN delivers the freshest logos worldwide. Here's how to optimize performance while respecting plan limits.
+Self-hosting means downloading logos from Logo.dev and serving them from your own storage. You fetch once, store in your infrastructure (S3, CDN, filesystem), and serve unlimited times. Reduces API calls and gives you full control.
 
-## Why direct linking wins
+## Implementation
 
-Direct API calls ensure you always get:
+Every stack is different. Your storage, CDN, and infrastructure will vary. Here's the core pattern you can adapt to your setup.
 
-- Latest logo versions automatically
-- Optimized formats and sizes
-- Global CDN performance
-- Zero maintenance overhead
+### Basic pattern
 
 ```javascript
-// Always current, always fast
-const logoUrl = `https://img.logo.dev/${domain}?token=${API_KEY}`;
+// 1. Fetch logo from Logo.dev
+const response = await fetch(
+  `https://img.logo.dev/${domain}?token=${API_KEY}&format=webp`
+);
+
+const buffer = await response.arrayBuffer();
+
+// 2. Store in your infrastructure
+await yourStorageSystem.upload(`logos/${domain}.webp`, buffer);
+
+// 3. Serve from your CDN
+return `https://your-cdn.com/logos/${domain}.webp`;
 ```
 
-## Caching by plan
+### Batch processing
 
-| Plan           | Browser/CDN cache | Application cache | Self-hosting  |
-| -------------- | ----------------- | ----------------- | ------------- |
-| **Community**  | ✅ 24 hours       | ❌                | ❌            |
-| **Startup**    | ✅ 24 hours       | ❌                | ❌            |
-| **Pro**        | ✅ 24 hours       | ✅ Unlimited      | ✅            |
-| **Enterprise** | ✅ 24 hours       | ✅ Unlimited      | ✅ Custom SLA |
+```javascript
+const domains = ["stripe.com", "shopify.com", "square.com"];
 
-<Tip>
-  Need custom caching rules or SLAs? [Contact our enterprise
-  team](mailto:team@logo.dev).
-</Tip>
-
-## Browser caching (all plans)
-
-Logo.dev handles caching headers automatically:
-
-```http
-Cache-Control: public, max-age=86400
-ETag: "logo-version-hash"
+await Promise.all(
+  domains.map(async (domain) => {
+    const response = await fetch(
+      `https://img.logo.dev/${domain}?token=${API_KEY}`
+    );
+    const buffer = await response.arrayBuffer();
+    await yourStorageSystem.upload(`logos/${domain}.webp`, buffer);
+  })
+);
 ```
 
-Browsers cache logos for 24 hours. Users get instant loads on repeat visits.
+## Storage examples
+
+Adapt these to your infrastructure:
+
+### AWS S3
+
+```javascript
+import AWS from "aws-sdk";
+
+const s3 = new AWS.S3();
+
+async function storeInS3(domain) {
+  const response = await fetch(
+    `https://img.logo.dev/${domain}?token=${API_KEY}&format=webp`
+  );
+  const buffer = await response.arrayBuffer();
+
+  await s3
+    .putObject({
+      Bucket: "your-bucket",
+      Key: `logos/${domain}.webp`,
+      Body: Buffer.from(buffer),
+      ContentType: "image/webp",
+      CacheControl: "public, max-age=31536000",
+    })
+    .promise();
+}
+```
+
+### Google Cloud Storage
+
+```javascript
+import { Storage } from "@google-cloud/storage";
+
+const storage = new Storage();
+const bucket = storage.bucket("your-bucket");
+
+async function storeInGCS(domain) {
+  const response = await fetch(
+    `https://img.logo.dev/${domain}?token=${API_KEY}&format=webp`
+  );
+  const buffer = await response.arrayBuffer();
+
+  await bucket.file(`logos/${domain}.webp`).save(Buffer.from(buffer), {
+    contentType: "image/webp",
+  });
+}
+```
+
+### Azure Blob Storage
+
+```javascript
+import { BlobServiceClient } from "@azure/storage-blob";
+
+const blobService = BlobServiceClient.fromConnectionString(CONNECTION_STRING);
+const container = blobService.getContainerClient("logos");
+
+async function storeInAzure(domain) {
+  const response = await fetch(
+    `https://img.logo.dev/${domain}?token=${API_KEY}&format=webp`
+  );
+  const buffer = await response.arrayBuffer();
+
+  await container
+    .getBlockBlobClient(`${domain}.webp`)
+    .uploadData(Buffer.from(buffer), {
+      blobHTTPHeaders: { blobContentType: "image/webp" },
+    });
+}
+```

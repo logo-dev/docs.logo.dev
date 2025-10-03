@@ -1,0 +1,49 @@
+---
+title: "Caching"
+description: "How Logo.dev caches logos automatically"
+sidebarTitle: "Caching"
+keywords: ["cache", "caching", "cdn", "browser cache"]
+---
+
+## Browser caching
+
+Every logo request includes cache headers that tell browsers to store logos locally for 24 hours:
+
+```http
+Cache-Control: public, max-age=86400
+```
+
+This happens automatically per user:
+
+1. **First visit** - User's browser downloads logo from Logo.dev CDN
+2. **Repeat visits** - Browser serves cached logo instantly (no API call)
+3. **After 24 hours** - Browser fetches fresh logo if needed
+
+Each user caches logos on their own device. This reduces API requests and provides instant load times without any configuration.
+
+## Best practices
+
+**Preload critical logos:**
+
+```html
+<link
+  rel="preload"
+  as="image"
+  href="https://img.logo.dev/stripe.com?token=pk_xxx"
+/>
+```
+
+**Lazy load below the fold:**
+
+```html
+<img
+  src="https://img.logo.dev/stripe.com?token=pk_xxx"
+  loading="lazy"
+  alt="Stripe logo"
+/>
+```
+
+<Tip>
+  Want to store logos on your own infrastructure? Pro and Enterprise plans
+  include data caching licenses. See [self-hosting](/platform/self-hosting).
+</Tip>

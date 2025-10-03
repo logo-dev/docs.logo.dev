@@ -76,8 +76,9 @@
             "pages": [
               "platform/api-keys",
               "platform/rate-limits",
-              "platform/attribution",
+              "platform/caching",
               "platform/self-hosting",
+              "platform/attribution",
               "platform/fair-use"
             ]
           },
