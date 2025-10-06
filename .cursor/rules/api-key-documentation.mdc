@@ -25,7 +25,7 @@ alwaysApply: false
 ```mdx
 <Note>
   To view and manage your API keys, visit the [Logo.dev
-  dashboard](mdc:https:/dashboard.logo.dev).
+  dashboard](https://www.logo.dev/dashboard/api-keys).
 </Note>
 
 Logo.dev uses two types of API keys:
