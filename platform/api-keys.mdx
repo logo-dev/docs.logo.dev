@@ -7,36 +7,55 @@ keywords:
 ---
 
 <Note>
-  To view your API keys, go to the [Logo.dev
-  dashboard](https://www.logo.dev/dashboard).
+  View and manage your API keys in the [Logo.dev
+  dashboard](https://www.logo.dev/dashboard/api-keys).
 </Note>
+
+Logo.dev provides two types of API keys. Publishable keys are automatically secured for safe client-side use, while secret keys require traditional server-side protection.
 
 ## Key types
 
 ### Publishable key (`pk_`)
 
-Client-side safe. Only works with `img.logo.dev` for accessing our image CDN.
+Use anywhere — browsers, mobile apps, client-side code. Only works with `img.logo.dev`.
+
+**These keys are automatically protected.** We handle security for you.
 
 ```html
-<img
-  src="https://img.logo.dev/nike.com?token=YOUR_PUBLISHABLE_KEY"
-  alt="Nike logo"
-/>
+<img src="https://img.logo.dev/nike.com?token=pk_YOUR_KEY" alt="Nike logo" />
 ```
 
 ### Secret key (`sk_`)
 
-Server-side only. Required for all REST API endpoints. **Never expose this key.**
+Server-side only. Required for search, describe, and other API endpoints. Never expose this key.
 
 ```javascript
 // Server-side only
-fetch("https://api.logo.dev/v1/search", {
+const response = await fetch("https://api.logo.dev/v1/search?query=nike", {
   headers: {
-    Authorization: `Bearer YOUR_SECRET_KEY`,
+    Authorization: `Bearer sk_YOUR_KEY`,
   },
 });
 ```
 
+## How we protect publishable keys
+
+Your publishable keys are safe to use in public code because we automatically secure them for you.
+
+**We block suspicious requests before they're processed and never bill you for blocked traffic.** Even if someone copies your publishable key, they can't rack up charges on your account.
+
+### How it works
+
+When a request reaches our servers, we validate it against multiple signals:
+
+- **Endpoint restriction** — Publishable keys only work with the image CDN
+- **Anomaly detection** — We monitor for usage patterns that don't match your normal traffic
+- **Origin blocking** — Suspicious referrers and excessive volumes are blocked before they impact your quota
+
+## Coming soon: Firewall controls
+
+We're building a new feature that will let you allow or deny specific domains, apps, or referrers for your publishable key. This will add another layer of control on top of our automatic protections.
+
 ## Key rotation
 
-Need to rotate keys for any reason? Email support@logo.dev for help.
+Need to rotate your keys? Contact support@logo.dev and we'll generate new keys for you.
