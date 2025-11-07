@@ -72,6 +72,10 @@
             "pages": ["describe/introduction"]
           },
           {
+            "group": "Name",
+            "pages": ["name/introduction"]
+          },
+          {
             "group": "Platform",
             "pages": [
               "platform/api-keys",
