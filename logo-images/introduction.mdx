@@ -10,9 +10,9 @@ description: "Logo API for company logos via simple image URLs. Get brand logos 
 | -------------- | ------- | -------- | -------- |
 | 🔑  token      | string  | false    | n/a      |
 | ↔️ size        | integer | true     | 128      |
-| 🖼️ format      | string  | true     | jpg      |
+| 🖼️ format     | string  | true     | jpg      |
 | 💡 theme       | string  | true     | auto     |
-| ⚫️ greyscale  | boolean | true     | false    |
+| ⚫️ greyscale   | boolean | true     | false    |
 | ⛓️‍💥 fallback | string  | true     | monogram |
 
 ### Standard
@@ -37,16 +37,11 @@ Logos returned without any parameters will be 1:1 aspect ratio, 128px tall and w
 ### Rate-limiting
 
 <Warning>
-  In order to avoid the limits, you'll need an API key or to upgrade your
-  account. Learn more about our [rate limiting policies](/platform/rate-limits).
+  In order to avoid the limits, you'll need an API key or to upgrade your account. Learn more about our [rate limiting policies](/platform/rate-limits).
 </Warning>
 
-<Card
-  title="Need an API key? Sign up for a free account"
-  href="https://www.logo.dev"
->
-  By signing up for a free account you'll have enough requests to manage most
-  projects.
+<Card title="Need an API key? Sign up for a free account" href="https://www.logo.dev">
+  By signing up for a free account you'll have enough requests to manage most projects.
 </Card>
 
 Your API token is required when using the endpoint publicly.
@@ -134,7 +129,7 @@ This feature requires images with transparency.
 <img src="https://img.logo.dev/shopify.com?size=80" alt="Shopify logo resized to 80px" />
 ```
 
-Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`.
+Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`. There is a max size of 800px and any sizes above that will be clipped to 800px.
 
 <Frame caption="https://img.logo.dev/shopify.com?size=80">
   <img
