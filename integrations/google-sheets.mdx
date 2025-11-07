@@ -13,7 +13,7 @@ keywords:
   ]
 ---
 
-Display company logos in Google Sheets using Logo.dev's API. Automatically enrich spreadsheets with logos for CRM data, company lists, competitor analysis, and investor tracking. Works instantly with the IMAGE formula—no apps or extensions required.
+Display company logos in Google Sheets using Logo.dev's API. Automatically enrich spreadsheets with logos for CRM data, company lists, competitor analysis, and investor tracking. Works instantly with the IMAGE formula (no apps or extensions required).
 
 <Note>
   Get your API key from the [Logo.dev
@@ -42,11 +42,19 @@ Use Google Sheets' `IMAGE` function to display logos from company domains:
 =ARRAYFORMULA(IF(A2:A="",,IMAGE("https://img.logo.dev/"&A2:A&"?token=YOUR_API_KEY&format=png&size=128")))
 ```
 
+```javascript By brand name
+=IMAGE(CONCAT("https://img.logo.dev/name/", ENCODEURL(A2), "?token=YOUR_API_KEY"))
+```
+
 </CodeGroup>
 
 Replace `YOUR_API_KEY` with your publishable key from the dashboard.
 
-The basic formula uses a hardcoded domain, while the cell reference formula pulls domains from cells dynamically. Use ARRAYFORMULA to apply logos to entire columns at once.
+The basic formula uses a hardcoded domain. The cell reference formula pulls domains from cells dynamically. Use ARRAYFORMULA to apply logos to entire columns at once.
+
+<Note>
+  When looking up logos by brand name, use `ENCODEURL()` to properly format brand names with spaces or special characters. See the [name lookup documentation](/logo-images/name) for details.
+</Note>
 
 ## Customize logo appearance
 
@@ -108,7 +116,7 @@ Apply the logo formula to entire columns using ARRAYFORMULA:
 =ARRAYFORMULA(IF(A2:A="",,IMAGE("https://img.logo.dev/"&A2:A&"?token=YOUR_API_KEY&format=png&size=128")))
 ```
 
-This formula:
+How this formula works:
 
 - Checks if cells in column A are empty
 - If not empty, generates a logo from the domain

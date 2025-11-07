@@ -60,7 +60,8 @@
               "logo-images/introduction",
               "logo-images/get",
               "logo-images/ticker",
-              "logo-images/crypto"
+              "logo-images/crypto",
+              "logo-images/name"
             ]
           },
           {
@@ -70,10 +71,6 @@
           {
             "group": "Describe",
             "pages": ["describe/introduction"]
-          },
-          {
-            "group": "Name",
-            "pages": ["name/introduction"]
           },
           {
             "group": "Platform",

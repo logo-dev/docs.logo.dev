@@ -40,11 +40,19 @@ Use Excel's `IMAGE` function to display logos from company domains:
 =IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=128&greyscale=true"))
 ```
 
+```excel By brand name
+=IMAGE(CONCAT("https://img.logo.dev/name/", ENCODEURL(A2), "?token=YOUR_API_KEY"))
+```
+
 </CodeGroup>
 
 Replace `YOUR_API_KEY` with your publishable key from the dashboard.
 
-The basic formula uses a hardcoded domain, while the cell reference formula pulls the domain from cell A2 dynamically.
+The basic formula uses a hardcoded domain. The cell reference formula pulls the domain from cell A2 dynamically.
+
+<Note>
+  When looking up logos by brand name, use `ENCODEURL()` to properly format brand names with spaces or special characters. See the [name lookup documentation](/logo-images/name) for details.
+</Note>
 
 ## Insert logos from web URL
 
@@ -128,7 +136,7 @@ For older Excel versions, insert logos as pictures using the web URL method.
 
 ## Position and lock logos with cells
 
-Keep logos aligned with your data as you sort, filter, and resize:
+Keep logos aligned with your data when you sort, filter, and resize:
 
 <Steps>
   <Step title="Select the logo">
@@ -138,14 +146,15 @@ Keep logos aligned with your data as you sort, filter, and resize:
     Select **Size & Properties** (or **Format Picture**)
   </Step>
   <Step title="Choose positioning behavior">
-    Under the **Properties** tab, choose your preferred option: - **Move and
-    size with cells** - Logo resizes when cell dimensions change - **Move but
-    don't size with cells** - Logo maintains size but moves with the cell -
-    **Don't move or size with cells** - Logo stays fixed in position
+    Under the **Properties** tab, choose your preferred option:
+    
+    - **Move and size with cells** - Logo resizes when cell dimensions change
+    - **Move but don't size with cells** - Logo maintains size but moves with the cell
+    - **Don't move or size with cells** - Logo stays fixed in position
   </Step>
 </Steps>
 
-This ensures logos stay with their corresponding rows when sorting or filtering data.
+This keeps logos aligned with their corresponding rows when sorting or filtering data.
 
 ## VBA macro for bulk logos
 

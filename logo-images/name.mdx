@@ -1,0 +1,152 @@
+---
+title: "Get logos by brand name"
+description: "Get brand logos by name when you don't have domains. Returns the first Brand Search result with all standard logo parameters."
+sidebarTitle: "Name"
+keywords: ["name lookup", "brand name", "company name", "logo by name"]
+---
+
+import { LogoDemo } from "/snippets/logo-demo.jsx";
+
+Get brand logos when you only have a brand name, not a domain.
+
+Perfect for customer lists, spreadsheets, or user input where domains aren't available.
+
+## Try it yourself
+
+Enter any brand name below to see how the name lookup works. The API automatically finds the best match and returns the logo.
+
+<LogoDemo type="name" />
+
+---
+
+### How to use name logos
+
+Access any brand logo by name with your publishable key from the [Logo.dev dashboard](https://www.logo.dev/dashboard).
+
+<Frame caption="https://img.logo.dev/name/shopify?token=:publishable_key">
+  <img
+    alt="Shopify Logo"
+    width="100"
+    height="100"
+    src="https://img.logo.dev/name/shopify?token=live_6a1a28fd-6420-4492-aeb0-b297461d9de2&size=200"
+  />
+</Frame>
+
+Here's how to display a brand logo by name:
+
+<CodeGroup>
+```html Example
+<img src="https://img.logo.dev/name/shopify?token=:publishable_key" alt="Shopify logo" />
+```
+
+```html Format
+<img src="https://img.logo.dev/name/:brand?token=:publishable_key" alt="Brand logo by name" />
+```
+
+</CodeGroup>
+
+Use name logos anywhere you can use an image URL (spreadsheets, dashboards, or customer lists):
+
+<CodeGroup>
+```html Example
+https://img.logo.dev/name/shopify?token=:publishable_key
+```
+
+```html Format
+https://img.logo.dev/name/:brand?token=:publishable_key
+```
+
+</CodeGroup>
+
+<Note>
+  The name lookup API is a convenient wrapper over our [Brand Search API](/brand-search/introduction) that returns the first result (like "I'm Feeling Lucky" for brand logos). It uses the same Brand Search index to find the best match for your query.
+</Note>
+
+### URL-encode brand names
+
+Brand names with spaces or special characters must be URL-encoded.
+
+<CodeGroup>
+```html Spaces
+sweet green → sweet%20green
+https://img.logo.dev/name/sweet%20green?token=:publishable_key
+```
+
+```html Special characters
+AT&T → AT%26T
+https://img.logo.dev/name/AT%26T?token=:publishable_key
+```
+
+```html Multiple words
+The Home Depot → The%20Home%20Depot
+https://img.logo.dev/name/The%20Home%20Depot?token=:publishable_key
+```
+
+</CodeGroup>
+
+In JavaScript, use `encodeURIComponent()` to handle encoding automatically:
+
+```javascript
+const brandName = "sweet green";
+const encodedName = encodeURIComponent(brandName);
+const logoUrl = `https://img.logo.dev/name/${encodedName}?token=${apiKey}`;
+```
+
+### Parameters
+
+The name endpoint supports all the same parameters as the [standard logo endpoint](/logo-images/get):
+
+- `size` - Resize logos (default: 128px)
+- `format` - Choose png, jpg, or webp
+- `theme` - Optimize for light or dark backgrounds
+- `greyscale` - Convert to greyscale
+- `fallback` - Control fallback behavior
+
+<CodeGroup>
+```html Custom size
+<img src="https://img.logo.dev/name/shopify?token=:publishable_key&size=256" />
+```
+
+```html PNG format
+<img src="https://img.logo.dev/name/shopify?token=:publishable_key&format=png" />
+```
+
+```html Dark theme
+<img src="https://img.logo.dev/name/shopify?token=:publishable_key&theme=dark&format=png" />
+```
+
+</CodeGroup>
+
+### How name lookup works
+
+When you request a logo by name, we:
+
+1. Search our Brand Search index for the best match
+2. Return the logo for the top result's domain
+3. Apply any parameters (size, format, etc.)
+
+This is equivalent to calling the Brand Search API and using the first result's domain with the logo endpoint.
+
+### FAQ
+
+<AccordionGroup>
+  <Accordion title="When should I use name lookup vs domain lookup?">
+    Use name lookup when you only have brand names (customer lists, user input, spreadsheets). Use domain lookup when you have verified domains. Domain lookup is faster and more accurate.
+  </Accordion>
+  <Accordion title="What happens if the name doesn't match any brand?">
+    We return a generated monogram fallback, just like the standard logo endpoint. Use `fallback=404` to get a 404 response instead.
+  </Accordion>
+  <Accordion title="How accurate is the name matching?">
+    Name lookup uses the same Brand Search index that powers our search API. It returns the most popular match for your query. For ambiguous names, use the [Brand Search API](/brand-search/introduction) to see all matches and choose the right one.
+  </Accordion>
+  <Accordion title="Can I customize the logo appearance?">
+    Yes. All parameters from the [logo endpoint](/logo-images/get) work with name lookup (size, format, theme, greyscale, and more).
+  </Accordion>
+  <Accordion title="Do I need to URL-encode single-word names?">
+    No. Single words without special characters don't need encoding. It's safe to always encode though. `encodeURIComponent("shopify")` still returns `"shopify"`.
+  </Accordion>
+  <Accordion title="What if I find a wrong match?">
+    Report issues at [logo.dev/update](https://www.logo.dev/update) or from the dashboard. We continuously improve our Brand Search index based on feedback.
+  </Accordion>
+</AccordionGroup>
+

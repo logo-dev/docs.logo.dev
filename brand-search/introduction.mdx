@@ -1,10 +1,10 @@
 ---
-title: "Brand API Search - Find Company Logos by Name"
+title: "Brand Search API - Find company domains by name"
 sidebarTitle: "Overview"
-description: "Brand API to search company logos by name. Find company domains, get brand logos with autocomplete. Logo API with public key auth."
+description: "Search for company domains by brand name. Get autocomplete results with typeahead or exact matching. Coverage for millions of companies."
 ---
 
-Need to go from a brand name to a domain? Our Brand Search API is the easiest way to get autocomplete results or grab the most popular domain for a brand.
+Need to go from a brand name to a domain? Brand Search API finds company domains with autocomplete support and flexible matching strategies.
 
 ```bash
 curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=QUERY"
@@ -46,6 +46,38 @@ Expect an array of objects in the following format. Currently, there is a max of
 	}
 ]
 ```
+
+---
+
+## Search strategies
+
+By default, Brand Search uses `typeahead`, which favors popular prefix matches for autocomplete.
+
+You can switch to exact matching with the optional `strategy` parameter:
+
+- `typeahead` (default): Best for autosuggest and exploratory typing.
+- `match`: Best when you want exact/near-exact name matches to rank first.
+
+### Parameters
+
+- `q` (required): The brand name query.
+- `strategy` (optional): `typeahead` | `match` (default: `typeahead`).
+
+### Examples
+
+```bash
+# Default typeahead (prefix-forward)
+curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" \
+  "https://api.logo.dev/search?q=fa"
+
+# Prefer exact matches
+curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" \
+  "https://api.logo.dev/search?q=fa&strategy=match"
+```
+
+<Tip>
+Use `strategy=match` when you have near-complete names and need exactness; keep `typeahead` for live search UX.
+</Tip>
 
 ---
 

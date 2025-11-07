@@ -1,7 +1,18 @@
 ---
 title: "Logo API - Get Company Logos Instantly"
 sidebarTitle: "Overview"
-description: "Logo API for company logos via simple image URLs. Get brand logos in SVG, PNG, WebP formats. High uptime, global servers. Public key auth. Try free."
+description: "Logo API for company logos via simple image URLs. Get brand logos in PNG, JPG, WebP formats. High uptime, global servers. Public key auth. Try free."
+---
+
+## Lookup modes
+
+Get company logos using the identifier you have:
+
+- **[By domain](/logo-images/get)** - Most reliable when you have verified domains (`shopify.com`)
+- **[By stock ticker](/logo-images/ticker)** - Perfect for financial apps (`AAPL`, `TSLA`)
+- **[By crypto symbol](/logo-images/crypto)** - Cryptocurrency logos (`BTC`, `ETH`)
+- **[By company name](/logo-images/name)** - When you only have brand names (`Shopify`, `Tesla`)
+
 ---
 
 ## Parameters
@@ -58,7 +69,7 @@ Your API token is required when using the endpoint publicly.
 <img src="https://img.logo.dev/shopify.com?format=png" alt="Shopify logo in PNG format" />
 ```
 
-In some cases, PNGs with limited color palettes will result in smaller image files with less compression. Using PNGs allows for transparency, although not all logo images will be compatible.
+In some cases, PNGs with limited color palettes will result in smaller image files with less compression. PNGs support transparency, although not all logo images will be compatible.
 
 <Frame caption="https://img.logo.dev/shopify.com?format=png">
   <img
@@ -129,7 +140,7 @@ This feature requires images with transparency.
 <img src="https://img.logo.dev/shopify.com?size=80" alt="Shopify logo resized to 80px" />
 ```
 
-Our image CDN will resize to any valid integer, but we recommend staying under 600px when using raster images like `jpg` and `png`. There is a max size of 800px and any sizes above that will be clipped to 800px.
+Our image CDN will resize to any valid integer. We recommend staying under 600px when using raster images like `jpg` and `png`. There is a max size of 800px. Any sizes above that will be clipped to 800px.
 
 <Frame caption="https://img.logo.dev/shopify.com?size=80">
   <img
@@ -153,7 +164,7 @@ Our image CDN will resize to any valid integer, but we recommend staying under 6
 />
 ```
 
-The `retina=true` parameter doubles the source image resolution (160px) while displaying at the specified size (80px), creating sharp images on high-density displays. Without this parameter, logos may appear blurry.
+The `retina=true` parameter doubles the source image resolution (160px) while displaying at the specified size (80px). This creates sharp images on high-density displays. Without this parameter, logos may appear blurry.
 
 ### Fallback images
 
@@ -168,4 +179,4 @@ In the case where no image is found for a given domain, the API will return a bl
   />
 </Frame>
 
-If you want to suppress these monograms use the parameter `fallback=404` to recieve an empty response and HTTP Status Code `404 Not Found`.
+If you want to suppress these monograms, use the parameter `fallback=404` to receive an empty response and HTTP Status Code `404 Not Found`.
