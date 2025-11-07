@@ -54,9 +54,9 @@ Expect a single object in the following format. The socials object will return a
 }
 ```
 
-`blurhash` is the [blurhash](https://blurha.sh/) for the logo of the requested domain. A blurhash lets you have a placeholder image that gracefully loads in the logo.
+`blurhash` is the [blurhash](https://blurha.sh/) for the logo of the requested domain. A blurhash is a compact string representation that encodes a placeholder image, allowing you to show a blurred preview while the actual logo loads.
 
-`colors` is an array of prominate colors for the logo. They are roughly ordered by prominace in the image.
+`colors` is an array of prominent colors for the logo. They are roughly ordered by prominence in the image.
 
 The currently supported social sites are:
 
@@ -73,6 +73,14 @@ The currently supported social sites are:
 - wechat
 - whatsapp
 - youtube
+
+---
+
+## Using Blurhash
+
+The `blurhash` field provides a compact string that encodes a blurred placeholder of the logo. Blurhash improves perceived performance by displaying an instant preview while the actual logo loads—no layout shifts, no blank spaces, just smooth transitions. The entire placeholder is encoded in ~20-30 characters.
+
+For implementation details and code examples, see the [official blurhash documentation](https://github.com/woltapp/blurhash) with decoders available for TypeScript, Swift, Kotlin, and more.
 
 ---
 
