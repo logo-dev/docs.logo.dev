@@ -12,6 +12,10 @@
     "light": "#fff",
     "dark": "#000"
   },
+  "banner": {
+    "content": "We're live on Product Hunt! [Support us by upvoting or commenting](https://www.producthunt.com/products/logo-dev?launch=logo-dev).",
+    "dismissible": true
+  },
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://www.logo.dev/dashboard"
