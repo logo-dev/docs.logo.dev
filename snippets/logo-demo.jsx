@@ -6,6 +6,7 @@ export const LogoDemo = ({ type = "domain" }) => {
     name: "Shopify",
     crypto: "BTC",
     ticker: "AAPL",
+    isin: "US0378331005",
   };
 
   const PLACEHOLDERS = {
@@ -13,6 +14,7 @@ export const LogoDemo = ({ type = "domain" }) => {
     name: "Enter a brand name...",
     crypto: "Enter a crypto symbol...",
     ticker: "Enter a stock ticker...",
+    isin: "Enter an ISIN...",
   };
 
   const LABELS = {
@@ -20,6 +22,7 @@ export const LogoDemo = ({ type = "domain" }) => {
     name: "brand name",
     crypto: "cryptocurrency symbol",
     ticker: "stock ticker",
+    isin: "ISIN",
   };
 
   const [input, setInput] = useState("");
@@ -56,8 +59,8 @@ export const LogoDemo = ({ type = "domain" }) => {
         return encodeURIComponent(cleaned);
       }
 
-      // For crypto and ticker, just uppercase and trim
-      if (type === "crypto" || type === "ticker") {
+      // For crypto, ticker, and isin, just uppercase and trim
+      if (type === "crypto" || type === "ticker" || type === "isin") {
         return cleaned.toUpperCase();
       }
 
