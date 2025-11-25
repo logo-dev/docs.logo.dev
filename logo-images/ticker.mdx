@@ -20,9 +20,9 @@ Enter any stock ticker symbol below to see the company logo. Supports NYSE, NASD
 
 ### How to use stock ticker logos
 
-Using the stock ticker logo API is very simple, all you need is your public token from the [Logo.dev dashboard](https://www.logo.dev/dashboard).
+Using the stock ticker logo API is very simple, all you need is your publishable key from the [Logo.dev dashboard](https://www.logo.dev/dashboard).
 
-<Frame caption="https://img.logo.dev/ticker/etsy?token=:public_token">
+<Frame caption="https://img.logo.dev/ticker/etsy?token=LOGO_DEV_PUBLISHABLE_KEY">
   <img
     alt="Etsy Logo"
     width="100"
@@ -35,12 +35,12 @@ Here's an example of how to implement a stock ticker logo look up for Etsy on yo
 
 <CodeGroup>
 ```html Example
-<img src="https://img.logo.dev/ticker/etsy?token=:public_token" alt="Etsy stock ticker logo" />
+<img src="https://img.logo.dev/ticker/etsy?token=LOGO_DEV_PUBLISHABLE_KEY" alt="Etsy stock ticker logo" />
 ```
 
 ```html Format
 <img
-  src="https://img.logo.dev/ticker/:symbol?token=:public_token"
+  src="https://img.logo.dev/ticker/:symbol?token=LOGO_DEV_PUBLISHABLE_KEY"
   alt="Stock ticker logo"
 />
 ```
@@ -51,11 +51,11 @@ Anywhere you can use an image URL, such as Excel, Slack, or email, you can use t
 
 <CodeGroup>
 ```html Example
-https://img.logo.dev/ticker/etsy?token=:public_token
+https://img.logo.dev/ticker/etsy?token=LOGO_DEV_PUBLISHABLE_KEY
 ```
 
 ```html Format
-https://img.logo.dev/ticker/:symbol?token=:public_token
+https://img.logo.dev/ticker/:symbol?token=LOGO_DEV_PUBLISHABLE_KEY
 ```
 
 </CodeGroup>
@@ -72,19 +72,19 @@ To specify a particular exchange, append the exchange shortcode after the ticker
 
 <CodeGroup>
 ```html American markets (default)
-<img src="https://img.logo.dev/ticker/AAPL?token=:public_token" alt="Apple stock ticker logo" />
+<img src="https://img.logo.dev/ticker/AAPL?token=LOGO_DEV_PUBLISHABLE_KEY" alt="Apple stock ticker logo" />
 ```
 
 ```html London Stock Exchange
 <img
-  src="https://img.logo.dev/ticker/AAPL.LSE?token=:public_token"
+  src="https://img.logo.dev/ticker/AAPL.LSE?token=LOGO_DEV_PUBLISHABLE_KEY"
   alt="Apple logo from London Stock Exchange"
 />
 ```
 
 ```html Tokyo Stock Exchange
 <img
-  src="https://img.logo.dev/ticker/7203.JPX?token=:public_token"
+  src="https://img.logo.dev/ticker/7203.JPX?token=LOGO_DEV_PUBLISHABLE_KEY"
   alt="Toyota stock ticker logo from Tokyo Stock Exchange"
 />
 ```

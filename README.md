@@ -78,19 +78,19 @@ mint openapi-check <filename>
 ### Basic Logo Fetch
 
 ```html
-<img src="https://img.logo.dev/apple.com?token=YOUR-KEY-HERE" />
+<img src="https://img.logo.dev/apple.com?token=LOGO_DEV_PUBLISHABLE_KEY" />
 ```
 
 ### Stock Ticker Logo
 
 ```html
-<img src="https://img.logo.dev/ticker/AAPL?token=YOUR-KEY-HERE" />
+<img src="https://img.logo.dev/ticker/AAPL?token=LOGO_DEV_PUBLISHABLE_KEY" />
 ```
 
 ### Cryptocurrency Logo
 
 ```html
-<img src="https://img.logo.dev/crypto/btc?token=YOUR-KEY-HERE" />
+<img src="https://img.logo.dev/crypto/btc?token=LOGO_DEV_PUBLISHABLE_KEY" />
 ```
 
 ## Configuration

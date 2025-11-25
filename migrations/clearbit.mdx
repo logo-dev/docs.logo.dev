@@ -14,18 +14,18 @@ keywords:
 import { PromptBanner } from "/snippets/prompt-banner.jsx";
 
 <Warning>
-  **Clearbit Logo API is shutting down December 1, 2025.** If your app uses
+  **Clearbit Logo API is shutting down December 8, 2025.** If your app uses
   `logo.clearbit.com`, it will stop working. Logo.dev is the official migration
   path recommended by Clearbit / HubSpot.
 </Warning>
 
-This guide will help you replace Clearbit's Logo API with Logo.dev for displaying company logos on your website or app. Most migrations only take a few minutes to change your **Base URL** and add a Logo.dev **Public Key** for authentication. Once you migrate, you can access the additional features Logo.dev provides such as new image parameters and alternate lookup methods.
+This guide will help you replace Clearbit's Logo API with Logo.dev for displaying company logos on your website or app. Most migrations only take a few minutes to change your **Base URL** and add a Logo.dev **Publishable Key** for authentication. Once you migrate, you can access the additional features Logo.dev provides such as new image parameters and alternate lookup methods.
 
 <PromptBanner message="Use this pre-built prompt to migrate from Clearbit" prompt="Help me migrate from Clearbit Logo API to Logo.dev. Here's what I need to do:
 
 1. Find and replace all instances of 'https://logo.clearbit.com/' with 'https://img.logo.dev/' in my codebase
-2. Sign up for a Logo.dev account at https://www.logo.dev/signup and get my public key (starts with pk\_)
-3. Add the token parameter to all logo URLs: https://img.logo.dev/stripe.com?token=YOUR_PUBLIC_KEY
+2. Sign up for a Logo.dev account at https://www.logo.dev/signup and get my publishable key (starts with pk\_)
+3. Add the token parameter to all logo URLs: https://img.logo.dev/stripe.com?token=LOGO_DEV_PUBLISHABLE_KEY
 4. Update my attribution link to: <a href='https://logo.dev' title='Logo API'>Logos provided by Logo.dev</a>
 5. Test that logos display correctly before deploying
 
@@ -55,31 +55,31 @@ Don't wait until your logos break when Clearbit is shut down. Migrate now and jo
 
   </Step>
 
-  <Step title="Create an account and add your Public Key">
-    To use Logo.dev, you'll need to [create an account](https://www.logo.dev/signup) and get your **Public Key** from the dashboard.
+  <Step title="Create an account and add your Publishable Key">
+    To use Logo.dev, you'll need to [create an account](https://www.logo.dev/signup) and get your **Publishable Key** from the dashboard.
 
-    ```bash Logo.dev Public Key
-    LOGO_DEV_PUBLIC_KEY=pk_xxxxxxxxxxxx
+    ```bash Logo.dev Publishable Key
+    LOGO_DEV_PUBLISHABLE_KEY=pk_xxxxxxxxxxxx
     ```
 
-    For all integrations, it's as simple as adding the `token` parameter and passing your **Public Key**.
+    For all integrations, it's as simple as adding the `token` parameter and passing your **Publishable Key**.
 
     ```bash Logo.dev Authenticated URL
-    https://img.logo.dev/:domain?token=LOGO_DEV_PUBLIC_KEY
+    https://img.logo.dev/:domain?token=LOGO_DEV_PUBLISHABLE_KEY
     ```
 
 Here's examples of how to add your authentication in different programming languages:
 
     <CodeGroup>
       ```html HTML
-      <img src="https://img.logo.dev/stripe.com?token=LOGO_DEV_PUBLIC_KEY" alt="Stripe logo" />
+      <img src="https://img.logo.dev/stripe.com?token=LOGO_DEV_PUBLISHABLE_KEY" alt="Stripe logo" />
       ```
 
       ```jsx React
       function CompanyLogo({ domain }) {
         return (
           <img
-            src={`https://img.logo.dev/${domain}?token=LOGO_DEV_PUBLIC_KEY`}
+            src={`https://img.logo.dev/${domain}?token=LOGO_DEV_PUBLISHABLE_KEY`}
             alt={`${domain} logo`}
           />
         );
@@ -104,7 +104,7 @@ Here's examples of how to add your authentication in different programming langu
       function CompanyLogo({ domain }: { domain: string }) {
         return (
           <Image
-            src={`https://img.logo.dev/${domain}?token=${process.env.NEXT_PUBLIC_LOGO_DEV_KEY}`}
+            src={`https://img.logo.dev/${domain}?token=${process.env.NEXT_PUBLIC_LOGO_DEV_PUBLISHABLE_KEY}`}
             alt={`${domain} logo`}
             width={128}
             height={128}
@@ -116,7 +116,7 @@ Here's examples of how to add your authentication in different programming langu
       ```vue Vue
       <template>
         <img
-          :src="`https://img.logo.dev/${domain}?token=LOGO_DEV_PUBLIC_KEY`"
+          :src="`https://img.logo.dev/${domain}?token=LOGO_DEV_PUBLISHABLE_KEY`"
           :alt="`${domain} logo`"
         />
       </template>
@@ -132,7 +132,7 @@ Here's examples of how to add your authentication in different programming langu
       import requests
 
       def get_company_logo(domain):
-          url = f"https://img.logo.dev/{domain}?token=LOGO_DEV_PUBLIC_KEY"
+          url = f"https://img.logo.dev/{domain}?token=LOGO_DEV_PUBLISHABLE_KEY"
           response = requests.get(url)
           return response.content
       ```
@@ -141,14 +141,14 @@ Here's examples of how to add your authentication in different programming langu
       require 'net/http'
 
       def get_company_logo(domain)
-        uri = URI("https://img.logo.dev/#{domain}?token=LOGO_DEV_PUBLIC_KEY")
+        uri = URI("https://img.logo.dev/#{domain}?token=LOGO_DEV_PUBLISHABLE_KEY")
         Net::HTTP.get(uri)
       end
       ```
 
       ```php PHP
       function getCompanyLogo($domain) {
-          $url = "https://img.logo.dev/{$domain}?token=LOGO_DEV_PUBLIC_KEY";
+          $url = "https://img.logo.dev/{$domain}?token=LOGO_DEV_PUBLISHABLE_KEY";
           return file_get_contents($url);
       }
       ```
@@ -157,7 +157,7 @@ Here's examples of how to add your authentication in different programming langu
       import com.squareup.picasso.Picasso
 
       fun loadCompanyLogo(domain: String, imageView: ImageView) {
-          val url = "https://img.logo.dev/$domain?token=LOGO_DEV_PUBLIC_KEY"
+          val url = "https://img.logo.dev/$domain?token=LOGO_DEV_PUBLISHABLE_KEY"
           Picasso.get()
               .load(url)
               .placeholder(R.drawable.logo_placeholder)
@@ -165,7 +165,7 @@ Here's examples of how to add your authentication in different programming langu
       }
 
       // Using Coil (modern Android image loading)
-      imageView.load("https://img.logo.dev/$domain?token=LOGO_DEV_PUBLIC_KEY") {
+      imageView.load("https://img.logo.dev/$domain?token=LOGO_DEV_PUBLISHABLE_KEY") {
           placeholder(R.drawable.logo_placeholder)
           error(R.drawable.logo_error)
       }
@@ -178,7 +178,7 @@ Here's examples of how to add your authentication in different programming langu
           let domain: String
 
           var body: some View {
-              AsyncImage(url: URL(string: "https://img.logo.dev/\(domain)?token=LOGO_DEV_PUBLIC_KEY")) { image in
+              AsyncImage(url: URL(string: "https://img.logo.dev/\(domain)?token=LOGO_DEV_PUBLISHABLE_KEY")) { image in
                   image
                       .resizable()
                       .aspectRatio(contentMode: .fit)
@@ -191,7 +191,7 @@ Here's examples of how to add your authentication in different programming langu
 
       // Using URLSession for direct download
       func downloadCompanyLogo(domain: String) async throws -> Data {
-          let url = URL(string: "https://img.logo.dev/\(domain)?token=LOGO_DEV_PUBLIC_KEY")!
+          let url = URL(string: "https://img.logo.dev/\(domain)?token=LOGO_DEV_PUBLISHABLE_KEY")!
           let (data, _) = try await URLSession.shared.data(from: url)
           return data
       }

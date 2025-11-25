@@ -29,29 +29,31 @@ Use Excel's `IMAGE` function to display logos from company domains:
 <CodeGroup>
 
 ```excel Basic formula
-=IMAGE("https://img.logo.dev/microsoft.com?token=YOUR_API_KEY")
+=IMAGE("https://img.logo.dev/microsoft.com?token=LOGO_DEV_PUBLISHABLE_KEY")
 ```
 
 ```excel With cell reference
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&format=png"))
 ```
 
 ```excel Advanced with parameters
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=128&greyscale=true"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=128&greyscale=true"))
 ```
 
 ```excel By brand name
-=IMAGE(CONCAT("https://img.logo.dev/name/", ENCODEURL(A2), "?token=YOUR_API_KEY"))
+=IMAGE(CONCAT("https://img.logo.dev/name/", ENCODEURL(A2), "?token=LOGO_DEV_PUBLISHABLE_KEY"))
 ```
 
 </CodeGroup>
 
-Replace `YOUR_API_KEY` with your publishable key from the dashboard.
+Replace `LOGO_DEV_PUBLISHABLE_KEY` with your publishable key from the dashboard.
 
 The basic formula uses a hardcoded domain. The cell reference formula pulls the domain from cell A2 dynamically.
 
 <Note>
-  When looking up logos by brand name, use `ENCODEURL()` to properly format brand names with spaces or special characters. See the [name lookup documentation](/logo-images/name) for details.
+  When looking up logos by brand name, use `ENCODEURL()` to properly format
+  brand names with spaces or special characters. See the [name lookup
+  documentation](/logo-images/name) for details.
 </Note>
 
 ## Insert logos from web URL
@@ -65,7 +67,8 @@ For Excel versions without the IMAGE function, insert logos directly from the we
   </Step>
   <Step title="Paste Logo.dev URL">
     Paste the Logo.dev URL with your API key: ```
-    https://img.logo.dev/stripe.com?token=YOUR_API_KEY&format=png&size=256 ```
+    https://img.logo.dev/stripe.com?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=256
+    ```
   </Step>
   <Step title="Insert the logo">
     Press Enter to insert the logo into your spreadsheet
@@ -93,7 +96,7 @@ Add your company logo to headers or footers for branded reports:
     Paste your Logo.dev URL:
     {""}
     ```
-    https://img.logo.dev/yourcompany.com?token=YOUR_API_KEY&format=png&size=128
+    https://img.logo.dev/yourcompany.com?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=128
     ```
   </Step>
 </Steps>
@@ -105,19 +108,19 @@ Customize logo size, format, and effects using URL parameters:
 <CodeGroup>
 
 ```excel PNG logo with size
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=256"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=256"))
 ```
 
 ```excel Greyscale logo
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&greyscale=true"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&greyscale=true"))
 ```
 
 ```excel Dark mode optimized
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&theme=dark"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&theme=dark"))
 ```
 
 ```excel Combined parameters
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=128&greyscale=true"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=128&greyscale=true"))
 ```
 
 </CodeGroup>
@@ -146,11 +149,10 @@ Keep logos aligned with your data when you sort, filter, and resize:
     Select **Size & Properties** (or **Format Picture**)
   </Step>
   <Step title="Choose positioning behavior">
-    Under the **Properties** tab, choose your preferred option:
-    
-    - **Move and size with cells** - Logo resizes when cell dimensions change
-    - **Move but don't size with cells** - Logo maintains size but moves with the cell
-    - **Don't move or size with cells** - Logo stays fixed in position
+    Under the **Properties** tab, choose your preferred option: - **Move and
+    size with cells** - Logo resizes when cell dimensions change - **Move but
+    don't size with cells** - Logo maintains size but moves with the cell -
+    **Don't move or size with cells** - Logo stays fixed in position
   </Step>
 </Steps>
 
@@ -165,7 +167,7 @@ Sub AddLogos()
     Dim cell As Range
     Dim apiKey As String
 
-    apiKey = "YOUR_API_KEY"
+    apiKey = "LOGO_DEV_PUBLISHABLE_KEY"
 
     For Each cell In Selection
         If cell.Value <> "" Then

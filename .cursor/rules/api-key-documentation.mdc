@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Key Types and Naming
 
-- **Publishable keys**: Public keys that begin with "live\_", only for img.logo.dev endpoint
+- **Publishable keys**: Keys that begin with "pk\_", only for img.logo.dev endpoint
 - **Secret keys**: Start with "sk\_", used for all other API endpoints
 - Always clarify scope and security implications inline
 

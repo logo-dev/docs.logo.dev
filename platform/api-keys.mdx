@@ -1,9 +1,18 @@
 ---
 title: "API keys"
 sidebarTitle: "API Keys"
-description: "Complete guide to Logo.dev API keys. Learn the difference between publishable and secret keys, security best practices, and how to implement authentication correctly."
+description: "Complete guide to Logo.dev API keys. Learn the difference between publishable and secret keys, domain restrictions, and how to implement authentication correctly."
 keywords:
-  ["api key", "authentication", "publishable key", "secret key", "token"]
+  [
+    "api key",
+    "authentication",
+    "publishable key",
+    "secret key",
+    "token",
+    "domain restriction",
+    "referrer",
+    "whitelist",
+  ]
 ---
 
 <Note>
@@ -22,7 +31,10 @@ Use anywhere — browsers, mobile apps, client-side code. Only works with `img.l
 **These keys are automatically protected.** We handle security for you.
 
 ```html
-<img src="https://img.logo.dev/nike.com?token=pk_YOUR_KEY" alt="Nike logo" />
+<img
+  src="https://img.logo.dev/nike.com?token=LOGO_DEV_PUBLISHABLE_KEY"
+  alt="Nike logo"
+/>
 ```
 
 ### Secret key (`sk_`)
@@ -33,7 +45,7 @@ Server-side only. Required for search, describe, and other API endpoints. Never 
 // Server-side only
 const response = await fetch("https://api.logo.dev/v1/search?query=nike", {
   headers: {
-    Authorization: `Bearer sk_YOUR_KEY`,
+    Authorization: `Bearer LOGO_DEV_SECRET_KEY`,
   },
 });
 ```
@@ -44,7 +56,7 @@ Your publishable keys are safe to use in public code because we automatically se
 
 **We block suspicious requests before they're processed and never bill you for blocked traffic.** Even if someone copies your publishable key, they can't rack up charges on your account.
 
-### How it works
+### Automatic protections
 
 When a request reaches our servers, we validate it against multiple signals:
 
@@ -52,9 +64,110 @@ When a request reaches our servers, we validate it against multiple signals:
 - **Anomaly detection** — We monitor for usage patterns that don't match your normal traffic
 - **Origin blocking** — Suspicious referrers and excessive volumes are blocked before they impact your quota
 
-## Coming soon: Firewall controls
+## Domain restrictions
 
-We're building a new feature that will let you allow or deny specific domains, apps, or referrers for your publishable key. This will add another layer of control on top of our automatic protections.
+For additional control, you can restrict your publishable key to specific domains. When enabled, only requests with a matching `Referer` header will be allowed.
+
+### How to enable
+
+1. Go to [API Keys](https://www.logo.dev/dashboard/api-keys) in your dashboard
+2. Toggle **Allowed Domains Only**
+3. Add your domains, one per line
+4. Click **Save Changes**
+
+### Domain format
+
+- `example.com` — matches only `example.com`
+- `*.example.com` — matches all subdomains (e.g., `app.example.com`, `www.example.com`)
+
+<Warning>
+  **Set up referrers before enabling.** Once domain restrictions are enabled,
+  requests without a `Referer` header (direct traffic) will be blocked. Make
+  sure your application sends referrer data before turning this on.
+</Warning>
+
+### Ensuring your app sends referrer data
+
+Browsers send the `Referer` header automatically for most requests, but certain configurations can prevent this. Here's how to ensure referrers are sent correctly.
+
+#### Check your Referrer-Policy
+
+The `Referrer-Policy` header controls what referrer information is sent with requests. These policies work with domain restrictions:
+
+| Policy                            | Works? | Notes                                            |
+| --------------------------------- | ------ | ------------------------------------------------ |
+| `strict-origin-when-cross-origin` | ✅     | Modern browser default. Sends origin cross-site. |
+| `origin`                          | ✅     | Always sends origin (recommended for APIs).      |
+| `origin-when-cross-origin`        | ✅     | Sends origin for cross-origin requests.          |
+| `unsafe-url`                      | ✅     | Sends full URL (not recommended).                |
+| `no-referrer`                     | ❌     | Never sends referrer. Will break restrictions.   |
+| `same-origin`                     | ❌     | Only sends for same-origin. Will break.          |
+
+#### HTML meta tag
+
+Add this to your `<head>` to ensure referrers are sent:
+
+```html
+<meta name="referrer" content="origin" />
+```
+
+#### Next.js configuration
+
+Add referrer headers in `next.config.js`:
+
+```javascript
+module.exports = {
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+        ],
+      },
+    ];
+  },
+};
+```
+
+#### Per-image referrer policy
+
+You can also set the policy on individual images:
+
+```html
+<img
+  src="https://img.logo.dev/stripe.com?token=LOGO_DEV_PUBLISHABLE_KEY"
+  referrerpolicy="origin"
+  alt="Stripe logo"
+/>
+```
+
+### Testing your setup
+
+Before enabling domain restrictions:
+
+1. Open your browser's developer tools (Network tab)
+2. Load a page with Logo.dev images
+3. Click on an `img.logo.dev` request
+4. Check that the `Referer` header is present and shows your domain
+
+If no `Referer` header appears, check your `Referrer-Policy` settings.
+
+### What gets blocked
+
+When domain restrictions are enabled:
+
+- ✅ Requests from allowed domains
+- ❌ Requests from unlisted domains
+- ❌ Requests with no `Referer` header (direct access, some privacy tools)
+- ❌ Requests from `localhost` (unless explicitly added)
+
+<Tip>
+  Add `localhost` and `*.localhost` to your allowed domains during development.
+</Tip>
 
 ## Key rotation
 

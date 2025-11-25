@@ -7,7 +7,7 @@ description: "Search for company domains by brand name. Get autocomplete results
 Need to go from a brand name to a domain? Brand Search API finds company domains with autocomplete support and flexible matching strategies.
 
 ```bash
-curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=QUERY"
+curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" "https://api.logo.dev/search?q=:query"
 ```
 
 All you need to provide is a query and your secret key, which can be found on the [dashboard](https://www.logo.dev/dashboard) and is formatted like `sk_...`.
@@ -19,7 +19,7 @@ All you need to provide is a query and your secret key, which can be found on th
 Using `curl` to test this from the command line, but obviously call the API anywhere that supports headers.
 
 ```bash
-curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" "https://api.logo.dev/search?q=sweetgreen"
+curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" "https://api.logo.dev/search?q=sweetgreen"
 ```
 
 ### Results
@@ -67,22 +67,23 @@ You can switch to exact matching with the optional `strategy` parameter:
 
 ```bash
 # Default typeahead (prefix-forward)
-curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" \
+curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" \
   "https://api.logo.dev/search?q=fa"
 
 # Prefer exact matches
-curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" \
+curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" \
   "https://api.logo.dev/search?q=fa&strategy=match"
 ```
 
 <Tip>
-Use `strategy=match` when you have near-complete names and need exactness; keep `typeahead` for live search UX.
+  Use `strategy=match` when you have near-complete names and need exactness;
+  keep `typeahead` for live search UX.
 </Tip>
 
 ---
 
 ### Keep your secret a secret, keep it safe
 
-Unlike the public key, it’s your responsibility to keep your secret key safe and away from public eyes. Even during testing, please never publish to Github or allow it to be seen from front-end code.
+Unlike the publishable key, it's your responsibility to keep your secret key safe and away from public eyes. Even during testing, please never publish to Github or allow it to be seen from front-end code.
 
 If you’re secret key is ever leaked, please get in touch immediately so we can regenerate a new one for you.

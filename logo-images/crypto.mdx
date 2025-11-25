@@ -24,7 +24,7 @@ Enter any cryptocurrency symbol below to instantly fetch its logo. Works with Bi
 
 Access any cryptocurrency logo with your publishable key from the [Logo.dev dashboard](https://www.logo.dev/dashboard).
 
-<Frame caption="https://img.logo.dev/crypto/eth?token=:publishable_key">
+<Frame caption="https://img.logo.dev/crypto/eth?token=LOGO_DEV_PUBLISHABLE_KEY">
   <img
     alt="Ethereum Logo"
     width="100"
@@ -37,11 +37,14 @@ Here's how to display Ethereum's logo on your website:
 
 <CodeGroup>
 ```html Example
-<img src="https://img.logo.dev/crypto/eth?token=:publishable_key" alt="Ethereum cryptocurrency logo" />
+<img src="https://img.logo.dev/crypto/eth?token=LOGO_DEV_PUBLISHABLE_KEY" alt="Ethereum cryptocurrency logo" />
 ```
 
 ```html Format
-<img src="https://img.logo.dev/crypto/:symbol?token=:publishable_key" alt="Cryptocurrency logo" />
+<img
+  src="https://img.logo.dev/crypto/:symbol?token=LOGO_DEV_PUBLISHABLE_KEY"
+  alt="Cryptocurrency logo"
+/>
 ```
 
 </CodeGroup>
@@ -50,11 +53,11 @@ Use crypto logos anywhere you can use an image URL—trading platforms, portfoli
 
 <CodeGroup>
 ```html Example
-https://img.logo.dev/crypto/btc?token=:publishable_key
+https://img.logo.dev/crypto/btc?token=LOGO_DEV_PUBLISHABLE_KEY
 ```
 
 ```html Format
-https://img.logo.dev/crypto/:symbol?token=:publishable_key
+https://img.logo.dev/crypto/:symbol?token=LOGO_DEV_PUBLISHABLE_KEY
 ```
 
 </CodeGroup>

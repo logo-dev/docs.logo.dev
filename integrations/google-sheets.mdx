@@ -27,33 +27,35 @@ Use Google Sheets' `IMAGE` function to display logos from company domains:
 <CodeGroup>
 
 ```javascript Basic formula
-=IMAGE("https://img.logo.dev/apple.com?token=YOUR_API_KEY")
+=IMAGE("https://img.logo.dev/apple.com?token=LOGO_DEV_PUBLISHABLE_KEY")
 ```
 
 ```javascript With cell reference
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&format=png"))
 ```
 
 ```javascript With custom sizing
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&size=256"), 4, 64, 64)
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&size=256"), 4, 64, 64)
 ```
 
 ```javascript ARRAYFORMULA for bulk
-=ARRAYFORMULA(IF(A2:A="",,IMAGE("https://img.logo.dev/"&A2:A&"?token=YOUR_API_KEY&format=png&size=128")))
+=ARRAYFORMULA(IF(A2:A="",,IMAGE("https://img.logo.dev/"&A2:A&"?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=128")))
 ```
 
 ```javascript By brand name
-=IMAGE(CONCAT("https://img.logo.dev/name/", ENCODEURL(A2), "?token=YOUR_API_KEY"))
+=IMAGE(CONCAT("https://img.logo.dev/name/", ENCODEURL(A2), "?token=LOGO_DEV_PUBLISHABLE_KEY"))
 ```
 
 </CodeGroup>
 
-Replace `YOUR_API_KEY` with your publishable key from the dashboard.
+Replace `LOGO_DEV_PUBLISHABLE_KEY` with your publishable key from the dashboard.
 
 The basic formula uses a hardcoded domain. The cell reference formula pulls domains from cells dynamically. Use ARRAYFORMULA to apply logos to entire columns at once.
 
 <Note>
-  When looking up logos by brand name, use `ENCODEURL()` to properly format brand names with spaces or special characters. See the [name lookup documentation](/logo-images/name) for details.
+  When looking up logos by brand name, use `ENCODEURL()` to properly format
+  brand names with spaces or special characters. See the [name lookup
+  documentation](/logo-images/name) for details.
 </Note>
 
 ## Customize logo appearance
@@ -63,19 +65,19 @@ Customize logo appearance with URL parameters:
 <CodeGroup>
 
 ```javascript PNG with size
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=256"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=256"))
 ```
 
 ```javascript Greyscale
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&greyscale=true"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&greyscale=true"))
 ```
 
 ```javascript Dark mode optimized
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&theme=dark"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&theme=dark"))
 ```
 
 ```javascript Combined parameters
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&format=png&size=256&greyscale=true"))
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=256&greyscale=true"))
 ```
 
 </CodeGroup>
@@ -87,23 +89,23 @@ Google Sheets' IMAGE function supports sizing modes:
 <CodeGroup>
 
 ```javascript Mode 1: Resize to fit cell
-=IMAGE("https://img.logo.dev/google.com?token=YOUR_API_KEY", 1)
+=IMAGE("https://img.logo.dev/google.com?token=LOGO_DEV_PUBLISHABLE_KEY", 1)
 ```
 
 ```javascript Mode 2: Stretch to fit cell
-=IMAGE("https://img.logo.dev/google.com?token=YOUR_API_KEY", 2)
+=IMAGE("https://img.logo.dev/google.com?token=LOGO_DEV_PUBLISHABLE_KEY", 2)
 ```
 
 ```javascript Mode 3: Original size
-=IMAGE("https://img.logo.dev/google.com?token=YOUR_API_KEY", 3)
+=IMAGE("https://img.logo.dev/google.com?token=LOGO_DEV_PUBLISHABLE_KEY", 3)
 ```
 
 ```javascript Mode 4: Custom size (100x100)
-=IMAGE("https://img.logo.dev/google.com?token=YOUR_API_KEY", 4, 100, 100)
+=IMAGE("https://img.logo.dev/google.com?token=LOGO_DEV_PUBLISHABLE_KEY", 4, 100, 100)
 ```
 
 ```javascript High quality custom size
-=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=YOUR_API_KEY&size=256"), 4, 64, 64)
+=IMAGE(CONCAT("https://img.logo.dev/", A2, "?token=LOGO_DEV_PUBLISHABLE_KEY&size=256"), 4, 64, 64)
 ```
 
 </CodeGroup>
@@ -113,7 +115,7 @@ Google Sheets' IMAGE function supports sizing modes:
 Apply the logo formula to entire columns using ARRAYFORMULA:
 
 ```
-=ARRAYFORMULA(IF(A2:A="",,IMAGE("https://img.logo.dev/"&A2:A&"?token=YOUR_API_KEY&format=png&size=128")))
+=ARRAYFORMULA(IF(A2:A="",,IMAGE("https://img.logo.dev/"&A2:A&"?token=LOGO_DEV_PUBLISHABLE_KEY&format=png&size=128")))
 ```
 
 How this formula works:

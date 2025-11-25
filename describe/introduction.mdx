@@ -1,7 +1,7 @@
 ---
 title: "Brand API - Get Company Logos & Brand Data"
 sidebarTitle: "Overview"
-description: "Brand API returns company logos and data from domains. Get company logos, colors, social links via Logo API. Public key auth, JSON response. Try free."
+description: "Brand API returns company logos and data from domains. Get company logos, colors, social links via Logo API. Secret key auth, JSON response. Try free."
 ---
 
 Need to go from domain to brand name? Our Describe API allows you to access all the brand data we have for a given domain.
@@ -14,7 +14,7 @@ Reach out to us at [support@logo.dev](mailto:support@logo.dev?subject=Describe%2
 </Note>
 
 ```bash
-curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" "http://api.logo.dev/describe/domain"
+curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" "http://api.logo.dev/describe/:domain"
 ```
 
 All you need to provide is a query and your secret key, which can be found on the [dashboard](https://www.logo.dev/dashboard) and is formatted like `sk_...`.
@@ -26,7 +26,7 @@ All you need to provide is a query and your secret key, which can be found on th
 Using `curl` to test this from the command line, but obviously call the API anywhere that supports headers.
 
 ```bash
-curl --header "Authorization: Bearer YOUR_SECRET_KEY_HERE" "http://api.logo.dev/describe/sweetgreen.com"
+curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" "http://api.logo.dev/describe/sweetgreen.com"
 ```
 
 ### Results
@@ -44,7 +44,7 @@ Expect a single object in the following format. The socials object will return a
     "instagram": "https://www.instagram.com/sweetgreen/",
     "twitter": "https://x.com/sweetgreen"
   },
-  "logo": "https://img.logo.dev/sweetgreen.com?token=YOUR_TOKEN_HERE",
+  "logo": "https://img.logo.dev/sweetgreen.com?token=LOGO_DEV_PUBLISHABLE_KEY",
   "blurhash": "UJPanPxr?Vj[oxazj@od_FWDDoodxrodagWD",
   "colors": [
     { "r": 228, "g": 255, "b": 85, "hex": "#e4ff55" },
@@ -86,6 +86,6 @@ For implementation details and code examples, see the [official blurhash documen
 
 ### Keep your secret a secret, keep it safe
 
-Unlike the public key, it’s your responsibility to keep your secret key safe and away from public eyes. Even during testing, please never publish to Github or allow it to be seen from front-end code.
+Unlike the publishable key, it's your responsibility to keep your secret key safe and away from public eyes. Even during testing, please never publish to Github or allow it to be seen from front-end code.
 
 If you’re secret key is ever leaked, please get in touch immediately so we can regenerate a new one for you.

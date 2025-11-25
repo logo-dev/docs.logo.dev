@@ -21,7 +21,7 @@ Every stack is different. Your storage, CDN, and infrastructure will vary. Here'
 ```javascript
 // 1. Fetch logo from Logo.dev
 const response = await fetch(
-  `https://img.logo.dev/${domain}?token=${YOUR_PUBLISHABLE_KEY}&format=webp`
+  `https://img.logo.dev/${domain}?token=${LOGO_DEV_PUBLISHABLE_KEY}&format=webp`
 );
 
 const buffer = await response.arrayBuffer();
@@ -41,7 +41,7 @@ const domains = ["stripe.com", "shopify.com", "square.com"];
 await Promise.all(
   domains.map(async (domain) => {
     const response = await fetch(
-      `https://img.logo.dev/${domain}?token=${YOUR_PUBLISHABLE_KEY}`
+      `https://img.logo.dev/${domain}?token=${LOGO_DEV_PUBLISHABLE_KEY}`
     );
     const buffer = await response.arrayBuffer();
     await yourStorageSystem.upload(`logos/${domain}.webp`, buffer);
@@ -62,7 +62,7 @@ const s3 = new AWS.S3();
 
 async function storeInS3(domain) {
   const response = await fetch(
-    `https://img.logo.dev/${domain}?token=${YOUR_PUBLISHABLE_KEY}&format=webp`
+    `https://img.logo.dev/${domain}?token=${LOGO_DEV_PUBLISHABLE_KEY}&format=webp`
   );
   const buffer = await response.arrayBuffer();
 
@@ -88,7 +88,7 @@ const bucket = storage.bucket("your-bucket");
 
 async function storeInGCS(domain) {
   const response = await fetch(
-    `https://img.logo.dev/${domain}?token=${YOUR_PUBLISHABLE_KEY}&format=webp`
+    `https://img.logo.dev/${domain}?token=${LOGO_DEV_PUBLISHABLE_KEY}&format=webp`
   );
   const buffer = await response.arrayBuffer();
 
@@ -108,7 +108,7 @@ const container = blobService.getContainerClient("logos");
 
 async function storeInAzure(domain) {
   const response = await fetch(
-    `https://img.logo.dev/${domain}?token=${YOUR_PUBLISHABLE_KEY}&format=webp`
+    `https://img.logo.dev/${domain}?token=${LOGO_DEV_PUBLISHABLE_KEY}&format=webp`
   );
   const buffer = await response.arrayBuffer();
 
