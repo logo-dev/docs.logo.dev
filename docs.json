@@ -9,11 +9,11 @@
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#212121",
-    "light": "#fff",
-    "dark": "#000"
+    "light": "#FFFFFF",
+    "dark": "#333333"
   },
   "banner": {
-    "content": "Clearbit Logo shutdown is imminent. [Migrate now →](/migrations/clearbit)",
+    "content": "Clearbit Logo shutdown is imminent. [Migrate now →](https://docs.logo.dev/migrations/clearbit)",
     "dismissible": true
   },
   "topbarCtaButton": {
@@ -26,8 +26,6 @@
       "url": "mailto:support@logo.dev"
     }
   ],
-  "tabs": [],
-  "anchors": [],
   "navigation": {
     "tabs": [
       {

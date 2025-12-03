@@ -1,5 +1,3 @@
-import { useState, useCallback, useMemo } from "react";
-
 export const LogoDemo = ({ type = "domain" }) => {
   const DEFAULT_VALUES = {
     domain: "logo.dev",

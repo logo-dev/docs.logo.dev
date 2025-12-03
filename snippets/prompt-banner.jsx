@@ -1,5 +1,3 @@
-import { useState, useCallback, useEffect, useRef } from "react";
-
 export const PromptBanner = ({
   prompt,
   message = "Use this pre-built prompt to get started faster.",

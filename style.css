@@ -1,0 +1,8 @@
+/* Make banner link text white in light mode for AA contrast compliance */
+html:not(.dark) #banner a {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+#banner a {
+  text-decoration: none;
+}
