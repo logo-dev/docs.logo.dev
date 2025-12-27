@@ -13,7 +13,7 @@
     "dark": "#333333"
   },
   "banner": {
-    "content": "Clearbit Logo shutdown is imminent. [Migrate now →](https://docs.logo.dev/migrations/clearbit)",
+    "content": "Clearbit Logo has been shutdown. [Migrate now →](https://docs.logo.dev/migrations/clearbit)",
     "dismissible": true
   },
   "topbarCtaButton": {
