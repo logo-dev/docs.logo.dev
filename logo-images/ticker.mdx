@@ -34,9 +34,11 @@ Using the stock ticker logo API is very simple, all you need is your publishable
 Here's an example of how to implement a stock ticker logo look up for Etsy on your website:
 
 <CodeGroup>
+
 ```html Example
 <img src="https://img.logo.dev/ticker/etsy?token=LOGO_DEV_PUBLISHABLE_KEY" alt="Etsy stock ticker logo" />
 ```
+
 
 ```html Format
 <img
@@ -50,9 +52,11 @@ Here's an example of how to implement a stock ticker logo look up for Etsy on yo
 Anywhere you can use an image URL, such as Excel, Slack, or email, you can use this endpoint:
 
 <CodeGroup>
+
 ```html Example
 https://img.logo.dev/ticker/etsy?token=LOGO_DEV_PUBLISHABLE_KEY
 ```
+
 
 ```html Format
 https://img.logo.dev/ticker/:symbol?token=LOGO_DEV_PUBLISHABLE_KEY
@@ -71,9 +75,11 @@ We support ticker symbols from all major global exchanges. By default, if you do
 To specify a particular exchange, append the exchange shortcode after the ticker symbol with a dot:
 
 <CodeGroup>
+
 ```html American markets (default)
 <img src="https://img.logo.dev/ticker/AAPL?token=LOGO_DEV_PUBLISHABLE_KEY" alt="Apple stock ticker logo" />
 ```
+
 
 ```html London Stock Exchange
 <img
@@ -81,6 +87,7 @@ To specify a particular exchange, append the exchange shortcode after the ticker
   alt="Apple logo from London Stock Exchange"
 />
 ```
+
 
 ```html Tokyo Stock Exchange
 <img
@@ -93,96 +100,65 @@ To specify a particular exchange, append the exchange shortcode after the ticker
 
 ### Exchange shortcodes
 
-| Shortcode | Full Name                                       |
-| --------- | ----------------------------------------------- |
-| AMEX      | NYSE American (formerly AMEX)                   |
-| AMS       | Euronext Amsterdam                              |
-| AQS       | Aquis Exchange                                  |
-| ASX       | Australian Securities Exchange                  |
-| ATH       | Athens Stock Exchange                           |
-| BER       | Berlin Stock Exchange                           |
-| BME       | Bolsas y Mercados Españoles (Spanish Exchanges) |
-| BRU       | Euronext Brussels                               |
-| BSE       | Bombay Stock Exchange                           |
-| BUD       | Budapest Stock Exchange                         |
-| BUE       | Buenos Aires Stock Exchange                     |
-| BVC       | Colombian Stock Exchange                        |
-| CBOE      | Chicago Board Options Exchange                  |
-| CNQ       | Canadian Securities Exchange (CSE)              |
-| CPH       | Nasdaq Copenhagen                               |
-| DFM       | Dubai Financial Market                          |
-| DOH       | Qatar Stock Exchange                            |
-| DUB       | Euronext Dublin                                 |
-| DUS       | Düsseldorf Stock Exchange                       |
-| DXE       | Deutsche Börse Xetra                            |
-| EGX       | Egyptian Exchange                               |
-| HAM       | Hamburg Stock Exchange                          |
-| HEL       | Nasdaq Helsinki                                 |
-| HK        | Hong Kong Stock Exchange                        |
-| HOSE      | Ho Chi Minh Stock Exchange                      |
-| ICE       | Iceland Stock Exchange                          |
-| IOB       | International Order Book (London)               |
-| IST       | Borsa Istanbul                                  |
-| JKT       | Indonesia Stock Exchange (Jakarta)              |
-| JNB       | Johannesburg Stock Exchange                     |
-| JPX       | Japan Exchange Group                            |
-| KLS       | Kuala Lumpur Stock Exchange (Bursa Malaysia)    |
-| KOE       | Korea Exchange (Seoul)                          |
-| KSC       | Korea Stock Exchange                            |
-| KUW       | Kuwait Stock Exchange                           |
-| LIS       | Euronext Lisbon                                 |
-| LSE       | London Stock Exchange                           |
-| MCX       | Moscow Exchange                                 |
-| MEX       | Mexican Stock Exchange                          |
-| MIL       | Borsa Italiana (Milan)                          |
-| MUN       | Munich Stock Exchange                           |
-| NASDAQ    | NASDAQ Stock Market                             |
-| NEO       | NEO Exchange (Canada)                           |
-| NSE       | National Stock Exchange of India                |
-| NYSE      | New York Stock Exchange                         |
-| NZE       | New Zealand Exchange                            |
-| OSL       | Oslo Stock Exchange                             |
-| OTC       | Over-the-Counter Markets                        |
-| PAR       | Euronext Paris                                  |
-| PRA       | Prague Stock Exchange                           |
-| RIS       | Borsa Italiana (Rome)                           |
-| SAO       | B3 (São Paulo Stock Exchange)                   |
-| SAU       | Tadawul (Saudi Stock Exchange)                  |
-| SES       | Singapore Exchange (SGX)                        |
-| SET       | Stock Exchange of Thailand                      |
-| SGO       | Santiago Stock Exchange                         |
-| SS        | Shanghai Stock Exchange                         |
-| SZ        | Shenzhen Stock Exchange                         |
-| SIX       | Swiss Exchange (SIX)                            |
-| STO       | Nasdaq Stockholm                                |
-| STU       | Stuttgart Stock Exchange                        |
-| TAI       | Taiwan Stock Exchange                           |
-| TAL       | Tallinn Stock Exchange                          |
-| TLV       | Tel Aviv Stock Exchange                         |
-| TSX       | Toronto Stock Exchange                          |
-| TSXV      | TSX Venture Exchange                            |
-| TWO       | Taipei Exchange (OTC)                           |
-| VIE       | Vienna Stock Exchange                           |
-| WSE       | Warsaw Stock Exchange                           |
-| XETRA     | XETRA (Frankfurt)                               |
+| Shortcode | Exchange                       |
+| --------- | ------------------------------ |
+| None      | US Exchanges                   |
+| .AS       | Euronext Amsterdam             |
+| .AT       | Athens Exchange                |
+| .AX       | Australian Securities Exchange |
+| .BA       | Buenos Aires Exchange          |
+| .BE       | Berlin Exchange                |
+| .BK       | Thailand Exchange              |
+| .BR       | Euronext Brussels              |
+| .CA       | Canadian Securities Exchange   |
+| .CO       | Copenhagen Exchange            |
+| .DU       | Dusseldorf Exchange            |
+| .HA       | Hanover Exchange               |
+| .HE       | Helsinki Exchange              |
+| .HK       | Hong Kong Stock Exchange       |
+| .HM       | Hamburg Exchange               |
+| .IC       | Iceland Exchange               |
+| .IL       | London International           |
+| .IN       | Indian Stock Exchange          |
+| .IR       | Irish Exchange                 |
+| .JK       | Jakarta Exchange               |
+| .KQ       | Korean Exchange                |
+| .L        | London Stock Exchange          |
+| .LS       | Euronext Lisbon                |
+| .MC       | Madrid Exchange                |
+| .MI       | Milan Exchange                 |
+| .MU       | Munich Exchange                |
+| .MX       | Mexican Exchange               |
+| .NE       | NEO Exchange                   |
+| .OL       | Oslo Stock Exchange            |
+| .PA       | Euronext Paris                 |
+| .PR       | Prague Stock Exchange          |
+| .SA       | São Paulo Exchange             |
+| .SI       | Singapore Exchange             |
+| .SN       | Chilean Stock Exchange         |
+| .ST       | Stockholm Exchange             |
+| .SW       | SIX Swiss Exchange             |
+| .T        | Tokyo Stock Exchange           |
+| .TA       | Tel Aviv Stock Exchange        |
+| .TO       | Toronto Stock Exchange         |
+| .TW       | Taiwan Stock Exchange          |
+| .TWO      | Taiwan OTC Exchange            |
+| .V        | TSX Venture Exchange           |
+| .VI       | Vienna Exchange                |
 
 ### FAQ
 
 <AccordionGroup>
   <Accordion title="Can I change the size or image format?">
-    Yes, all the parameters of the [logo endpoint](/logo-images/get) are also
-    available for the ticker endpoint.
+    Yes, all the parameters of the [logo endpoint](/logo-images/get) are also available for the ticker endpoint.
   </Accordion>
   <Accordion title="Does this support ETFs and other security types?">
     Yes, we've added support for every ticker symbol to return the proper logo.
   </Accordion>
   <Accordion title="Do you support crypto?">
-    Yes, we support cryptocurrency logos through our dedicated crypto endpoint.
-    [View the crypto documentation](./crypto).
+    Yes, we support cryptocurrency logos through our dedicated crypto endpoint. [View the crypto documentation](./crypto).
   </Accordion>
   <Accordion title="What if I find a missing or wrong ticker logo?">
-    We're obsessed with quality. You can report issues in two ways: - Submit an
-    update at [logo.dev/update](https://www.logo.dev/update) - Report directly
-    from the dashboard when you're logged in
+    We're obsessed with quality. You can report issues in two ways: - Submit an update at [logo.dev/update](https://www.logo.dev/update) - Report directly from the dashboard when you're logged in
   </Accordion>
 </AccordionGroup>
