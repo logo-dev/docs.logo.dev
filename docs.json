@@ -43,6 +43,15 @@
                   "integrations/google-sheets",
                   "integrations/excel"
                 ]
+              },
+              {
+                "group": "Brand Visibility",
+                "pages": [
+                  "brand-visibility/introduction",
+                  "brand-visibility/logo-dev-database",
+                  "brand-visibility/google-favicon",
+                  "brand-visibility/email-logos"
+                ]
               }
             ]
           },

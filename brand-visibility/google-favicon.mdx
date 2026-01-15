@@ -1,0 +1,141 @@
+---
+title: "Add Your Favicon to Google Search Results"
+sidebarTitle: "Google Favicon"
+description: "Display your company favicon in Google Search results. Step-by-step guide covering image requirements, HTML implementation, and troubleshooting."
+keywords:
+  [
+    "google favicon",
+    "favicon search results",
+    "add favicon to google",
+    "website favicon google",
+    "favicon not showing google",
+  ]
+---
+
+Google displays website favicons next to search results to help users identify brands. This guide covers how to set up your favicon so it appears in Google Search.
+
+## Requirements
+
+Before Google will display your favicon, ensure you meet these requirements:
+
+| Requirement | Details |
+|-------------|---------|
+| Dimensions | Square, minimum 8x8 pixels (48x48+ recommended) |
+| Format | ICO, PNG, SVG, or any valid favicon format |
+| Aspect ratio | Must be 1:1 (square) |
+| Accessibility | Googlebot must be able to crawl your favicon |
+| Content | No inappropriate imagery (hate symbols, adult content) |
+
+<Note>
+  Google recommends favicons of 48x48 pixels or larger for best display quality across devices.
+</Note>
+
+## Add the favicon to your website
+
+<Steps>
+  <Step title="Create your favicon file">
+    Design a square image that represents your brand. Save it in a web-compatible format (PNG or ICO are most common).
+
+    ```
+    favicon.ico (32x32 or 48x48 pixels)
+    ```
+
+    For high-DPI displays, consider creating multiple sizes or using SVG format.
+  </Step>
+
+  <Step title="Add the link tag to your homepage">
+    Add a `<link>` tag in the `<head>` section of your homepage HTML:
+
+    <CodeGroup>
+    ```html Standard favicon
+    <link rel="icon" href="/favicon.ico">
+    ```
+
+    ```html PNG favicon
+    <link rel="icon" type="image/png" href="/favicon.png">
+    ```
+
+    ```html SVG favicon
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    ```
+
+    ```html Multiple sizes
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    ```
+    </CodeGroup>
+
+    Google looks at your homepage to find the favicon for your entire site.
+  </Step>
+
+  <Step title="Verify crawlability">
+    Ensure your `robots.txt` file doesn't block access to your favicon:
+
+    ```txt robots.txt
+    # Allow favicon access
+    User-agent: Googlebot
+    Allow: /favicon.ico
+
+    User-agent: Googlebot-Image
+    Allow: /favicon.ico
+    ```
+
+    Both `Googlebot` and `Googlebot-Image` must be able to access your favicon file.
+  </Step>
+
+  <Step title="Request indexing (optional)">
+    Speed up the process by requesting Google re-crawl your homepage:
+
+    1. Go to [Google Search Console](https://search.google.com/search-console)
+    2. Enter your homepage URL in the URL Inspection tool
+    3. Click "Request Indexing"
+
+    Without this step, it can take several days to weeks for Google to discover your favicon.
+  </Step>
+</Steps>
+
+## Important limitations
+
+**One favicon per hostname**: Google supports one favicon per site hostname. Subdomains (like `blog.example.com`) can have different favicons than your main domain, but subdirectories (`example.com/blog/`) share the same favicon.
+
+**No guarantee of display**: Even with correct implementation, Google doesn't guarantee your favicon will appear in search results.
+
+**Processing time**: Changes can take days to weeks to appear, depending on how often Google crawls your site.
+
+## FAQs
+
+<AccordionGroup>
+<Accordion title="My favicon isn't showing in Google Search">
+  Common causes:
+  - **Blocked by robots.txt**: Check that Googlebot can access your favicon URL
+  - **Recently added**: Allow several days to weeks for Google to process
+  - **Wrong location**: The link tag must be on your homepage, not just inner pages
+  - **Content policy**: Google may reject inappropriate imagery
+</Accordion>
+
+<Accordion title="Can I use different favicons for different pages?">
+  No. Google uses one favicon per hostname. All pages on `example.com` share the same favicon. Only different subdomains (like `app.example.com`) can have separate favicons.
+</Accordion>
+
+<Accordion title="What's the best favicon format?">
+  ICO format has the widest compatibility. PNG works well for modern browsers. SVG scales perfectly but has slightly less browser support. For best coverage, provide ICO as a fallback with PNG or SVG as the primary.
+</Accordion>
+
+<Accordion title="How long does it take for changes to appear?">
+  Typically several days to a few weeks. You can speed this up by requesting indexing through Google Search Console, but there's no way to force immediate updates.
+</Accordion>
+
+<Accordion title="Why is Google showing my old favicon?">
+  Google caches favicons and updates them based on crawl frequency. Request re-indexing through Search Console and wait for the cache to refresh. Avoid changing your favicon frequently.
+</Accordion>
+
+<Accordion title="Does favicon size affect SEO?">
+  Favicon size doesn't directly impact SEO rankings, but a clear, recognizable favicon can improve click-through rates by helping users identify your brand in search results.
+</Accordion>
+</AccordionGroup>
+
+## Related resources
+
+- [Google's official favicon documentation](https://developers.google.com/search/docs/appearance/favicon-in-search)
+- [Google Search Console](https://search.google.com/search-console)

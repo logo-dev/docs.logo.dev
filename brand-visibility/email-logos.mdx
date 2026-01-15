@@ -1,0 +1,301 @@
+---
+title: "Display Your Logo in Email Inboxes"
+sidebarTitle: "Email Logos"
+description: "Show your company logo in Gmail, Apple Mail, Yahoo, and Outlook. Complete guide to BIMI, Apple Branded Mail, and email avatar setup for business email branding."
+keywords:
+  [
+    "add logo to email",
+    "email avatar",
+    "logo in gmail",
+    "logo in apple mail",
+    "bimi setup",
+    "apple branded mail",
+    "email branding",
+    "company logo inbox",
+    "how do i add my logo to apple mail",
+    "show logo in email",
+  ]
+---
+
+Displaying your company logo in email inboxes helps recipients recognize your brand before opening messages. This guide covers every method for getting your logo to appear in Gmail, Apple Mail, Yahoo, Outlook, and other email clients.
+
+## Choose your approach
+
+| Method | Works in | Cost | Requirements |
+|--------|----------|------|--------------|
+| [BIMI](#bimi) | Gmail, Yahoo, Apple Mail, Fastmail | $1,000-1,500/year | DMARC, certificate |
+| [Apple Branded Mail](#apple-branded-mail) | Apple Mail only | Free | DMARC, Apple Business Connect |
+| [Provider profiles](#provider-profile-pictures) | Varies by provider | Free | Account with each provider |
+| [Gravatar](#gravatar) | Thunderbird, Airmail, Postbox | Free | Gravatar account |
+
+<Note>
+  BIMI is the most comprehensive solution, working across multiple major email providers with a single setup. Apple Branded Mail is free but limited to Apple Mail users.
+</Note>
+
+## BIMI
+
+Brand Indicators for Message Identification (BIMI) is an email standard that displays your verified logo across supporting email clients including Gmail, Yahoo Mail, Apple Mail (iOS 16+), and Fastmail.
+
+### Prerequisites
+
+Before setting up BIMI, you need:
+
+1. **SPF, DKIM, and DMARC** configured for your domain
+2. **DMARC policy** set to `quarantine` or `reject` with `pct=100`
+3. **A square logo** in SVG Tiny 1.2 P/S format
+4. **A certificate** (VMC or CMC) from an authorized issuer
+
+### Step 1: Configure email authentication
+
+Your domain must have proper email authentication in place. Check your current DMARC policy:
+
+```bash
+dig TXT _dmarc.yourdomain.com
+```
+
+Your DMARC record must include:
+- `p=quarantine` or `p=reject` (not `p=none`)
+- `pct=100` (applies to all messages)
+
+Example DMARC record for BIMI:
+
+```txt
+v=DMARC1; p=reject; pct=100; rua=mailto:dmarc@yourdomain.com
+```
+
+<Warning>
+  Don't set your DMARC policy to `reject` until you've verified all legitimate email sources are properly authenticated. Misconfigured DMARC can cause your emails to be rejected.
+</Warning>
+
+### Step 2: Prepare your logo
+
+BIMI requires your logo in a specific format:
+
+| Requirement | Specification |
+|-------------|---------------|
+| Format | SVG Tiny 1.2 P/S |
+| Dimensions | Square (1:1 aspect ratio) |
+| Minimum size | 96x96 pixels (for Gmail) |
+| Background | Solid color (no transparency) |
+| File size | Under 32KB recommended |
+
+The SVG Tiny P/S format has specific requirements. Use a [BIMI logo generator tool](https://bimigroup.org/bimi-generator/) to convert your logo to the correct format.
+
+### Step 3: Obtain a certificate
+
+BIMI requires third-party verification through either:
+
+**Verified Mark Certificate (VMC)**: Requires a registered trademark. Costs approximately $1,000-1,500/year. Issuers include DigiCert and Entrust.
+
+**Common Mark Certificate (CMC)**: For logos without trademarks. Lower cost but fewer email providers support it. Gmail requires VMC.
+
+### Step 4: Host your BIMI files
+
+Upload your logo and certificate to a publicly accessible HTTPS URL:
+
+```
+https://yourdomain.com/.well-known/bimi/logo.svg
+https://yourdomain.com/.well-known/bimi/certificate.pem
+```
+
+### Step 5: Add the BIMI DNS record
+
+Create a TXT record at `default._bimi.yourdomain.com`:
+
+```txt
+v=BIMI1; l=https://yourdomain.com/.well-known/bimi/logo.svg; a=https://yourdomain.com/.well-known/bimi/certificate.pem
+```
+
+If you don't have a certificate yet, you can omit the `a=` parameter, but most email providers won't display your logo.
+
+### BIMI support by provider
+
+| Provider | VMC Required | CMC Supported | Notes |
+|----------|--------------|---------------|-------|
+| Gmail | Yes | No | Displays in mobile app and opened emails |
+| Yahoo Mail | Yes | Yes | Full inbox support |
+| Apple Mail | No | Yes | iOS 16+, macOS Ventura+ |
+| Fastmail | No | Yes | Full support |
+
+---
+
+## Apple Branded Mail
+
+Apple Branded Mail displays your logo in Apple Mail on iOS, iPadOS, and macOS without requiring a paid certificate. It only works for Apple Mail users.
+
+### Prerequisites
+
+- Apple Business Connect account (free)
+- DMARC configured with `p=quarantine` or `p=reject`
+- Both SPF and DKIM set up (SPF alone won't work)
+- A commercial email domain
+
+### Setup steps
+
+<Steps>
+  <Step title="Verify email authentication">
+    Confirm your DMARC is at enforcement level:
+
+    ```bash
+    dig TXT _dmarc.yourdomain.com
+    ```
+
+    You need `p=quarantine` or `p=reject` with `pct=100`.
+  </Step>
+
+  <Step title="Create Apple Business Connect account">
+    1. Go to [Apple Business Connect](https://businessconnect.apple.com)
+    2. Sign in with your Apple ID
+    3. Add your business with name, country, category, and website
+    4. Complete Apple's verification questions
+  </Step>
+
+  <Step title="Set up your brand">
+    1. Add a Place Card with your business logo
+    2. The logo must be at least 1024x1024 pixels
+    3. Supported formats: PNG, HEIF, or JPEG
+  </Step>
+
+  <Step title="Configure Branded Mail">
+    1. Select "Branded Mail" from the sidebar
+    2. Choose your brand
+    3. Add your email domain or specific email addresses
+    4. Copy the DNS TXT record Apple provides
+  </Step>
+
+  <Step title="Add DNS verification record">
+    Add the TXT record to your domain's DNS. Contact your IT administrator or DNS provider if needed.
+  </Step>
+
+  <Step title="Verify and wait for approval">
+    1. Click "Verify" in Apple Business Connect
+    2. Wait for Apple's review (up to 7 business days)
+    3. Domain status will show as "Approved" when complete
+  </Step>
+</Steps>
+
+### Limitations
+
+- **Apple devices only**: Only works in Apple Mail on iOS 18.2+, iPadOS, macOS, and iCloud Mail on web
+- **Language restrictions**: Currently displays only when device language is English, Portuguese, French, Italian, German, Spanish, or Simplified Chinese
+- **Maximum 100 domains**: Each brand can have up to 100 domains, subdomains, and email addresses
+- **14-day verification window**: Complete DNS verification within 14 days or restart the process
+
+---
+
+## Provider profile pictures
+
+Some email providers display profile pictures from sender accounts. This is limited to emails sent from accounts within that provider.
+
+### Gmail
+
+1. Go to [Google Account Settings](https://myaccount.google.com)
+2. Select "Personal info"
+3. Click your profile picture and upload a new image
+4. Image appears in Gmail mobile app and opened emails on desktop
+
+<Note>
+  Gmail profile pictures only display when sending from a Gmail/Google Workspace account to other Gmail users. For broader coverage, use BIMI.
+</Note>
+
+### Outlook / Microsoft 365
+
+1. Go to [Outlook Profile Settings](https://outlook.live.com/people/)
+2. Click your profile icon
+3. Upload a profile picture
+4. Image appears in Outlook mobile app and opened emails
+
+### Yahoo Mail
+
+1. Go to [Yahoo Account Settings](https://login.yahoo.com/account/personalinfo)
+2. Click your profile picture
+3. Upload a new image
+4. Image appears in Yahoo Mail mobile app and opened emails
+
+---
+
+## Gravatar
+
+[Gravatar](https://gravatar.com) provides universal avatars that appear in email clients like Thunderbird, Airmail, and Postbox (not Gmail, Apple Mail, or Outlook).
+
+<Steps>
+  <Step title="Create a Gravatar account">
+    Go to [gravatar.com](https://gravatar.com) and sign up for a free account.
+  </Step>
+
+  <Step title="Upload your logo">
+    Add your company logo as your Gravatar image.
+  </Step>
+
+  <Step title="Verify your sending email addresses">
+    Add and verify each email address you send from. Gravatar is tied to specific email addresses, not domains.
+  </Step>
+</Steps>
+
+---
+
+## FAQs
+
+<AccordionGroup>
+<Accordion title="How do I add my logo to Apple Mail?">
+  You have two options:
+  1. **Apple Branded Mail** (free): Set up through Apple Business Connect. Requires DMARC authentication and Apple's approval. Works only in Apple Mail.
+  2. **BIMI** (paid): Set up BIMI with a certificate. Works in Apple Mail (iOS 16+) and other providers like Gmail and Yahoo.
+</Accordion>
+
+<Accordion title="How do I add my logo to Gmail?">
+  Gmail requires BIMI with a Verified Mark Certificate (VMC). You'll need:
+  1. DMARC at enforcement level (`p=quarantine` or `p=reject`)
+  2. A trademarked logo
+  3. A VMC from DigiCert or Entrust ($1,000-1,500/year)
+  4. Your logo in SVG Tiny P/S format
+
+  Gmail profile pictures only work when sending from Gmail/Google Workspace accounts.
+</Accordion>
+
+<Accordion title="Does Outlook support BIMI?">
+  No. Microsoft has not announced support for BIMI in Outlook or Microsoft 365. The only way to display a logo in Outlook is through your Microsoft account profile picture, which only works when sending from Outlook/Microsoft accounts.
+</Accordion>
+
+<Accordion title="Can I get my logo in email without BIMI?">
+  For Apple Mail, yes. Use Apple Branded Mail through Apple Business Connect, which is free and doesn't require a certificate. For Gmail and Yahoo, BIMI with a certificate is currently the only option for displaying verified logos.
+</Accordion>
+
+<Accordion title="How long does BIMI take to start working?">
+  After completing setup:
+  - DNS propagation: 24-48 hours
+  - Email provider processing: 1-2 weeks
+  - Full rollout can take several weeks depending on the provider
+</Accordion>
+
+<Accordion title="Do I need a trademark for BIMI?">
+  For Gmail, yes. Gmail requires a Verified Mark Certificate (VMC), which requires a registered trademark. Yahoo and Apple Mail accept Common Mark Certificates (CMC), which don't require trademarks.
+</Accordion>
+
+<Accordion title="What's the difference between BIMI and Apple Branded Mail?">
+  **BIMI** is an open standard that works across multiple email providers (Gmail, Yahoo, Apple Mail, Fastmail). It requires a certificate ($1,000-1,500/year for VMC).
+
+  **Apple Branded Mail** is Apple's proprietary system that only works in Apple Mail. It's free but limited to Apple devices.
+
+  If budget allows, implement both for maximum coverage.
+</Accordion>
+
+<Accordion title="Why isn't my logo showing after BIMI setup?">
+  Common issues:
+  - **DMARC not enforced**: Must be `p=quarantine` or `p=reject` with `pct=100`
+  - **Certificate not valid**: Verify your VMC/CMC is properly issued and accessible
+  - **Logo format incorrect**: Must be SVG Tiny 1.2 P/S format
+  - **DNS not propagated**: Wait 24-48 hours for DNS changes
+  - **Provider delay**: Some providers take weeks to start displaying logos
+</Accordion>
+
+<Accordion title="Does email logo display affect deliverability?">
+  The logo itself doesn't affect deliverability, but the required email authentication (DMARC, SPF, DKIM) significantly improves deliverability and reduces spam filtering.
+</Accordion>
+</AccordionGroup>
+
+## Related resources
+
+- [BIMI Group](https://bimigroup.org/) - Official BIMI documentation and tools
+- [Apple Business Connect](https://businessconnect.apple.com) - Set up Apple Branded Mail
+- [Google BIMI documentation](https://support.google.com/a/answer/10911320) - Gmail BIMI requirements
