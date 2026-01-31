@@ -16,16 +16,19 @@
     "content": "Clearbit Logo has been shutdown. [Migrate now →](https://docs.logo.dev/migrations/clearbit)",
     "dismissible": true
   },
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://www.logo.dev/dashboard"
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:support@logo.dev"
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@logo.dev"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://www.logo.dev/dashboard"
     }
-  ],
+  },
   "navigation": {
     "tabs": [
       {
