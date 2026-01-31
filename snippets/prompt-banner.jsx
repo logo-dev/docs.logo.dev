@@ -56,22 +56,28 @@ export const PromptBanner = ({
             className="inline-flex items-center gap-1 px-4 py-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-950/10 dark:border-white/10 text-sm font-medium text-zinc-950 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
             aria-label="Open in Cursor"
           >
-            <img
-              src="/images/cursor-dark.svg"
-              alt="Cursor logo"
+            <svg
+              viewBox="0 0 466.73 532.09"
               className="size-4 block dark:hidden"
-              loading="lazy"
-              width="16"
-              height="16"
-            />
-            <img
-              src="/images/cursor-light.svg"
-              alt="Cursor logo"
+              role="img"
+              aria-label="Cursor logo"
+            >
+              <path
+                fill="#26251e"
+                d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"
+              />
+            </svg>
+            <svg
+              viewBox="0 0 466.73 532.09"
               className="size-4 hidden dark:block"
-              loading="lazy"
-              width="16"
-              height="16"
-            />
+              role="img"
+              aria-label="Cursor logo"
+            >
+              <path
+                fill="#edecec"
+                d="M457.43,125.94L244.42,2.96c-6.84-3.95-15.28-3.95-22.12,0L9.3,125.94c-5.75,3.32-9.3,9.46-9.3,16.11v247.99c0,6.65,3.55,12.79,9.3,16.11l213.01,122.98c6.84,3.95,15.28,3.95,22.12,0l213.01-122.98c5.75-3.32,9.3-9.46,9.3-16.11v-247.99c0-6.65-3.55-12.79-9.3-16.11h-.01ZM444.05,151.99l-205.63,356.16c-1.39,2.4-5.06,1.42-5.06-1.36v-233.21c0-4.66-2.49-8.97-6.53-11.31L24.87,145.67c-2.4-1.39-1.42-5.06,1.36-5.06h411.26c5.84,0,9.49,6.33,6.57,11.39h-.01Z"
+              />
+            </svg>
             Open in Cursor
           </button>
 
