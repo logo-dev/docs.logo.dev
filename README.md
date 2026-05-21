@@ -58,20 +58,32 @@ mint openapi-check <filename>
 ## Documentation Structure
 
 ```
-├── introduction.mdx        # Getting started guide
-├── logo-images/           # Logo API documentation
-│   ├── introduction.mdx   # API overview and parameters
-│   ├── get.mdx           # Endpoint details
-│   ├── ticker.mdx        # Stock ticker logos
-│   └── crypto.mdx        # Cryptocurrency logos
-├── brand-search/          # Brand Search API
-├── describe/              # Describe API
-├── platform/              # Platform features
-│   ├── api-keys.mdx      # API key management
-│   ├── rate-limits.mdx   # Rate limiting policies
-│   └── attribution.mdx   # Attribution requirements
-└── support/               # Support resources
+├── introduction.mdx          # Getting started guide
+├── migrations/               # Migration guides
+│   └── clearbit.mdx          # Migrating from Clearbit
+├── integrations/             # App integrations (Google Sheets, Excel)
+├── brand-visibility/         # Get your logo seen (Google, email, BIMI)
+├── logo-images/              # Image CDN documentation
+│   ├── introduction.mdx      # API overview and parameters
+│   ├── get.mdx               # Domain logos and parameters
+│   ├── ticker.mdx            # Stock ticker logos
+│   ├── crypto.mdx            # Cryptocurrency logos
+│   ├── isin.mdx              # ISIN logos
+│   └── name.mdx              # Logos by brand name
+├── brand-search/             # Brand Search API
+├── describe/                 # Describe (Brand) API
+├── platform/                 # Platform features
+│   ├── api-keys.mdx          # API key management
+│   ├── rate-limits.mdx       # Rate limiting policies
+│   ├── caching.mdx           # Caching behavior
+│   ├── self-hosting.mdx      # Self-hosting logos
+│   ├── attribution.mdx       # Attribution requirements
+│   └── fair-use.mdx          # Fair use guidelines
+├── support/                  # Support resources
+└── snippets/                 # Reusable MDX/JSX components
 ```
+
+> SEO landing pages (`clearbit-logo-docs.mdx`, `google-favicon-api.mdx`, `duckduckgo-favicon-api.mdx`, `fey-logos.mdx`) live at the repo root and are intentionally kept out of the sidebar navigation.
 
 ## API Usage Examples
 
@@ -122,7 +134,7 @@ For manual deployments or custom workflows, contact the Mintlify team.
 
 | Issue                  | Solution                                        |
 | ---------------------- | ----------------------------------------------- |
-| `mint dev` not running | Run `mint install` to reinstall dependencies    |
+| `mint dev` not running | Reinstall the CLI with `npm install -g mint`    |
 | Page loads as 404      | Ensure you're in the directory with `docs.json` |
 | CLI installation fails | Check Node.js version (requires 18+)            |
 | Preview port in use    | Use `mint dev --port <port>`                    |

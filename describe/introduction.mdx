@@ -14,19 +14,19 @@ Reach out to us at [support@logo.dev](mailto:support@logo.dev?subject=Describe%2
 </Note>
 
 ```bash
-curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" "http://api.logo.dev/describe/:domain"
+curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" "https://api.logo.dev/describe/:domain"
 ```
 
 All you need to provide is a query and your secret key, which can be found on the [dashboard](https://www.logo.dev/dashboard) and is formatted like `sk_...`.
 
 ---
 
-## In example, looking up “sweetgreen”
+## Example: looking up “sweetgreen”
 
-Using `curl` to test this from the command line, but obviously call the API anywhere that supports headers.
+We're using `curl` to test this from the command line, but you can call the API anywhere that supports headers.
 
 ```bash
-curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" "http://api.logo.dev/describe/sweetgreen.com"
+curl --header "Authorization: Bearer LOGO_DEV_SECRET_KEY" "https://api.logo.dev/describe/sweetgreen.com"
 ```
 
 ### Results
@@ -88,4 +88,4 @@ For implementation details and code examples, see the [official blurhash documen
 
 Unlike the publishable key, it's your responsibility to keep your secret key safe and away from public eyes. Even during testing, please never publish to Github or allow it to be seen from front-end code.
 
-If you’re secret key is ever leaked, please get in touch immediately so we can regenerate a new one for you.
+If your secret key is ever leaked, please get in touch immediately so we can regenerate a new one for you.
