@@ -205,3 +205,31 @@ In the case where no image is found for a given domain, the API will return a bl
 </Frame>
 
 If you want to suppress these monograms, use the parameter `fallback=404` to receive an empty response and HTTP Status Code `404 Not Found`.
+
+The `fallback` parameter only accepts `monogram` (default) or `404`. Passing your own image URL is not supported. To show a custom fallback image, request with `fallback=404` and handle the error in your own code:
+
+<CodeGroup>
+```html HTML
+<img
+  src="https://img.logo.dev/acme.invalid?token=LOGO_DEV_PUBLISHABLE_KEY&fallback=404"
+  alt="Company logo"
+  onerror="this.onerror=null; this.src='/images/default-logo.png';"
+/>
+```
+
+```jsx React
+function CompanyLogo({ domain }) {
+  const [src, setSrc] = useState(
+    `https://img.logo.dev/${domain}?token=LOGO_DEV_PUBLISHABLE_KEY&fallback=404`
+  );
+
+  return (
+    <img
+      src={src}
+      alt={`${domain} logo`}
+      onError={() => setSrc("/images/default-logo.png")}
+    />
+  );
+}
+```
+</CodeGroup>

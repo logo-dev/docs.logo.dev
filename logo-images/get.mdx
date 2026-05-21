@@ -62,7 +62,11 @@ description: "Company logos API parameters guide. Control logo size, format (PNG
       Generates a monogram from the first letter of the domain
     </ResponseField>
     <ResponseField name="404">
-      Returns a 404 error instead of an image
+      Returns a 404 error instead of an image. Use this to handle your own
+      fallback in code—see [fallback
+      images](/logo-images/introduction#fallback-images).
     </ResponseField>
   </Expandable>
+  Only `monogram` and `404` are accepted. Custom fallback image URLs are not
+  supported.
 </ParamField>
