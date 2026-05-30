@@ -12,10 +12,6 @@
     "light": "#FFFFFF",
     "dark": "#333333"
   },
-  "banner": {
-    "content": "Clearbit Logo has been shutdown. [Migrate now →](https://docs.logo.dev/migrations/clearbit)",
-    "dismissible": true
-  },
   "contextual": {
     "options": ["copy", "view", "chatgpt", "claude", "perplexity"]
   },
